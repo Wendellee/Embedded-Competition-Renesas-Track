@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<RealityAI>
+	<version>1.10</version>
+	<endianness>default</endianness>
+	<mathType>float 32</mathType>
+	<library>librai_edsp_f32_arm.a</library>
+	<targetDevice>
+		<family>RA6M5 (ARM Cortex-M33)</family>
+	</targetDevice>
+	<toolchain>
+		<name>GNU GCC</name>
+		<version>13.2.1</version>
+	</toolchain>
+	<size>
+		<parameters>1441</parameters>
+		<stack>10904</stack>
+		<pre-allocated>232</pre-allocated>
+		<code>3420</code>
+	</size>
+	<model name="amr" type="classifier" network="svm">
+		<nchannels>3</nchannels>
+		<winlen>512</winlen>
+		<dtype>float32</dtype>
+		<classmap>
+			<amr_no_results>0</amr_no_results>
+			<amr_DROP>1</amr_DROP>
+			<amr_MOVE>2</amr_MOVE>
+			<amr_NORMAL>3</amr_NORMAL>
+		</classmap>
+	</model>
+</RealityAI>
