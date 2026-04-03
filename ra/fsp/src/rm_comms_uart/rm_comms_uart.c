@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -191,7 +191,7 @@ fsp_err_t RM_COMMS_UART_Close (rm_comms_ctrl_t * const p_api_ctrl)
  **********************************************************************************************************************/
 fsp_err_t RM_COMMS_UART_CallbackSet (rm_comms_ctrl_t * const p_api_ctrl,
                                      void (                * p_callback)(rm_comms_callback_args_t *),
-                                     void const * const      p_context)
+                                     void * const            p_context)
 {
     rm_comms_uart_instance_ctrl_t * p_ctrl = (rm_comms_uart_instance_ctrl_t *) p_api_ctrl;
 

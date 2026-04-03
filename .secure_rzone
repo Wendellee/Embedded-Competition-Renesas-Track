@@ -5,16 +5,25 @@
     </device>
     <resources>
         <memories>
-            <memory name="RAM" type="RAM" start="0x20000000" size="0x00080000" security=""/>
-            <memory name="FLASH" type="ROM" start="0x00000000" size="0x00100000" security=""/>
-            <memory name="DATA_FLASH" type="ROM" start="0x08000000" size="0x00002000" security=""/>
-            <memory name="OPTION_SETTING" type="ROM" start="0x0100a100" size="0x00000100" security=""/>
-            <memory name="OPTION_SETTING_S" type="ROM" start="0x0100a200" size="0x00000100" security=""/>
-            <memory name="ID_CODE" type="ROM" start="0x00000000" size="0x00000000" security=""/>
-            <memory name="SDRAM" type="RAM" start="0x80010000" size="0x00000000" security=""/>
-            <memory name="QSPI_FLASH" type="ROM" start="0x60000000" size="0x4000000" security=""/>
-            <memory name="OSPI_DEVICE_0" type="ROM" start="0x68000000" size="0x08000000" security=""/>
-            <memory name="OSPI_DEVICE_1" type="ROM" start="0x70000000" size="0x10000000" security=""/>
+            <memory name="RAM" type="RAM" start="0x20000000" size="0x00080000" access="rwx" security="" info="On chip RAM memory @nsAlign:0x00002000 @nscAlign:0x00000400"/>
+            <memory name="FLASH" type="ROM" start="0x00000000" size="0x00100000" access="rx" security="" info="On chip flash memory @nsAlign:0x00008000 @nscAlign:0x00000400"/>
+            <memory name="DATA_FLASH" type="ROM" start="0x08000000" size="0x00002000" access="rx" security="" info="On chip data flash memory @nsAlign:0x00000400"/>
+            <memory name="QSPI_FLASH" type="ROM" start="0x60000000" size="0x04000000" access="rx" security="" info="external quad spi region"/>
+            <memory name="OSPI0_CS0" type="RAM" start="0x68000000" size="0x08000000" access="rwx" security="" info="external ospi region 0 (ram)"/>
+            <memory name="OSPI0_CS1" type="ROM" start="0x70000000" size="0x10000000" access="rx" security="" info="external ospi region 1 (rom)"/>
+            <memory name="OPTION_SETTING_OFS0" type="ROM" start="0x0100a100" size="0x00000004" access="r" security="s" info="Option Function Select Register 0"/>
+            <memory name="OPTION_SETTING_DUALSEL" type="ROM" start="0x0100a110" size="0x00000004" access="r" security="s" info="Dual Mode Select Register"/>
+            <memory name="OPTION_SETTING_OFS1" type="ROM" start="0x0100a180" size="0x00000004" access="r" security="" info="Option Function Select Register 1"/>
+            <memory name="OPTION_SETTING_BANKSEL" type="ROM" start="0x0100a190" size="0x00000004" access="r" security="" info="Bank Select Register"/>
+            <memory name="OPTION_SETTING_BPS" type="ROM" start="0x0100a1c0" size="0x00000010" access="r" security="" info="Block Protect Setting Register"/>
+            <memory name="OPTION_SETTING_PBPS" type="ROM" start="0x0100a1e0" size="0x00000010" access="r" security="" info="Permanent Block Protect Setting Register"/>
+            <memory name="OPTION_SETTING_OFS1_SEC" type="ROM" start="0x0100a200" size="0x00000004" access="r" security="s" info="Option Function Select Register 1 Secure"/>
+            <memory name="OPTION_SETTING_BANKSEL_SEC" type="ROM" start="0x0100a210" size="0x00000004" access="r" security="s" info="Bank Select Register Secure"/>
+            <memory name="OPTION_SETTING_BPS_SEC" type="ROM" start="0x0100a240" size="0x00000010" access="r" security="s" info="Block Protect Setting Register Secure"/>
+            <memory name="OPTION_SETTING_PBPS_SEC" type="ROM" start="0x0100a260" size="0x00000010" access="r" security="s" info="Permanent Block Protect Setting Register Secure"/>
+            <memory name="OPTION_SETTING_OFS1_SEL" type="ROM" start="0x0100a280" size="0x00000004" access="r" security="s" info="OFS1 Security Attribution"/>
+            <memory name="OPTION_SETTING_BANKSEL_SEL" type="ROM" start="0x0100a290" size="0x00000004" access="r" security="s" info="Banksel Security Attribution"/>
+            <memory name="OPTION_SETTING_BPS_SEL" type="ROM" start="0x0100a2c0" size="0x00000010" access="r" security="s" info="BPS Security Attribution"/>
         </memories>
         <peripherals>
             <group name="ADC" start="0x40170000" size="0x00000200" info="A/D Converter">

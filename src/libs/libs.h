@@ -8,9 +8,11 @@
 #endif /* LIBS_USE_DELAY */
 
 #if LIBS_USE_PRINTF
-    #define xprintf(...)    Serial_Printf(g_uart9.p_ctrl,__VA_ARGS__)
+    #define xprintf(...)    Serial_Printf(g_debug_uart4.p_ctrl,__VA_ARGS__)
+    // #define eprintf(...)    Serial_Printf(g_uart7.p_ctrl,__VA_ARGS__)
 #else
     #define xprintf(...)
+    #define eprintf(...)
 #endif /* DEV_USE_UART */
 
 #if LIBS_USE_BUFFER

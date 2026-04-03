@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -336,7 +336,8 @@ typedef enum e_elc_event_ra6m5
     ELC_EVENT_CAN0_MRAM_ERI                 = (0x1D0), // CANFD0 ECC error
     ELC_EVENT_OSPI_INT                      = (0x1D9), // OSPI interrupt
     ELC_EVENT_QSPI_INT                      = (0x1DA), // QSPI interrupt
-    ELC_EVENT_DOC_INT                       = (0x1DB)  // Data operation circuit interrupt
+    ELC_EVENT_DOC_INT                       = (0x1DB), // Data operation circuit interrupt
+    ELC_EVENT_SCE_TADI                      = (0x1E9)  // SCE Tamper Detection
 } elc_event_t;
 
 #define BSP_PRV_VECT_ENUM(event,group)  (ELC_ ## event)

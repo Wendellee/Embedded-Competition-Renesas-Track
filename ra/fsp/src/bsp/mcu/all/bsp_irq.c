@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -17,7 +17,7 @@
 #define BSP_IRQ_UINT32_MAX       (0xFFFFFFFFU)
 #define BSP_PRV_BITS_PER_WORD    (32)
 
-#if BSP_ALT_BUILD
+#if (BSP_CFG_CPU_CORE == 1)
  #define BSP_EVENT_NUM_TO_INTSELR(x)         (x >> 5)        // Convert event number to INTSELR register number
  #define BSP_EVENT_NUM_TO_INTSELR_MASK(x)    (1 << (x % 32)) // Convert event number to INTSELR bit mask
 #endif
@@ -36,6 +36,11 @@ void * gp_renesas_isr_context[BSP_ICU_VECTOR_NUM_ENTRIES];
 /***********************************************************************************************************************
  * Private global variables and functions
  **********************************************************************************************************************/
+#if (BSP_CFG_CPU_CORE == 1)
+BSP_CMSE_NONSECURE_ENTRY void bsp_prv_intselr_set(bsp_interrupt_event_t interrupt_event_link_select);
+
+#endif
+
 const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_NUM_ENTRIES] BSP_WEAK_REFERENCE =
 {
     (bsp_interrupt_event_t) 0
@@ -64,7 +69,7 @@ void R_BSP_IrqStatusClear (IRQn_Type irq)
     R_ICU->IELSR_b[irq].IR = 0U;
 
     /* Read back the IELSR register to ensure that the IR bit is cleared.
-     * See section "13.5.1 Operations During an Interrupt" in the RA8M1 manual R01UH0994EJ0100. */
+     * See "Operations During an Interrupt" in the ICU section of the relevant hardware manual. */
     FSP_REGISTER_READ(R_ICU->IELSR[irq]);
 }
 
@@ -78,7 +83,7 @@ void R_BSP_IrqStatusClear (IRQn_Type irq)
  *
  * @warning Do not call this function for system exceptions where the IRQn_Type value is < 0.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_IrqClearPending (IRQn_Type irq)
+void R_BSP_IrqClearPending (IRQn_Type irq)
 {
  #if BSP_FEATURE_ICU_HAS_IELSR
 
@@ -104,7 +109,7 @@ BSP_SECTION_FLASH_GAP void R_BSP_IrqClearPending (IRQn_Type irq)
  *
  * @warning Do not call this function for system exceptions where the IRQn_Type value is < 0.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_IrqCfg (IRQn_Type const irq, uint32_t priority, void * p_context)
+void R_BSP_IrqCfg (IRQn_Type const irq, uint32_t priority, void * p_context)
 {
     /* The following statement is used in place of NVIC_SetPriority to avoid including a branch for system exceptions
      * every time a priority is configured in the NVIC. */
@@ -131,7 +136,7 @@ BSP_SECTION_FLASH_GAP void R_BSP_IrqCfg (IRQn_Type const irq, uint32_t priority,
  *
  * @warning Do not call this function for system exceptions where the IRQn_Type value is < 0.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_IrqEnableNoClear (IRQn_Type const irq)
+void R_BSP_IrqEnableNoClear (IRQn_Type const irq)
 {
     /* The following statement is used in place of NVIC_EnableIRQ to avoid including a branch for system exceptions
      * every time an interrupt is enabled in the NVIC. */
@@ -150,7 +155,7 @@ BSP_SECTION_FLASH_GAP void R_BSP_IrqEnableNoClear (IRQn_Type const irq)
  *
  * @warning Do not call this function for system exceptions where the IRQn_Type value is < 0.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_IrqEnable (IRQn_Type const irq)
+void R_BSP_IrqEnable (IRQn_Type const irq)
 {
     /* Clear pending interrupts in the ICU and NVIC. */
     R_BSP_IrqClearPending(irq);
@@ -167,7 +172,7 @@ BSP_SECTION_FLASH_GAP void R_BSP_IrqEnable (IRQn_Type const irq)
  *
  * @warning Do not call this function for system exceptions where the IRQn_Type value is < 0.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_IrqDisable (IRQn_Type const irq)
+void R_BSP_IrqDisable (IRQn_Type const irq)
 {
     /* The following statements is used in place of NVIC_DisableIRQ to avoid including a branch for system
      * exceptions every time an interrupt is cleared in the NVIC. */
@@ -187,7 +192,7 @@ BSP_SECTION_FLASH_GAP void R_BSP_IrqDisable (IRQn_Type const irq)
  *
  * @warning Do not call this function for system exceptions where the IRQn_Type value is < 0.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_IrqCfgEnable (IRQn_Type const irq, uint32_t priority, void * p_context)
+void R_BSP_IrqCfgEnable (IRQn_Type const irq, uint32_t priority, void * p_context)
 {
     R_BSP_IrqCfg(irq, priority, p_context);
     R_BSP_IrqEnable(irq);
@@ -197,13 +202,39 @@ BSP_SECTION_FLASH_GAP void R_BSP_IrqCfgEnable (IRQn_Type const irq, uint32_t pri
 
 /** @} (end addtogroup BSP_MCU) */
 
+#if (BSP_CFG_CPU_CORE == 1) && !BSP_TZ_NONSECURE_BUILD
+
+/*******************************************************************************************************************//**
+ * INTSELR is a S-TYPE-6 register but it needs to be set based on interrupts that are used in each project.
+ * By making this into a NSC, INTSELR can be set from NS.
+ **********************************************************************************************************************/
+BSP_CMSE_NONSECURE_ENTRY void bsp_prv_intselr_set (bsp_interrupt_event_t interrupt_event_link_select)
+{
+    uint32_t inteslr_num_max = sizeof(R_ICU->INTSELR) / sizeof(R_ICU->INTSELR[0]);
+
+    /* Calculate which INTSELRn to use */
+    uint32_t intselr_num = BSP_EVENT_NUM_TO_INTSELR((uint32_t) interrupt_event_link_select);
+
+    /* Only set if a valid INTSELRn */
+    if (intselr_num < inteslr_num_max)
+    {
+        /* Set INTSELR for selected events. */
+        uint32_t intselr = R_ICU->INTSELR[intselr_num];
+
+        intselr |= BSP_EVENT_NUM_TO_INTSELR_MASK((uint32_t) interrupt_event_link_select);
+        R_ICU->INTSELR[intselr_num] = intselr;
+    }
+}
+
+#endif
+
 /*******************************************************************************************************************//**
  *        Using the vector table information section that has been built by the linker and placed into ROM in the
  * .vector_info. section, this function will initialize the ICU so that configured ELC events will trigger interrupts
  * in the NVIC.
  *
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void bsp_irq_cfg (void)
+void bsp_irq_cfg (void)
 {
 #if FSP_PRIV_TZ_USE_SECURE_REGS
  #if (BSP_FEATURE_TZ_VERSION == 2 && BSP_TZ_SECURE_BUILD == 0)
@@ -239,8 +270,12 @@ BSP_SECTION_FLASH_GAP void bsp_irq_cfg (void)
     }
 
     /* The Secure Attribute managed within the ARM CPU NVIC must match the security attribution of IELSEn
-     * (Reference section 13.2.9 in the RA6M4 manual R01UH0890EJ0050). */
+     * (Refer "ICUSARI : Interrupt Controller Unit Security Attribution Register I" description in the ICU section of the relevant hardware manual). */
+  #if (BSP_CFG_CPU_CORE == 1)
+    uint32_t volatile * p_icusarg = &R_CPSCU->ICUSARJ;
+  #else
     uint32_t volatile * p_icusarg = &R_CPSCU->ICUSARG;
+  #endif
     for (uint32_t i = 0U; i < BSP_ICU_VECTOR_MAX_ENTRIES / BSP_PRV_BITS_PER_WORD; i++)
     {
         p_icusarg[i]  = interrupt_security_state[i];
@@ -251,7 +286,6 @@ BSP_SECTION_FLASH_GAP void bsp_irq_cfg (void)
     R_BSP_RegisterProtectEnable(BSP_REG_PROTECT_SAR);
  #endif
 #endif
-
 #if BSP_FEATURE_ICU_HAS_IELSR
 
     /* Calculate the number of IELSR registers that need to be initialized. */
@@ -267,14 +301,8 @@ BSP_SECTION_FLASH_GAP void bsp_irq_cfg (void)
         {
             R_ICU->IELSR[i] = (uint32_t) g_interrupt_event_link_select[i];
 
- #if BSP_ALT_BUILD
-
-            /* Set INTSELR for selected events. */
-            uint32_t intselr_num = BSP_EVENT_NUM_TO_INTSELR((uint32_t) g_interrupt_event_link_select[i]);
-            uint32_t intselr     = R_ICU->INTSELR[intselr_num];
-
-            intselr |= BSP_EVENT_NUM_TO_INTSELR_MASK((uint32_t) g_interrupt_event_link_select[i]);
-            R_ICU->INTSELR[intselr_num] = intselr;
+ #if (BSP_CFG_CPU_CORE == 1)
+            bsp_prv_intselr_set(g_interrupt_event_link_select[i]);
  #endif
         }
     }

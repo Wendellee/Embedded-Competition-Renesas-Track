@@ -16,11 +16,63 @@
 #include "stdio.h"
 /* User Define --------------------------------------- */
 /* User Variable ------------------------------------- */
+typedef enum{
+  Hex = 1,
+  Str = 2
+}ReceiveType;
+typedef enum{
+  StateNone,
+	StateHeader,
+	StateHeader1,
+  StateData,
+	StateTailer,
+	StateTailer1
+}State;
+typedef enum{
+  ReceivePacketNone = 0x00,
+	ReceivePacketHeader = 0xFF,
+	ReceivePacketHeader1 = 0xAA,
+	ReceivePacketTailer = 0xFE,
+	ReceivePacketTailer1 = 0x55
+}ReceiveState;
+typedef enum //Page
+{
+	Page_Debug = 0x00, // 调试功能
+	Page_one = 0x01,   // 功能1
+	Page_two = 0x02,   // 功能2
+	Page_three = 0x03, // 功能3
+	Page_four = 0x04,  // 功能4
+	Page_five = 0x05,  // 功能5
+	Page_six = 0x06,   // 功能6
+	Page_seven = 0x11, // 拓展1
+	Page_eight = 0x22, // 拓展2
+	Page_nine = 0x33   // 拓展3
+}Page;
+typedef enum //Function
+{
+	Function_Debug = 0x00, // 调试功能
+	Function_one = 0x01,   // 功能1
+	Function_two = 0x02,   // 功能2
+	Function_three = 0x03, // 功能3
+	Function_four = 0x04,  // 功能4
+	Function_five = 0x05,  // 功能5
+	Function_six = 0x06,   // 功能6
+	Function_seven = 0x11, // 拓展1
+	Function_eight = 0x22, // 拓展2
+	Function_nine = 0x33   // 拓展3
+}Function;
 /* User Extern --------------------------------------- */
+extern uint8_t hmi_Serial_TxPacket[6];				//定义发送数据包数组，数据包格式：FF AA [Page] [Function] [01] [02] [03] [04] FE 55
+extern uint8_t hmi_Serial_RxPacket[6];				//定义接收数据包数组
+extern uint8_t hmi_Serial_RxFlag;					//定义接收数据包标志位
 /* User Function ------------------------------------- */
 void debug_uart7_init(void);
 void hmi_uart9_init(void);
+void debug_uart4_init(void);
+void W800_uart6_init(void);
+
 void hmi_uart9_callback(uart_callback_args_t *p_args);
+uint8_t hmi_Serial_GetRxFlag(void);
 /* Basic --------------------------------------------- */
 /**
   * 函    数：串口发送一个字节

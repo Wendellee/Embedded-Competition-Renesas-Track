@@ -5,7 +5,15 @@
  *      Author: 李文学
  */
 #include "debug_uart.h"
+#include "hal_data.h"
 volatile bool uart_send_complete_flag = false;
+volatile bool g_uart4_tx_done = false;
+void ReceiveDataConversion(uint8_t Receive_Byte);
+State Receive_Status = StateHeader;
+uint8_t hmi_Serial_TxPacket[6];				//定义发送数据包数组，数据包格式：FF AA [Page] [Function] [01] [02] [03] [04] FE 55
+uint8_t hmi_Serial_RxPacket[6];				//定义接收数据包数组
+uint8_t hmi_Serial_RxFlag = 0;					//定义接收数据包标志位
+
 void debug_uart7_init(void)
 {
     g_uart7.p_api->open(g_uart7.p_ctrl, g_uart7.p_cfg);
@@ -14,12 +22,21 @@ void hmi_uart9_init(void)
 {
     g_uart9.p_api->open(g_uart9.p_ctrl, g_uart9.p_cfg);
 }
+void W800_uart6_init(void)
+{
+    g_W800_uart6.p_api->open(g_W800_uart6.p_ctrl, g_W800_uart6.p_cfg);
+}
+void debug_uart4_init(void)
+{
+    g_debug_uart4.p_api->open(g_debug_uart4.p_ctrl, g_debug_uart4.p_cfg);
+}
 void hmi_uart9_callback(uart_callback_args_t *p_args)
 {
     switch(p_args->event)
     {
         case UART_EVENT_RX_CHAR:
-
+            uint8_t rx_byte = (uint8_t)p_args->data;
+            ReceiveDataConversion(rx_byte);
             break;
         case UART_EVENT_TX_COMPLETE:
             uart_send_complete_flag = true;
@@ -30,7 +47,13 @@ void hmi_uart9_callback(uart_callback_args_t *p_args)
     }
 }
 
-
+void UART4_CallBack(uart_callback_args_t * p_args)
+{
+    if (p_args->event == UART_EVENT_TX_COMPLETE)
+    {
+        g_uart4_tx_done = true; // 只有发完了，才把标志位置 1
+    }
+}
 
 #pragma import(__use_no_semihosting)
 //标准库需要的支持函数
@@ -48,10 +71,23 @@ FILE __stdout;
   */
 void Serial_SendByte(uart_ctrl_t * const p_api_ctrl,uint8_t Byte)
 {
-    g_uart9.p_api->write(g_uart9.p_ctrl,(uint8_t *)&Byte,1);        //将字节数据写入数据寄存器，写入后USART自动生成时序波形
-    while (uart_send_complete_flag == false);    //等待发送完成
-    uart_send_complete_flag = false;
+    //g_uart9.p_api->write(g_uart9.p_ctrl,(uint8_t *)&Byte,1);        //将字节数据写入数据寄存器，写入后USART自动生成时序波形
+    if(p_api_ctrl == g_debug_uart4.p_ctrl)
+    {
+        R_SCI_UART_Write(p_api_ctrl,(uint8_t *)&Byte,1);
+        while (g_uart4_tx_done == false);    //等待发送完成
+        uart_send_complete_flag = false;
+        g_uart4_tx_done = false;
+    }
+    else if(p_api_ctrl == g_uart9.p_ctrl)
+    {
+        R_SCI_UART_Write(p_api_ctrl,(uint8_t *)&Byte,1);
+        while (uart_send_complete_flag == false);    //等待发送完成
+        uart_send_complete_flag = false;
+        uart_send_complete_flag = false;
+    }
     /*下次写入数据寄存器会自动清除发送完成标志位，故此循环后，无需清除标志位*/
+
 }
 
 /**
@@ -132,7 +168,7 @@ int my_fputc(uart_ctrl_t * const p_api_ctrl,int ch, FILE *f)
   */
 void Serial_Printf(uart_ctrl_t * const p_api_ctrl,char *format, ...)
 {
-    char String[100];               //定义字符数组
+    char String[1024];               //定义字符数组
     va_list arg;                    //定义可变参数列表数据类型的变量arg
     va_start(arg, format);          //从format开始，接收参数列表到arg变量
     vsprintf(String, format, arg);  //使用vsprintf打印格式化字符串和参数列表到字符数组中
@@ -140,3 +176,110 @@ void Serial_Printf(uart_ctrl_t * const p_api_ctrl,char *format, ...)
     Serial_SendString(p_api_ctrl,String);        //串口发送字符数组（字符串）
 }
 
+uint8_t hmi_Serial_GetRxFlag(void)
+{
+	if (hmi_Serial_RxFlag == 1)			//如果标志位为1
+	{
+		hmi_Serial_RxFlag = 0;
+		return 1;					//则返回1，并自动清零标志位
+	}
+	return 0;						//如果标志位为0，则返回0
+}
+void ReceiveDataConversion(uint8_t Receive_Byte)
+{
+    static uint8_t pRxPacket = 0;	//定义表示当前接收数据位置的静态变量
+    switch(Receive_Status)
+    {
+        case StateHeader:
+            if(Receive_Byte == 0xFF)
+            {
+               Receive_Status = StateHeader1;
+               pRxPacket = 0;
+            }
+            else
+            {
+                Receive_Status = StateHeader;
+            }
+            break;
+        case StateHeader1:
+            if(Receive_Byte == 0xAA)
+            {
+               Receive_Status = StateData;
+            }
+            else
+            {
+                Receive_Status = StateHeader;
+            }
+            break;
+        case StateData:
+            //数据处理
+            hmi_Serial_RxPacket[pRxPacket] = Receive_Byte;	//将数据存入数据包数组的指定位置
+            pRxPacket ++;	//接收数据位置加1
+            if(pRxPacket >= 6)
+            {
+                Receive_Status = StateTailer;
+            }
+            else
+            {
+                Receive_Status = StateData;
+            }
+            break;
+        case StateTailer:
+            if(Receive_Byte == 0xFE)
+            {
+                Receive_Status = StateTailer1;
+            }
+            else
+            {
+                Receive_Status = StateHeader;
+            }
+            break;
+        case StateTailer1:
+            if(Receive_Byte == 0x55)
+            {
+                Receive_Status = StateHeader;
+                pRxPacket = 0;
+                hmi_Serial_RxFlag = 1;	//接收完成标志位置1
+            }
+            else
+            {
+                Receive_Status = StateHeader;
+            }
+            break;
+        default:
+            Receive_Status = StateHeader;  
+            break; 
+    }
+}
+
+#ifdef __GNUC__
+int _write(int fd, char *pBuffer, int size) {
+    (void)fd;
+    uart_send_complete_flag = false;
+
+    g_uart9.p_api->write(g_uart9.p_ctrl,pBuffer,size);
+    while (uart_send_complete_flag == false);    //等待发送完成
+
+    return size;
+}
+int _close(int fd) {
+    (void)fd;
+    return -1;
+}
+int _lseek(int fd, int ptr, int dir) {
+    (void)fd; (void)ptr; (void)dir;
+    return -1;
+}
+int _read(int fd, char *ptr, int len) {
+    (void)fd; (void)ptr; (void)len;
+    return -1;
+}
+int _fstat(int fd, void *st) {
+    (void)fd; (void)st;
+    return -1;
+}
+int _isatty(int fd) {
+    (void)fd;
+    return 1;
+}
+#endif

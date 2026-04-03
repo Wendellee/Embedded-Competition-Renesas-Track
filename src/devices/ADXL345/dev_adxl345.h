@@ -1,6 +1,9 @@
 #ifndef __DEV_ADXL345_H
 #define __DEV_ADXL345_H
 
+#include "drv_spi.h"
+#include "dev_spi.h"
+
 /* SPI commands */
 #define ADXL345_SPI_READ        (1 << 7)
 #define ADXL345_SPI_WRITE       (0 << 7)
@@ -134,11 +137,12 @@ typedef struct ADXL345Dev{
     unsigned char   full_resolution_set;
     MeasureValue    value;
     int (*Init)(struct ADXL345Dev *ptdev);
-    int (*Read)(struct ADXL345Dev *ptdev);
-    int (*Start)(struct ADXL345Dev *ptdev);
-    int (*Stop)(struct ADXL345Dev *ptdev);
+    int (*Read)(SPIDevice *pADXLSPI, struct ADXL345Dev *ptdev);
+    int (*Start)(SPIDevice *pADXLSPI, struct ADXL345Dev *ptdev);
+    int (*Stop)(SPIDevice *pADXLSPI, struct ADXL345Dev *ptdev);
 }ADXL345Device;
 
-struct ADXL345Dev *ADXL345GetDevice(void);
+struct ADXL345Dev *ADXL345GetDevice_0(void);
+struct ADXL345Dev *ADXL345GetDevice_1(void);
 
 #endif /* __DEV_ADXL345_H */

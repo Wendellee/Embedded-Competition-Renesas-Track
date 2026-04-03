@@ -12,6 +12,7 @@ ra/fsp/src/bsp/mcu/all/bsp_group_irq.o: \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/ra6m5/bsp_elc.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/ra6m5/bsp_feature.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/ra6m5/bsp_peripheral.h \
+ E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra_cfg/fsp_cfg/bsp/bsp_mcu_ofs_cfg.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra_cfg/fsp_cfg/bsp/board_cfg.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra_gen/vector_data.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_exceptions.h \
@@ -31,6 +32,9 @@ ra/fsp/src/bsp/mcu/all/bsp_group_irq.o: \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_tfu.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_sdram.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_mmf.h \
+ E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_ipc.h \
+ E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_ospi_b.h \
+ bsp_linker_info.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_register_protection.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_irq.h \
  E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_io.h \
@@ -55,6 +59,7 @@ E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/r
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/ra6m5/bsp_elc.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/ra6m5/bsp_feature.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/ra6m5/bsp_peripheral.h:
+E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra_cfg/fsp_cfg/bsp/bsp_mcu_ofs_cfg.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra_cfg/fsp_cfg/bsp/board_cfg.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra_gen/vector_data.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_exceptions.h:
@@ -74,6 +79,9 @@ E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/a
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_tfu.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_sdram.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_mmf.h:
+E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_ipc.h:
+E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_ospi_b.h:
+bsp_linker_info.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_register_protection.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_irq.h:
 E:/Renesas/prj/Renesas_Cup_workspace/Renesas_Cup_reailty_ai/ra/fsp/src/bsp/mcu/all/bsp_io.h:

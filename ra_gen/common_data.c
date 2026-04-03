@@ -1,8 +1,8 @@
 /* generated common source file - do not edit */
 #include "common_data.h"
 #define G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH   (512 * RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE)
-#define G_RAI_DATA_COLLECTOR0_CHANNELS  (0 + 3)
-#define G_RAI_DATA_COLLECTOR0_VIRT_CHANNELS (3 + 1)
+#define G_RAI_DATA_COLLECTOR0_CHANNELS  (0 + 6)
+#define G_RAI_DATA_COLLECTOR0_VIRT_CHANNELS (6 + 1)
 
 #if 0 > 0
 uint8_t g_rai_data_collector0_snapshot_channel0_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
@@ -36,75 +36,66 @@ uint8_t g_rai_data_collector0_snapshot_channel6_frame_buffer[G_RAI_DATA_COLLECTO
 uint8_t g_rai_data_collector0_snapshot_channel7_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 0
+#if 6 > 0
 float g_rai_data_collector0_data_feed_channel0_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 1
+#if 6 > 1
 float g_rai_data_collector0_data_feed_channel1_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 2
+#if 6 > 2
 float g_rai_data_collector0_data_feed_channel2_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 3
+#if 6 > 3
 float g_rai_data_collector0_data_feed_channel3_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 4
+#if 6 > 4
 float g_rai_data_collector0_data_feed_channel4_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 5
+#if 6 > 5
 float g_rai_data_collector0_data_feed_channel5_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 6
+#if 6 > 6
 float g_rai_data_collector0_data_feed_channel6_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
-#if 3 > 7
+#if 6 > 7
 float g_rai_data_collector0_data_feed_channel7_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
 #endif
 
 rai_data_collector_frame_buffer_t g_rai_data_collector0_frame_buf[G_RAI_DATA_COLLECTOR0_CHANNELS] =
 {
 
-#if 3 > 0
+#if 6 > 0
   { .p_buf = g_rai_data_collector0_data_feed_channel0_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
 #endif
-#if 3 > 1
+#if 6 > 1
   { .p_buf = g_rai_data_collector0_data_feed_channel1_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
 #endif
-#if 3 > 2
+#if 6 > 2
   { .p_buf = g_rai_data_collector0_data_feed_channel2_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
 #endif
-#if 3 > 3
-    {
-        .p_buf = g_rai_data_collector0_data_feed_channel3_frame_buffer,
-        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
-    },
+#if 6 > 3
+  { .p_buf = g_rai_data_collector0_data_feed_channel3_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
 #endif
-#if 3 > 4
-    {
-        .p_buf = g_rai_data_collector0_data_feed_channel4_frame_buffer,
-        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
-    },
+#if 6 > 4
+  { .p_buf = g_rai_data_collector0_data_feed_channel4_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
 #endif
-#if 3 > 5
-    {
-        .p_buf = g_rai_data_collector0_data_feed_channel5_frame_buffer,
-        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
-    },
+#if 6 > 5
+  { .p_buf = g_rai_data_collector0_data_feed_channel5_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
 #endif
-#if 3 > 6
+#if 6 > 6
     {
         .p_buf = g_rai_data_collector0_data_feed_channel6_frame_buffer,
         .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
     },
 #endif
-#if 3 > 7
+#if 6 > 7
     {
         .p_buf = g_rai_data_collector0_data_feed_channel7_frame_buffer,
         .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
@@ -325,10 +316,10 @@ const rai_data_collector_snapshot_cfg_t g_rai_data_collector0_ss_cfg =
         };
 
 const rai_data_collector_data_feed_cfg_t g_rai_data_collector0_df_cfg =
-{ .channels = 3, };
+{ .channels = 6, };
 
 const rai_data_collector_cfg_t g_rai_data_collector0_cfg =
-{ .instance_id = 0, .channels = G_RAI_DATA_COLLECTOR0_CHANNELS, .channel_ready_mask = 7, .virt_channels =
+{ .instance_id = 0, .channels = G_RAI_DATA_COLLECTOR0_CHANNELS, .channel_ready_mask = 63, .virt_channels =
           G_RAI_DATA_COLLECTOR0_VIRT_CHANNELS,
   .required_frame_len = 512, .p_snapshot_cfg = &g_rai_data_collector0_ss_cfg, .p_data_feed_cfg =
           &g_rai_data_collector0_df_cfg,
@@ -338,7 +329,7 @@ const rai_data_collector_cfg_t g_rai_data_collector0_cfg =
 #if defined(NULL)
     .p_context = NULL,
 #else
-  .p_context = &NULL,
+  .p_context = (void*) &NULL,
 #endif
         };
 
@@ -530,7 +521,7 @@ const rai_data_shipper_cfg_t g_rai_data_shipper0_cfg =
 #if defined(NULL)
     .p_context = NULL,
 #else
-  .p_context = &NULL,
+  .p_context = (void*) &NULL,
 #endif
         };
 

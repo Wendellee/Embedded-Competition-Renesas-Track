@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -31,6 +31,7 @@ FSP_HEADER
 
 /* Private definition to set enumeration values. */
 #define IOPORT_PRV_PFS_PSEL_OFFSET    (24)
+#define IOPORT_PRV_CCD_PIN_COUNT      (8)
 
 /***********************************************************************************************************************
  * Typedef definitions
@@ -39,8 +40,8 @@ FSP_HEADER
 /** IOPORT private control block. DO NOT MODIFY. Initialization occurs when R_IOPORT_Open() is called. */
 typedef struct st_ioport_instance_ctrl
 {
-    uint32_t     open;
-    void const * p_context;
+    uint32_t open;
+    void   * p_context;
 } ioport_instance_ctrl_t;
 
 /* This typedef is here temporarily. See SWFLEX-144 for details. */
@@ -467,7 +468,7 @@ typedef enum e_ioport_cfg_options
     IOPORT_CFG_PULLUP_ENABLE         = 0x00000010, ///< Enables the pin's internal pull-up
     IOPORT_CFG_PIM_TTL               = 0x00000020, ///< Enables the pin's input mode
     IOPORT_CFG_NMOS_ENABLE           = 0x00000040, ///< Enables the pin's NMOS open-drain output
-    IOPORT_CFG_PMOS_ENABLE           = 0x00000080, ///< Enables the pin's PMOS open-drain ouput
+    IOPORT_CFG_PMOS_ENABLE           = 0x00000080, ///< Enables the pin's PMOS open-drain output
     IOPORT_CFG_DRIVE_MID             = 0x00000400, ///< Sets pin drive output to medium
     IOPORT_CFG_DRIVE_HS_HIGH         = 0x00000800, ///< Sets pin drive output to high along with supporting high speed
     IOPORT_CFG_DRIVE_MID_IIC         = 0x00000800, ///< Sets pin to drive output needed for IIC on a 20mA port
@@ -480,6 +481,23 @@ typedef enum e_ioport_cfg_options
     IOPORT_CFG_PERIPHERAL_PIN        = 0x00010000  ///< Enables pin to operate as a peripheral pin
 } ioport_cfg_options_t;
 #endif
+
+/** Output current settings for CCD pins */
+typedef enum e_ioport_output_current_t
+{
+    IOPORT_OUTPUT_CURRENT_HI_Z    = 0,  ///< High-impedance state
+    IOPORT_OUTPUT_CURRENT_2_MA    = 1,  ///< 2 mA output current
+    IOPORT_OUTPUT_CURRENT_5_MA    = 2,  ///< 5 mA output current
+    IOPORT_OUTPUT_CURRENT_10_MA   = 3,  ///< 10 mA output current
+    IOPORT_OUTPUT_CURRENT_15_MA   = 4,  ///< 15 mA output current
+    IOPORT_OUTPUT_CURRENT_DISABLE = -1, ///< Disables output current control
+} ioport_output_current_t;
+
+/** R_IOPORT extended configuration */
+typedef struct st_ioport_extended_cfg
+{
+    ioport_output_current_t const ccd_pin_cfg_data[IOPORT_PRV_CCD_PIN_COUNT]; ///< Low-level output current for the CCD pins
+} ioport_extended_cfg_t;
 
 /**********************************************************************************************************************
  * Exported global variables

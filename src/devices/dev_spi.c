@@ -1,5 +1,6 @@
 #include "dev_spi.h"
 #include <drivers.h>
+#include "../src/debug_uart/debug_uart.h"
 #include <libs.h>
 #include <string.h>
 #include <stdio.h>
@@ -46,11 +47,11 @@ struct SPIDev *SPIDeviceFind(const char *name)
 void SPIDeviceList(void)
 {
     struct SPIDev *ptdev = gHeadSPIDev;
-    xprintf("\r\nSPI Device List:\r\n");
+    Serial_Printf(g_debug_uart4.p_ctrl,"\r\nSPI Device List:\r\n");
     while(ptdev)
     {
-        xprintf("\t%s\r\n", ptdev->name);
+        Serial_Printf(g_debug_uart4.p_ctrl,"\t%s\r\n", ptdev->name);
         ptdev = ptdev->next;
     }
-    xprintf("\r\n");
+    Serial_Printf(g_debug_uart4.p_ctrl,"\r\n");
 }

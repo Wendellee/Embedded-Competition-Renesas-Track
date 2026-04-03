@@ -1,6 +1,7 @@
 #include "dev_gpio.h"
 #include <drivers.h>
 #include <libs.h>
+#include "../src/debug_uart/debug_uart.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -41,11 +42,11 @@ struct IODev *IODeviceFind(const char *name)
 void IODeviceList(void)
 {
     struct IODev *ptdev = gHeadIODev;
-    xprintf("\r\nIO Device List:\r\n");
+    Serial_Printf(g_debug_uart4.p_ctrl,"\r\nIO Device List:\r\n");
     while(ptdev)
     {
-        xprintf("\t%s\r\n", ptdev->name);
+        Serial_Printf(g_debug_uart4.p_ctrl,"\t%s\r\n", ptdev->name);
         ptdev = ptdev->next;
     }
-    xprintf("\r\n");
+    Serial_Printf(g_debug_uart4.p_ctrl,"\r\n");
 }

@@ -3,6 +3,7 @@
 #define COMMON_DATA_H_
 #include <stdint.h>
 #include "bsp_api.h"
+#include "arm_math.h"
 #include "rm_rai_data_collector.h"
 #include "r_sci_uart.h"
 #include "r_uart_api.h"

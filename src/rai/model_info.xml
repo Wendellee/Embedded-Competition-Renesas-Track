@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <RealityAI>
-	<version>1.10</version>
+	<version>1.11</version>
 	<endianness>default</endianness>
 	<mathType>float 32</mathType>
 	<library>librai_edsp_f32_arm.a</library>
@@ -12,20 +12,23 @@
 		<version>13.2.1</version>
 	</toolchain>
 	<size>
-		<parameters>1441</parameters>
-		<stack>10904</stack>
-		<pre-allocated>232</pre-allocated>
-		<code>3420</code>
+		<parameters>843816</parameters>
+		<stack>8192</stack>
+		<pre-allocated>1116</pre-allocated>
+		<code>3496</code>
 	</size>
-	<model name="amr" type="classifier" network="svm">
-		<nchannels>3</nchannels>
+	<model name="Motor_Monitor_NN" type="classifier" network="neural">
+		<nchannels>6</nchannels>
 		<winlen>512</winlen>
 		<dtype>float32</dtype>
 		<classmap>
-			<amr_no_results>0</amr_no_results>
-			<amr_DROP>1</amr_DROP>
-			<amr_MOVE>2</amr_MOVE>
-			<amr_NORMAL>3</amr_NORMAL>
+			<Motor_Monitor_NN_no_results>0</Motor_Monitor_NN_no_results>
+			<Motor_Monitor_NN_motor_base_fault_level_high>1</Motor_Monitor_NN_motor_base_fault_level_high>
+			<Motor_Monitor_NN_motor_base_fault_level_low>2</Motor_Monitor_NN_motor_base_fault_level_low>
+			<Motor_Monitor_NN_motor_base_fault_level_medium>3</Motor_Monitor_NN_motor_base_fault_level_medium>
+			<Motor_Monitor_NN_motor_runnnig_fan>4</Motor_Monitor_NN_motor_runnnig_fan>
+			<Motor_Monitor_NN_motor_runnnig_fan_unbalance>5</Motor_Monitor_NN_motor_runnnig_fan_unbalance>
+			<Motor_Monitor_NN_motor_stop>6</Motor_Monitor_NN_motor_stop>
 		</classmap>
 	</model>
 </RealityAI>

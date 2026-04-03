@@ -8,17 +8,33 @@ static int IODrvInit(struct IODev *ptdev);
 static int IODrvWrite(struct IODev *ptdev, unsigned char level);
 static int IODrvRead(struct IODev *ptdev);
 
-static struct IODev gADXLCSDev = {
-    .name = "ADXL345 CS",
-    .port = BSP_IO_PORT_02_PIN_05,
+static struct IODev gADXLCS0Dev = {
+    .name = "ADXL345_0 CS",
+    .port = BSP_IO_PORT_01_PIN_13,
+    .Init = IODrvInit,
+    .Read = IODrvRead,
+    .Write = IODrvWrite,
+    .next = NULL
+};
+static struct IODev gADXINT0Dev = {
+    .name = "ADXL345_0 INT1",
+    .port = BSP_IO_PORT_05_PIN_03,
+    .Init = IODrvInit,
+    .Read = IODrvRead,
+    .Write = IODrvWrite,
+    .next = NULL
+};
+static struct IODev gADXLCS1Dev = {
+    .name = "ADXL345_1 CS",
+    .port = BSP_IO_PORT_01_PIN_05,
     .Init = IODrvInit,
     .Read = IODrvRead,
     .Write = IODrvWrite,
     .next = NULL
 };
 static struct IODev gADXINT1Dev = {
-    .name = "ADXL345 INT1",
-    .port = BSP_IO_PORT_05_PIN_03,
+    .name = "ADXL345_1 INT1",
+    .port = BSP_IO_PORT_01_PIN_03,
     .Init = IODrvInit,
     .Read = IODrvRead,
     .Write = IODrvWrite,
@@ -27,7 +43,9 @@ static struct IODev gADXINT1Dev = {
 
 void IODevicesCreate(void)
 {
-    IODeviceInsert(&gADXLCSDev);
+    IODeviceInsert(&gADXLCS0Dev);
+    IODeviceInsert(&gADXINT0Dev);
+    IODeviceInsert(&gADXLCS1Dev);
     IODeviceInsert(&gADXINT1Dev);
 }
 

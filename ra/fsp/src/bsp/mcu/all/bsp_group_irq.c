@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -47,7 +47,7 @@ static void bsp_group_irq_call(bsp_grp_irq_t irq);
  *
  * @warning This function is called from within an interrupt
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP static void bsp_group_irq_call (bsp_grp_irq_t irq)
+static void bsp_group_irq_call (bsp_grp_irq_t irq)
 {
     /** Check for valid callback */
     if (NULL != g_bsp_group_irq_sources[irq])
@@ -73,7 +73,7 @@ BSP_SECTION_FLASH_GAP static void bsp_group_irq_call (bsp_grp_irq_t irq)
  * @retval     FSP_SUCCESS                  Callback registered
  * @retval     FSP_ERR_ASSERTION            Callback pointer is NULL
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP fsp_err_t R_BSP_GroupIrqWrite (bsp_grp_irq_t irq, void (* p_callback)(bsp_grp_irq_t irq))
+fsp_err_t R_BSP_GroupIrqWrite (bsp_grp_irq_t irq, void (* p_callback)(bsp_grp_irq_t irq))
 {
 #if BSP_CFG_PARAM_CHECKING_ENABLE
 
@@ -91,7 +91,7 @@ BSP_SECTION_FLASH_GAP fsp_err_t R_BSP_GroupIrqWrite (bsp_grp_irq_t irq, void (* 
  * Non-maskable interrupt handler. This exception is defined by the BSP, unlike other system exceptions, because
  * there are many sources that map to the NMI exception.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void NMI_Handler (void)
+void NMI_Handler (void)
 {
     /* NMISR is masked by NMIER to prevent iterating over NMI status flags that are not enabled. */
     BSP_PRV_NMIER_T nmier = R_ICU->NMIER;
@@ -113,8 +113,8 @@ BSP_SECTION_FLASH_GAP void NMI_Handler (void)
 #if BSP_CFG_MCU_PART_SERIES == 8
 
     /* Wait for NMISR to be cleared before exiting the ISR to prevent the IRQ from being regenerated.
-     * See section "13.2.12 NMICLR : Non-Maskable Interrupt Status Clear Register" in the RA8M1 manual
-     * R01UH0994EJ0100 */
+     * See "NMICLR : Non-Maskable Interrupt Status Clear Register" description in the ICU section
+     * of the relevant hardware manual */
     FSP_HARDWARE_REGISTER_WAIT((R_ICU->NMISR & nmisr), 0);
 #endif
 }

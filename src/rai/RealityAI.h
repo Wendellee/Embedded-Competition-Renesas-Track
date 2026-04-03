@@ -66,18 +66,27 @@ int    RealityAI_segmentor(const rai_data_t* in, rai_data_t* out, struct rai_mod
 float  RealityAI_smooth(float prediction, struct rai_model_struct* model);
 
 /** \brief Reality AI configuration function based on a command/value pair.
- *  As defined in RealityAI_Types.h, commands are prefixed using RAI_CMD and values are prefixed RAI_VAL.
- *  The following command are supported:
- *         RealityAI_config(RAI_CMD_SMO_CTRL, RAI_VAL_SMO_DISABLE, model)    Enable Smoothing
- *         RealityAI_config(RAI_CMD_SMO_LEN,  10, model)                     Modify smoothing buffer length
- *         RealityAI_config(RAI_CMD_SMO_GRP, RAI_VAL_SMO_GRP_START, model)   Start Group Smoothing
+ *  Commands are prefixed with RAI_CMD, and values can be 32-bit integer or floating-point types
+ *  as determined by the command type. The following commands are supported:
  *
- * \param[in]   cmd    Configuration command e.g. RAI_CMD_SMO_CTRL
- * \param[in]   val    Configuration value as supported by the specified command e.g. RAI_VAL_SMO_DISABLE
- *  \param[in]  model  Pointer to the model struct
- * \return  Returns 0 on success otherwise -1 on failure
+ *         RealityAI_config(RAI_CMD_SMO_CTRL,   RAI_VAL_SMO_DISABLE,   model);  Enable Smoothing
+ *         RealityAI_config(RAI_CMD_SMO_LEN,    RAI_VAL_I32(10),       model);  Modify smoothing buffer length
+ *         RealityAI_config(RAI_CMD_SMO_GRP,    RAI_VAL_SMO_GRP_START, model);  Start Group Smoothing
+ *         RealityAI_config(RAI_CMD_SMO_GRP,    RAI_VAL_SMO_GRP_STOP,  model);  Stop Group Smoothing
+ *         RealityAI_config(RAI_CMD_DET_THRESH, RAI_VAL_F32(0.345f),   model);  Set decision threshold for detector
+ *
+ *   NOTE: RAI_VAL_ macros require C99 compound literals and designated initializers.
+ *         If your toolchain does not support these features, the following is also valid:
+ *
+ *         rai_value_t val = { .f32 = 0.345f };
+ *         RealityAI_config(RAI_CMD_DET_THRESH, val, model);
+ *
+ * \param[in]   cmd    Configuration command, e.g., RAI_CMD_SMO_CTRL
+ * \param[in]   val    Value union containing 32-bit integer or floating-point data
+ * \param[in]   model  Pointer to the model struct
+ * \return  Returns 0 on success, otherwise -1 on failure
  */
-int    RealityAI_config(uint32_t cmd, uint32_t val, struct rai_model_struct* model);
+int    RealityAI_config(uint32_t cmd, rai_value_t val, struct rai_model_struct* model);
 
 /** \brief Reality AI helper function to get user data type size in bytes.
  *
@@ -90,10 +99,9 @@ int    RealityAI_get_user_dtype_size(struct rai_model_struct* model);
  *
  * \param[in, out] scores        Pointer for storing the class scores, model class scores are written
  *                               directly to this buffer.
- * \param[in]      len           Length of the class scores buffer, e.g. <MODELNAME>_NUM_CLASSES
+ * \param[in]      len           Length of the class scores input buffer, e.g. <MODELNAME>_NUM_CLASSES
  * \param[in]      softMaxFlag   Flag for enabling softmax or normalized exponential conversion to obtain as
- *                               confidence or probability. Enabling softmax is only required for SVM model types.
- *                               is written to the buffer.
+ *                               confidence or probability.
  * \param[in]      model         Pointer to the model struct
  * \return  Returns 0 on success otherwise -1 on failure
  */

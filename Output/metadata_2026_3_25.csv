@@ -1,0 +1,19 @@
+Data file,Class name,Sample rate,Status
+stop_id0_20260325203014476.csv,stop, ,Uploaded
+normal_fan_id0_20260325203346459.csv,normal_fan, ,Uploaded
+abnormal_A_id0_20260325203604953.csv,abnormal_A, ,Uploaded
+abnormal_B_id0_20260325203832684.csv,abnormal_B, ,Uploaded
+abnormal_C_id0_20260325204215395.csv,abnormal_C, ,Uploaded
+abnormal_D_id0_20260325204535444.csv,abnormal_D, ,Uploaded
+abnormal_AD_id0_20260325204934195.csv,abnormal_AD, ,Uploaded
+abnormal_AB_id0_20260325205429387.csv,abnormal_AB, ,Uploaded
+abnormal_AC_id0_20260325205826629.csv,abnormal_AC, ,Uploaded
+abnormal_BC_id0_20260325231242193.csv,abnormal_BC, ,Uploaded
+abnormal_BD_id0_20260326111508264.csv,abnormal_BD, ,Uploaded
+abnormal_CD_id0_20260326112005228.csv,abnormal_CD, ,Uploaded
+abnormal_ACD_id0_20260326112306043.csv,abnormal_ACD, ,Uploaded
+abnormal_ABC_id0_20260326112605919.csv,abnormal_ABC, ,Uploaded
+abnormal_BCD_id0_20260326112941630.csv,abnormal_BCD, ,Uploaded
+abnormal_ABD_id0_20260326113436143.csv,abnormal_ABD, ,Uploaded
+abnormal_ABD_id0_20260326113738857.csv,abnormal_ABCD, ,Uploaded
+abnormal_fan_unbalance_id0_20260326151119203.csv,abnormal_fan_unbalance, ,Uploaded

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -29,7 +29,7 @@
  **********************************************************************************************************************/
 
 /** Used for holding reference counters for protection bits. */
-volatile uint16_t g_protect_counters[4] BSP_SECTION_EARLY_INIT;
+volatile uint16_t g_protect_counters[5] BSP_SECTION_EARLY_INIT;
 
 /** Masks for setting or clearing the PRCR register. Use -1 for size because PWPR in MPC is used differently. */
 static const uint16_t g_prcr_masks[] =
@@ -38,6 +38,7 @@ static const uint16_t g_prcr_masks[] =
     0x0002U,                           /* PRC1. */
     0x0008U,                           /* PRC3. */
     0x0010U,                           /* PRC4. */
+    0x0020U,                           /* PRC5. */
 };
 
 /*******************************************************************************************************************//**
@@ -52,7 +53,7 @@ static const uint16_t g_prcr_masks[] =
  *
  * @param[in] regs_to_protect Registers which have write protection enabled.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_RegisterProtectEnable (bsp_reg_protect_t regs_to_protect)
+void R_BSP_RegisterProtectEnable (bsp_reg_protect_t regs_to_protect)
 {
     /** Get/save the current state of interrupts */
     FSP_CRITICAL_SECTION_DEFINE;
@@ -89,7 +90,7 @@ BSP_SECTION_FLASH_GAP void R_BSP_RegisterProtectEnable (bsp_reg_protect_t regs_t
  *
  * @param[in] regs_to_unprotect Registers which have write protection disabled.
  **********************************************************************************************************************/
-BSP_SECTION_FLASH_GAP void R_BSP_RegisterProtectDisable (bsp_reg_protect_t regs_to_unprotect)
+void R_BSP_RegisterProtectDisable (bsp_reg_protect_t regs_to_unprotect)
 {
     /** Get/save the current state of interrupts */
     FSP_CRITICAL_SECTION_DEFINE;

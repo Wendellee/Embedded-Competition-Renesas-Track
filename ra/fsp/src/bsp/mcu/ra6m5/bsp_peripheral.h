@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -66,9 +66,9 @@
 #define BSP_PERIPHERAL_DMA_DMAC_CHANNEL_MASK     (0xFFU)
 #define BSP_PERIPHERAL_DOC_PRESENT               (1)
 #define BSP_PERIPHERAL_DOC_B_PRESENT             (0)
-#define BSP_PERIPHERAL_DPHYCNT_PRESENT           (0)
 #define BSP_PERIPHERAL_DRW_PRESENT               (0)
-#define BSP_PERIPHERAL_DSILINK_PRESENT           (0)
+#define BSP_PERIPHERAL_DSMIF_PRESENT             (0)
+#define BSP_PERIPHERAL_DSMIF_CHANNEL_MASK        (0x0U)
 #define BSP_PERIPHERAL_DTC_PRESENT               (1)
 #define BSP_PERIPHERAL_ECCAFL_PRESENT            (1)
 #define BSP_PERIPHERAL_ECCAFL_CHANNEL_MASK       (0x3U)
@@ -76,6 +76,7 @@
 #define BSP_PERIPHERAL_ECCMB_CHANNEL_MASK        (0x1U)
 #define BSP_PERIPHERAL_ELC_PRESENT               (1)
 #define BSP_PERIPHERAL_ELC_B_PRESENT             (0)
+#define BSP_PERIPHERAL_ESWM_PRESENT              (0)
 #define BSP_PERIPHERAL_ETHERC_PRESENT            (1)
 #define BSP_PERIPHERAL_ETHERC_CHANNEL_MASK       (0x1U)
 #define BSP_PERIPHERAL_ETHERC_EDMAC_PRESENT      (1)
@@ -124,13 +125,16 @@
 #define BSP_PERIPHERAL_KINT_PRESENT              (0)
 #define BSP_PERIPHERAL_KINT_CHANNEL_MASK         (0x0U)
 #define BSP_PERIPHERAL_MACL_PRESENT              (0)
+#define BSP_PERIPHERAL_MIPI_CSI_PRESENT          (0)
 #define BSP_PERIPHERAL_MIPI_DSI_PRESENT          (0)
+#define BSP_PERIPHERAL_MIPI_PHY_PRESENT          (0)
 #define BSP_PERIPHERAL_MMF_PRESENT               (0)
 #define BSP_PERIPHERAL_MPU_PRESENT               (1)
 #define BSP_PERIPHERAL_MPU_CHANNEL_MASK          (0x1U)
 #define BSP_PERIPHERAL_MRMS_PRESENT              (0)
 #define BSP_PERIPHERAL_MRRGE_PRESENT             (0)
 #define BSP_PERIPHERAL_MSTP_PRESENT              (1)
+#define BSP_PERIPHERAL_NPU_PRESENT               (0)
 #define BSP_PERIPHERAL_OCD_PRESENT               (0)
 #define BSP_PERIPHERAL_OPAMP_PRESENT             (0)
 #define BSP_PERIPHERAL_OPAMP_CHANNEL_MASK        (0x0U)
@@ -139,6 +143,8 @@
 #define BSP_PERIPHERAL_OSPI_B_CHANNEL_MASK       (0x0U)
 #define BSP_PERIPHERAL_PCLBUZ_PRESENT            (0)
 #define BSP_PERIPHERAL_PDC_PRESENT               (0)
+#define BSP_PERIPHERAL_PDM_PRESENT               (0)
+#define BSP_PERIPHERAL_PDM_CHANNEL_MASK          (0x0U)
 #define BSP_PERIPHERAL_PFS_PRESENT               (1)
 #define BSP_PERIPHERAL_PFS_B_PRESENT             (0)
 #define BSP_PERIPHERAL_PMISC_PRESENT             (0)
@@ -203,6 +209,7 @@
 #define BSP_PERIPHERAL_USB_FS_PRESENT            (1)
 #define BSP_PERIPHERAL_USB_HS_PRESENT            (1)
 #define BSP_PERIPHERAL_USBCC_PRESENT             (0)
+#define BSP_PERIPHERAL_VIN_PRESENT               (0)
 #define BSP_PERIPHERAL_WDT_PRESENT               (1)
 #define BSP_PERIPHERAL_WDT_CHANNEL_MASK          (0x1U)
 

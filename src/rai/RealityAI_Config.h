@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-#define RAI_EDSP_VERSION_CODE   0x10A00
+#define RAI_EDSP_VERSION_CODE   0x10B00
 #define RAI_EDSP_VERSION(a,b,c) (((a) << 16) + ((b) << 8) + (c))
 
 #define RAI_PLATFORM_ARM        1
@@ -39,13 +39,13 @@ extern "C" {
 #endif
 
 /* #undef RAI_STACK_TRACE */
-#define RAI_MAX_FFT_LEN         8
+#define RAI_MAX_FFT_LEN         512
 #define RAI_MAX_FFT2_LEN        1
-#define RAI_MAX_NUM_CLASSES     3
-#define RAI_MAX_NUM_CHAN        3
-#define RAI_MAX_NUM_LEARNERS    3
+#define RAI_MAX_NUM_CLASSES     6
+#define RAI_MAX_NUM_CHAN        6
+#define RAI_MAX_NUM_LEARNERS    1
 #define RAI_MAX_SAMPS_PER_CHAN  512
-#define RAI_MAX_FEAT_LEN        39
+#define RAI_MAX_FEAT_LEN        1536
 #define RAI_MAX_SMO_WIN_LEN     1
 
 #if defined(__clang__) || defined(__GNUC__)

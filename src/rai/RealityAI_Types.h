@@ -73,9 +73,12 @@ struct smoothing_struct {
     uint32_t state;
     int32_t len;
     int32_t threshold;
+    float  decision_threshold;
+    int32_t num_scores;
     const int32_t buffer_size;
     void *const buffer;
     float (*const smoother)(const void*, int32_t, struct smoothing_struct*);
+    int (*const decision)(const float* in, int len, struct smoothing_struct*);
 };
 
 typedef struct {
@@ -140,27 +143,38 @@ struct neural_network_struct {
     int32_t (*const compute)(void*, void** out, struct rai_model_struct*);
 };
 
-struct anomaly_network_struct {
+struct detector_network_struct {
     const void* Mu;
     const void* Sigma;
     const void* Centroid;
     float threshold;
     int32_t num_clusters;
+    float scale;
     int32_t (*const compute)(void*, void** out, struct rai_model_struct*);
 };
 
+typedef union {
+    int32_t  i32;
+    float    f32;
+} rai_value_t;
 
 #define RAI_CLZ_NO_RESULTS          0
 
+/* Configuration Commands */
 #define RAI_CMD_SMO_CTRL            0x0U
 #define RAI_CMD_SMO_LEN             0x1U
 #define RAI_CMD_SMO_GRP             0x2U
+#define RAI_CMD_DET_THRESH          0x3U
 
-#define RAI_VAL_SMO_DISABLE         0x0U
-#define RAI_VAL_SMO_ENABLE          0x1U
-#define RAI_VAL_SMO_GRP_START       0x1U
-#define RAI_VAL_SMO_GRP_END         0x0U
+/* Configuration Argument */
+#define RAI_VAL_F32(x)              ((rai_value_t){ .f32 = (x) })
+#define RAI_VAL_I32(x)              ((rai_value_t){ .i32 = (x) })
+#define RAI_VAL_SMO_DISABLE         RAI_VAL_I32(0)
+#define RAI_VAL_SMO_ENABLE          RAI_VAL_I32(1)
+#define RAI_VAL_SMO_GRP_START       RAI_VAL_I32(1)
+#define RAI_VAL_SMO_GRP_END         RAI_VAL_I32(0)
 
+/* Model Options */
 #define RAI_FLAGS_TYPE_MASK         0x01U
 #define RAI_FLAGS_TYPE_SHIFT        0U
 #define RAI_FLAGS_TYPE_CLASSIFY     (0U << RAI_FLAGS_TYPE_SHIFT)

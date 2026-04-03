@@ -52,7 +52,7 @@
 #endif /* DEV_USE_SPI */
 
 #if DEV_USE_TIMER
-    #define DRV_USE_GPT     0
+    #define DRV_USE_GPT     1
     #define DRV_USE_SYSTICK 1
 #endif /* DEV_USE_TIMER */
 

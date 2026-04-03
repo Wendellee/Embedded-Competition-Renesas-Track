@@ -16,12 +16,27 @@ static int SPIDrvWrite(struct SPIDev *ptdev, const unsigned char *buf, unsigned 
 static int SPIDrvRead(struct SPIDev *ptdev, unsigned char *buf, unsigned int length);
 static int SPIDrvWriteRead(struct SPIDev *ptdev, unsigned char * const wbuf, unsigned char *rbuf, unsigned int length);
 static void SPI0DrvWaitTxCplt(void);
+static void SPI1DrvWaitTxCplt(void);
 
 static volatile bool gSPI0TxCplt = false;
-static IODevice  *pCSIO   = NULL;
-static struct SPIDev gSPIDevice = {
-    .name       = "ADXL345 SPI",
+static volatile bool gSPI1TxCplt = false;
+
+static IODevice  *pCSIO0   = NULL;
+static IODevice  *pCSIO1   = NULL;
+
+static struct SPIDev gSPIDevice0 = { 
+    .name       = "ADXL345_0 SPI",
     .channel    = 0,
+    .Init       = SPIDrvInit,
+    .Read       = SPIDrvRead,
+    .Write      = SPIDrvWrite,
+    .WriteRead  = SPIDrvWriteRead,
+    .next = NULL
+};
+
+static struct SPIDev gSPIDevice1 = { 
+    .name       = "ADXL345_1 SPI",
+    .channel    = 1,
     .Init       = SPIDrvInit,
     .Read       = SPIDrvRead,
     .Write      = SPIDrvWrite,
@@ -31,7 +46,8 @@ static struct SPIDev gSPIDevice = {
 
 void SPIDevicesCreate(void)
 {
-    SPIDeviceInsert(&gSPIDevice);
+    SPIDeviceInsert(&gSPIDevice0);
+    SPIDeviceInsert(&gSPIDevice1);
 }
 
 static int SPIDrvInit(struct SPIDev *ptdev)
@@ -41,14 +57,23 @@ static int SPIDrvInit(struct SPIDev *ptdev)
     {
         case 0:
         {
-            pCSIO = IODeviceFind("ADXL345 CS");
-            if(NULL == pCSIO)      return -ENXIO;
+            pCSIO0 = IODeviceFind("ADXL345_0 CS");
+            if(NULL == pCSIO0)      return -ENXIO;
             /* 打开设备 */
             fsp_err_t err = g_spi0.p_api->open(g_spi0.p_ctrl, g_spi0.p_cfg);
             assert(FSP_SUCCESS == err);
             break;
         }
-        case 1:case 2:case 3:case 4:
+        case 1:
+        {
+            pCSIO1 = IODeviceFind("ADXL345_1 CS");
+            if(NULL == pCSIO1)      return -ENXIO;
+            /* 打开设备 */
+            fsp_err_t err = g_spi1.p_api->open(g_spi1.p_ctrl, g_spi1.p_cfg);
+            assert(FSP_SUCCESS == err);
+            break;
+        }
+        case 2:case 3:case 4:
         case 5:
         case 6:case 7:case 8:case 9:
             break;
@@ -67,7 +92,7 @@ static int SPIDrvWrite(struct SPIDev *ptdev, const unsigned char *buf, unsigned 
     {
         case 0:
         {
-            pCSIO->Write(pCSIO, 0);
+            pCSIO0->Write(pCSIO0, 0);
             fsp_err_t err = FSP_SUCCESS;
             if((length%4)==0)
             {
@@ -85,10 +110,33 @@ static int SPIDrvWrite(struct SPIDev *ptdev, const unsigned char *buf, unsigned 
             }
             assert(FSP_SUCCESS == err);
             SPI0DrvWaitTxCplt();
-            pCSIO->Write(pCSIO, 1);
+            pCSIO0->Write(pCSIO0, 1);
             break;
         }
-        case 1:case 2:case 3:case 4:
+        case 1:
+        {
+            pCSIO1->Write(pCSIO1, 0);
+            fsp_err_t err = FSP_SUCCESS;
+            if((length%4)==0)
+            {
+                length = length>>2;
+                err = g_spi1.p_api->write(g_spi1.p_ctrl, buf, length, SPI_BIT_WIDTH_32_BITS);
+            }
+            else if((length%2)==0)
+            {
+                length = length>>1;
+                err = g_spi1.p_api->write(g_spi1.p_ctrl, buf, length, SPI_BIT_WIDTH_16_BITS);
+            }
+            else if(length==1)
+            {
+                err = g_spi1.p_api->write(g_spi1.p_ctrl, buf, length, SPI_BIT_WIDTH_8_BITS);
+            }
+            assert(FSP_SUCCESS == err);
+            SPI1DrvWaitTxCplt();
+            pCSIO1->Write(pCSIO1, 1);
+            break;
+        }
+        case 2:case 3:case 4:
             break;
         case 5:
         case 6:case 7:case 8:case 9:
@@ -108,7 +156,7 @@ static int SPIDrvRead(struct SPIDev *ptdev, unsigned char *buf, unsigned int len
     {
         case 0:
         {
-            pCSIO->Write(pCSIO, 0);
+            pCSIO0->Write(pCSIO0, 0);
             fsp_err_t err = FSP_SUCCESS;
             if((length%4)==0)
             {
@@ -126,10 +174,33 @@ static int SPIDrvRead(struct SPIDev *ptdev, unsigned char *buf, unsigned int len
             }
             assert(FSP_SUCCESS == err);
             SPI0DrvWaitTxCplt();
-            pCSIO->Write(pCSIO, 1);
+            pCSIO0->Write(pCSIO0, 1);
             break;
         }
-        case 1:case 2:case 3:case 4:
+        case 1:
+        {
+            pCSIO1->Write(pCSIO1, 0);
+            fsp_err_t err = FSP_SUCCESS;
+            if((length%4)==0)
+            {
+                length = length>>2;
+                err = g_spi1.p_api->read(g_spi1.p_ctrl, buf, length, SPI_BIT_WIDTH_32_BITS);
+            }
+            else if((length%2)==0)
+            {
+                length = length>>1;
+                err = g_spi1.p_api->read(g_spi1.p_ctrl, buf, length, SPI_BIT_WIDTH_16_BITS);
+            }
+            else if(length==1)
+            {
+                err = g_spi1.p_api->read(g_spi1.p_ctrl, buf, length, SPI_BIT_WIDTH_8_BITS);
+            }
+            assert(FSP_SUCCESS == err);
+            SPI1DrvWaitTxCplt();
+            pCSIO1->Write(pCSIO1, 1);
+            break;
+        }
+        case 2:case 3:case 4:
             break;
         case 5:
         case 6:case 7:case 8:case 9:
@@ -150,14 +221,23 @@ static int SPIDrvWriteRead(struct SPIDev *ptdev, unsigned char * const wbuf, uns
     {
         case 0:
         {
-            pCSIO->Write(pCSIO, 0);
+            pCSIO0->Write(pCSIO0, 0);
             fsp_err_t err = g_spi0.p_api->writeRead(g_spi0.p_ctrl, wbuf, rbuf, length, SPI_BIT_WIDTH_8_BITS);
             assert(FSP_SUCCESS == err);
             SPI0DrvWaitTxCplt();
-            pCSIO->Write(pCSIO, 1);
+            pCSIO0->Write(pCSIO0, 1);
             break;
         }
-        case 1:case 2:case 3:case 4:
+        case 1:
+        {
+            pCSIO1->Write(pCSIO1, 0);
+            fsp_err_t err = g_spi1.p_api->writeRead(g_spi1.p_ctrl, wbuf, rbuf, length, SPI_BIT_WIDTH_8_BITS);
+            assert(FSP_SUCCESS == err);
+            SPI1DrvWaitTxCplt();
+            pCSIO1->Write(pCSIO1, 1);
+            break;
+        }
+        case 2:case 3:case 4:
             break;
         case 5:
         case 6:case 7:case 8:case 9:
@@ -190,8 +270,39 @@ void spi0_callback(spi_callback_args_t *p_args)
     }
 }
 
+void spi1_callback(spi_callback_args_t *p_args)
+{
+    switch(p_args->event)
+    {
+        case SPI_EVENT_TRANSFER_COMPLETE:
+        {
+            gSPI1TxCplt = true;
+            break;
+        }
+        case SPI_EVENT_TRANSFER_ABORTED:
+        case SPI_EVENT_ERR_MODE_FAULT:  
+        case SPI_EVENT_ERR_READ_OVERFLOW:
+        case SPI_EVENT_ERR_PARITY:
+        case SPI_EVENT_ERR_OVERRUN:
+        case SPI_EVENT_ERR_FRAMING:
+        case SPI_EVENT_ERR_MODE_UNDERRUN:
+        {
+            break;
+        }
+        default:break;
+    }
+}
+
+
+
 static void SPI0DrvWaitTxCplt(void)
 {
     while(!gSPI0TxCplt);
     gSPI0TxCplt = false;
+}
+
+static void SPI1DrvWaitTxCplt(void)
+{
+    while(!gSPI1TxCplt);
+    gSPI1TxCplt = false;
 }

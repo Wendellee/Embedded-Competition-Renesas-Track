@@ -79,16 +79,18 @@ extern "C" {
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 8) /* IIC1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 9) /* IIC0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 11) /* USBFS */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 18) /* SPI1 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* ETHERC */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 16) /* OSPI */ | \
+            (((1 > 0) ? 0U : 1U) << 18) /* SPI1 */ | \
             (((1 > 0) ? 0U : 1U) << 19) /* SPI0 */ | \
             (((1 > 0) ? 0U : 1U) << 22) /* SCI9 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 23) /* SCI8 */ | \
             (((1 > 0) ? 0U : 1U) << 24) /* SCI7 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 25) /* SCI6 */ | \
+            (((1 > 0) ? 0U : 1U) << 25) /* SCI6 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 26) /* SCI5 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 27) /* SCI4 */ | \
+            (((1 > 0) ? 0U : 1U) << 27) /* SCI4 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 28) /* SCI3 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 29) /* SCI2 */ | \
+            (((1 > 0) ? 0U : 1U) << 29) /* SCI2 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 30) /* SCI1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* SCI0 */ | \
             0x33f4f9) /* Unused */
@@ -99,7 +101,7 @@ extern "C" {
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* CRC */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 3) /* CTSU */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 8) /* SSIE0 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 12) /* SDHI0 */ | \
+            (((1 > 0) ? 0U : 1U) << 12) /* SDHI0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 13) /* DOC */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* SCE9 */ | \
             0x7fffcef4) /* Unused */
@@ -124,7 +126,7 @@ extern "C" {
 #define BSP_TZ_CFG_PSARE (\
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0) /* WDT */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* IWDT */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 2) /* RTC */ | \
+            (((1 > 0) ? 0U : 1U) << 2) /* RTC */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 14) /* AGT5 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* AGT4 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 22) /* GPT9 */ | \
@@ -136,13 +138,13 @@ extern "C" {
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 28) /* GPT3 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 29) /* GPT2 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 30) /* GPT1 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* GPT0 */ | \
+            (((1 > 0) ? 0U : 1U) << 31) /* GPT0 */ | \
             0x3f3ff8) /* Unused */
 #endif
 #ifndef BSP_TZ_CFG_MSSAR
 #define BSP_TZ_CFG_MSSAR (\
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0) /* ELC */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* DTC_DMAC */ | \
+            (((1 > 0) ? 0U : 1U) << 1) /* DTC_DMAC */ | \
             0xfffffffc) /* Unused */
 #endif
 
@@ -223,7 +225,7 @@ extern "C" {
 /* Security attribution for registers for DMAC channels */
 #ifndef BSP_TZ_CFG_ICUSARC
 #define BSP_TZ_CFG_ICUSARC (\
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0U) /* DMAC Channel 0 */ | \
+            (((1 > 0) ? 0U : 1U) << 0U) /* DMAC Channel 0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1U) /* DMAC Channel 1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 2U) /* DMAC Channel 2 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 3U) /* DMAC Channel 3 */ | \
@@ -305,84 +307,9 @@ extern "C" {
 #define BSP_TZ_CFG_NON_SECURE_APPLICATION_FALLBACK (1U)
 #endif
 
-#define OFS_SEQ1 0xA001A001 | (1 << 1) | (3 << 2)
-#define OFS_SEQ2 (15 << 4) | (3 << 8) | (3 << 10)
-#define OFS_SEQ3 (1 << 12) | (1 << 14) | (1 << 17)
-#define OFS_SEQ4 (3 << 18) |(15 << 20) | (3 << 24) | (3 << 26)
-#define OFS_SEQ5 (1 << 28) | (1 << 30)
-#define BSP_CFG_ROM_REG_OFS0 (OFS_SEQ1 | OFS_SEQ2 | OFS_SEQ3 | OFS_SEQ4 | OFS_SEQ5)
-
-/* Option Function Select Register 1 Security Attribution */
-#ifndef BSP_CFG_ROM_REG_OFS1_SEL
-#if defined(_RA_TZ_SECURE) || defined(_RA_TZ_NONSECURE)
-            #define BSP_CFG_ROM_REG_OFS1_SEL (0xFFFFF8F8U | ((0U << 0U)) | ((0U << 2U)) | ((BSP_CFG_CLOCKS_SECURE == 0) ? 0x700U : 0U))
-#else
-#define BSP_CFG_ROM_REG_OFS1_SEL (0xFFFFF8F8U)
-#endif
-#endif
-
-#define BSP_CFG_ROM_REG_OFS1 (0xFFFFFEF8 | (1 << 2) | (3) |  (1 << 8))
-
 /* Used to create IELS values for the interrupt initialization table g_interrupt_event_link_select. */
 #define BSP_PRV_IELS_ENUM(vector)    (ELC_ ## vector)
 
-/* Dual Mode Select Register */
-#ifndef BSP_CFG_ROM_REG_DUALSEL
-#define BSP_CFG_ROM_REG_DUALSEL (0xFFFFFFF8U | (0x7U))
-#endif
-
-/* Block Protection Register 0 */
-#ifndef BSP_CFG_ROM_REG_BPS0
-#define BSP_CFG_ROM_REG_BPS0 (~( 0U))
-#endif
-/* Block Protection Register 1 */
-#ifndef BSP_CFG_ROM_REG_BPS1
-#define BSP_CFG_ROM_REG_BPS1 (~( 0U))
-#endif
-/* Block Protection Register 2 */
-#ifndef BSP_CFG_ROM_REG_BPS2
-#define BSP_CFG_ROM_REG_BPS2 (~( 0U))
-#endif
-/* Block Protection Register 3 */
-#ifndef BSP_CFG_ROM_REG_BPS3
-#define BSP_CFG_ROM_REG_BPS3 (0xFFFFFFFFU)
-#endif
-/* Permanent Block Protection Register 0 */
-#ifndef BSP_CFG_ROM_REG_PBPS0
-#define BSP_CFG_ROM_REG_PBPS0 (~( 0U))
-#endif
-/* Permanent Block Protection Register 1 */
-#ifndef BSP_CFG_ROM_REG_PBPS1
-#define BSP_CFG_ROM_REG_PBPS1 (~( 0U))
-#endif
-/* Permanent Block Protection Register 2 */
-#ifndef BSP_CFG_ROM_REG_PBPS2
-#define BSP_CFG_ROM_REG_PBPS2 (~( 0U))
-#endif
-/* Permanent Block Protection Register 3 */
-#ifndef BSP_CFG_ROM_REG_PBPS3
-#define BSP_CFG_ROM_REG_PBPS3 (0xFFFFFFFFU)
-#endif
-/* Security Attribution for Block Protection Register 0 (If any blocks are marked as protected in the secure application, then mark them as secure) */
-#ifndef BSP_CFG_ROM_REG_BPS_SEL0
-#define BSP_CFG_ROM_REG_BPS_SEL0 (BSP_CFG_ROM_REG_BPS0 & BSP_CFG_ROM_REG_PBPS0)
-#endif
-/* Security Attribution for Block Protection Register 1 (If any blocks are marked as protected in the secure application, then mark them as secure) */
-#ifndef BSP_CFG_ROM_REG_BPS_SEL1
-#define BSP_CFG_ROM_REG_BPS_SEL1 (BSP_CFG_ROM_REG_BPS1 & BSP_CFG_ROM_REG_PBPS1)
-#endif
-/* Security Attribution for Block Protection Register 2 (If any blocks are marked as protected in the secure application, then mark them as secure) */
-#ifndef BSP_CFG_ROM_REG_BPS_SEL2
-#define BSP_CFG_ROM_REG_BPS_SEL2 (BSP_CFG_ROM_REG_BPS2 & BSP_CFG_ROM_REG_PBPS2)
-#endif
-/* Security Attribution for Block Protection Register 3 (If any blocks are marked as protected in the secure application, then mark them as secure) */
-#ifndef BSP_CFG_ROM_REG_BPS_SEL3
-#define BSP_CFG_ROM_REG_BPS_SEL3 (BSP_CFG_ROM_REG_BPS3 & BSP_CFG_ROM_REG_PBPS3)
-#endif
-/* Security Attribution for Bank Select Register */
-#ifndef BSP_CFG_ROM_REG_BANKSEL_SEL
-#define BSP_CFG_ROM_REG_BANKSEL_SEL (0xFFFFFFFFU)
-#endif
 #ifndef BSP_CLOCK_CFG_MAIN_OSC_WAIT
 #define BSP_CLOCK_CFG_MAIN_OSC_WAIT (9)
 #endif

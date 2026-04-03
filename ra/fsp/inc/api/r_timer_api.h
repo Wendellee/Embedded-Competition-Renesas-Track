@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+* Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
 */
@@ -64,8 +64,8 @@ typedef enum e_timer_event
 /** Timer variant types. */
 typedef enum e_timer_variant
 {
-    TIMER_VARIANT_32_BIT,               ///< 32-bit timer
-    TIMER_VARIANT_16_BIT                ///< 16-bit timer
+    TIMER_VARIANT_32_BIT,              ///< 32-bit timer
+    TIMER_VARIANT_16_BIT               ///< 16-bit timer
 } timer_variant_t;
 
 /** Options for storing compare match value */
@@ -81,20 +81,26 @@ typedef enum e_timer_compare_match
     TIMER_COMPARE_MATCH_H = 7U,        ///< Compare match H value
 } timer_compare_match_t;
 
+#ifndef BSP_OVERRIDE_TIMER_CALLBACK_ARGS_T
+
 /** Callback function parameter data */
 typedef struct st_timer_callback_args
 {
     /** Placeholder for user data.  Set in @ref timer_api_t::open function in @ref timer_cfg_t. */
-    void const  * p_context;
+    void        * p_context;
     timer_event_t event;               ///< The event can be used to identify what caused the callback.
 
     /** Most recent capture, only valid if event is TIMER_EVENT_CAPTURE_A or TIMER_EVENT_CAPTURE_B. */
     uint32_t capture;
 } timer_callback_args_t;
 
+#endif
+
 /** Timer control block.  Allocate an instance specific control block to pass into the timer API calls.
  */
 typedef void timer_ctrl_t;
+
+#ifndef BSP_OVERRIDE_TIMER_STATE_T
 
 /** Possible status values returned by @ref timer_api_t::statusGet. */
 typedef enum e_timer_state
@@ -103,6 +109,9 @@ typedef enum e_timer_state
     TIMER_STATE_COUNTING = 1,          ///< Timer is running
     TIMER_STATE_UNKNOWN  = 2           ///< Timer state could not be defined
 } timer_state_t;
+
+#endif
+
 #ifndef BSP_OVERRIDE_TIMER_MODE_T
 
 /** Timer operational modes */
@@ -164,12 +173,16 @@ typedef struct st_timer_info
     uint32_t period_counts;
 } timer_info_t;
 
+#ifndef BSP_OVERRIDE_TIMER_STATUS_T
+
 /** Current timer status. */
 typedef struct st_timer_status
 {
     uint32_t      counter;             ///< Current counter value
     timer_state_t state;               ///< Current timer state (running or stopped)
 } timer_status_t;
+
+#endif
 
 /** User configuration structure, used in open function */
 typedef struct st_timer_cfg
@@ -192,7 +205,7 @@ typedef struct st_timer_cfg
     void (* p_callback)(timer_callback_args_t * p_args);
 
     /** Placeholder for user data.  Passed to the user callback in @ref timer_callback_args_t. */
-    void const * p_context;
+    void       * p_context;
     void const * p_extend;             ///< Extension parameter for hardware specific settings.
 } timer_cfg_t;
 
@@ -289,7 +302,7 @@ typedef struct st_timer_api
      *                                       Callback arguments allocated here are only valid during the callback.
      */
     fsp_err_t (* callbackSet)(timer_ctrl_t * const p_ctrl, void (* p_callback)(timer_callback_args_t *),
-                              void const * const p_context, timer_callback_args_t * const p_callback_memory);
+                              void * const p_context, timer_callback_args_t * const p_callback_memory);
 
     /** Allows driver to be reconfigured and may reduce power consumption.
      *
