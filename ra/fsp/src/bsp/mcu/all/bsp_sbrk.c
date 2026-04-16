@@ -73,7 +73,7 @@ caddr_t _sbrk (int incr)
     if (current_block_offset + (uint32_t) incr > BSP_CFG_HEAP_BYTES)
     {
         /** Heap has overflowed */
-        errno = ENOMEM;
+//        errno = ENOMEM;
 
         return (caddr_t) -1;
     }
