@@ -886,7 +886,7 @@ __ram_thread_stack$$
                 0x20000800                        __ddsc_RAM_NSC = .
 
 __flash_readonly$$
-                0x00000040      0x948
+                0x00000040      0xa58
                 0x00000040                        __flash_readonly$$Base = .
  *(.flash)
  *(.flash_code)
@@ -979,54 +979,54 @@ __flash_readonly$$
                 0x0000081c        0xc ./ra_gen/pin_data.o
                 0x0000081c                g_bsp_pin_cfg
  .rodata.g_bsp_pin_cfg_data
-                0x00000828       0x20 ./ra_gen/pin_data.o
+                0x00000828      0x130 ./ra_gen/pin_data.o
                 0x00000828                g_bsp_pin_cfg_data
  .rodata.g_vbatt_pins_input
-                0x00000848        0x6 ./ra/fsp/src/r_ioport/r_ioport.o
- *fill*         0x0000084e        0x2 
+                0x00000958        0x6 ./ra/fsp/src/r_ioport/r_ioport.o
+ *fill*         0x0000095e        0x2 
  .rodata.g_init_info
-                0x00000850       0x18 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
-                0x00000850                g_init_info
+                0x00000960       0x18 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00000960                g_init_info
  .rodata.nocache_list
-                0x00000868       0x10 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00000978       0x10 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
  .rodata.copy_list
-                0x00000878       0x80 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00000988       0x80 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
  .rodata.zero_list
-                0x000008f8       0x30 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00000a08       0x30 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
  .rodata.g_interrupt_event_link_select
-                0x00000928        0x2 ./ra/fsp/src/bsp/mcu/all/bsp_irq.o
-                0x00000928                g_interrupt_event_link_select
- *fill*         0x0000092a        0x2 
+                0x00000a38        0x2 ./ra/fsp/src/bsp/mcu/all/bsp_irq.o
+                0x00000a38                g_interrupt_event_link_select
+ *fill*         0x00000a3a        0x2 
  .rodata.g_prcr_masks
-                0x0000092c        0xa ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
+                0x00000a3c        0xa ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
  *(.mcuboot_sce9_key)
  *(.version)
- *fill*         0x00000936        0x2 
- .version       0x00000938       0x50 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
-                0x00000988                        __flash_readonly$$Limit = .
+ *fill*         0x00000a46        0x2 
+ .version       0x00000a48       0x50 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
+                0x00000a98                        __flash_readonly$$Limit = .
 
-.glue_7         0x00000988        0x0
- .glue_7        0x00000988        0x0 linker stubs
+.glue_7         0x00000a98        0x0
+ .glue_7        0x00000a98        0x0 linker stubs
 
-.glue_7t        0x00000988        0x0
- .glue_7t       0x00000988        0x0 linker stubs
+.glue_7t        0x00000a98        0x0
+ .glue_7t       0x00000a98        0x0 linker stubs
 
-.vfp11_veneer   0x00000988        0x0
- .vfp11_veneer  0x00000988        0x0 linker stubs
+.vfp11_veneer   0x00000a98        0x0
+ .vfp11_veneer  0x00000a98        0x0 linker stubs
 
-.v4_bx          0x00000988        0x0
- .v4_bx         0x00000988        0x0 linker stubs
+.v4_bx          0x00000a98        0x0
+ .v4_bx         0x00000a98        0x0 linker stubs
 
-.init           0x00000988        0x4
- .init          0x00000988        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
-                0x00000988                _init
+.init           0x00000a98        0x4
+ .init          0x00000a98        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+                0x00000a98                _init
 
-.fini           0x0000098c        0x4
- .fini          0x0000098c        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
-                0x0000098c                _fini
+.fini           0x00000a9c        0x4
+ .fini          0x00000a9c        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+                0x00000a9c                _fini
 
-.iplt           0x00000990        0x0
- .iplt          0x00000990        0x0 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+.iplt           0x00000aa0        0x0
+ .iplt          0x00000aa0        0x0 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
 
 __flash_ctor$$
  *crtbegin.o(.ctors)
@@ -1041,41 +1041,41 @@ __flash_ctor$$
  *(.dtors)
 
 __flash_preinit_array$$
-                0x00000990        0x0
-                0x00000990                        __preinit_array_start = .
+                0x00000aa0        0x0
+                0x00000aa0                        __preinit_array_start = .
  *(.preinit_array)
-                0x00000990                        __preinit_array_end = .
+                0x00000aa0                        __preinit_array_end = .
 
 __flash_.got$$
  *(.got.plt)
  *(.got)
 
 __flash_init_array$$
-                0x00000990        0x4
-                0x00000990                        __init_array_start = .
+                0x00000aa0        0x4
+                0x00000aa0                        __init_array_start = .
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
- .init_array    0x00000990        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
-                0x00000994                        __init_array_end = .
+ .init_array    0x00000aa0        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+                0x00000aa4                        __init_array_end = .
 
 __flash_fini_array$$
-                0x00000994        0x4
-                0x00000994                        __fini_array_start = .
+                0x00000aa4        0x4
+                0x00000aa4                        __fini_array_start = .
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array)
- .fini_array    0x00000994        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
-                0x00000998                        __fini_array_end = .
+ .fini_array    0x00000aa4        0x4 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+                0x00000aa8                        __fini_array_end = .
 
 __flash_arm.extab$$
  *(.ARM.extab*)
  *(.gnu.linkonce.armextab.*)
 
 __flash_arm.exidx$$
-                0x00000998        0x0
-                0x00000998                        __exidx_start = .
+                0x00000aa8        0x0
+                0x00000aa8                        __exidx_start = .
  *(.ARM.exidx*)
  *(.gnu.linkonce.armexidx.*)
-                0x00000998                        __exidx_end = .
+                0x00000aa8                        __exidx_end = .
 
 .flash.endof    0x00000c00        0x0
                 0x00000c00                        __ddsc_FLASH_END = .
@@ -1253,8 +1253,8 @@ __option_setting_ofs1_sel_reg$$
  .tm_clone_table
                 0x0100a284        0x0 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
 
-.igot.plt       0x00000998        0x0
- .igot.plt      0x00000998        0x0 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+.igot.plt       0x00000aa8        0x0
+ .igot.plt      0x00000aa8        0x0 E:/Renesas/RAv6.4.0/RA/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
 
 .option_setting_ofs1_sel.endof
                 0x0100a284        0x0
