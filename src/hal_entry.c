@@ -17,7 +17,7 @@ void hal_entry(void)
 
     while(1)
     {
-        //李佳凯
+        //李佳凯 here
         R_BSP_SoftwareDelay(200,BSP_DELAY_UNITS_MILLISECONDS);
         R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_04_PIN_01, BSP_IO_LEVEL_HIGH);
         R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_04_PIN_02, BSP_IO_LEVEL_LOW);
