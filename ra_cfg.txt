@@ -304,6 +304,30 @@ FSP Configuration
     Parameter Checking: Default (BSP)
     CCD Support: Not Supported
     
+  Module "UART (r_sci_uart)"
+    Parameter Checking: Default (BSP)
+    FIFO Support: Disable
+    DTC Support: Disable
+    Flow Control Support: Disable
+    RS-485 Support: Disable
+    IrDA Support: Disabled
+    
+  Module "SPI (r_spi)"
+    Parameter Checking: Default (BSP)
+    Enable Support for using a transfer API: Enabled
+    Enable Transmitting from RXI Interrupt: Disabled
+    
+  Module "Data Shipper (rm_rai_data_shipper)"
+    Parameter Checking: Default (BSP)
+    Max Number Of DC Instances: 8
+    
+  Module "Data Collector (rm_rai_data_collector)"
+    Parameter Checking: Default (BSP)
+    Max Number Of Channels: 16
+    
+  Module "UART Communication Device (rm_comms_uart)"
+    Parameter Checking: Default (BSP)
+    
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
       Name: g_ioport
@@ -313,3 +337,170 @@ FSP Configuration
       4th Port ELC Trigger Source: Disabled
       Pin Configuration Name: g_bsp_pin_cfg
       
+    Instance "g_uart9 UART (r_sci_uart)"
+      General: Name: g_uart9
+      General: Channel: 9
+      General: Data Bits: 8bits
+      General: Parity: None
+      General: Stop Bits: 1bit
+      Baud: Baud Rate: 921600
+      Baud: Baud Rate Modulation: Disabled
+      Baud: Max Error (%): 5
+      Flow Control: CTS/RTS Selection: Hardware RTS
+      Flow Control: Software RTS Port: Disabled
+      Flow Control: Software RTS Pin: Disabled
+      Extra: Clock Source: Internal Clock
+      Extra: Start bit detection: Falling Edge
+      Extra: Noise Filter: Disable
+      Extra: Receive FIFO Trigger Level: Max
+      Extra: IrDA: Enable: Disabled
+      Extra: IrDA: RXD Polarity Switching: Normal
+      Extra: IrDA: TXD Polarity Switching: Normal
+      Extra: RS-485: DE Pin: Disable
+      Extra: RS-485: DE Pin Polarity: Active High
+      Extra: RS-485: DE Port Number: Disabled
+      Extra: RS-485: DE Pin Number: Disabled
+      Interrupts: Callback: hmi_uart9_callback
+      Interrupts: Receive Interrupt Priority: Priority 12
+      Interrupts: Transmit Data Empty Interrupt Priority: Priority 12
+      Interrupts: Transmit End Interrupt Priority: Priority 12
+      Interrupts: Error Interrupt Priority: Priority 12
+      
+    Instance "g_spi0 SPI (r_spi)"
+      Name: g_spi0
+      Channel: 0
+      Receive Interrupt Priority: Priority 11
+      Transmit Buffer Empty Interrupt Priority: Priority 11
+      Transfer Complete Interrupt Priority: Priority 12
+      Error Interrupt Priority: Priority 12
+      Operating Mode: Master
+      Clock Phase: Data sampling on odd edge, data variation on even edge
+      Clock Polarity: High when idle
+      Mode Fault Error: Disable
+      Bit Order: MSB First
+      Callback: spi0_callback
+      SPI Mode: Clock Synchronous Operation
+      SPI burst transfer without delay between frames: Disable
+      Full or Transmit Only Mode: Full Duplex
+      Slave Select Polarity: Active Low
+      Select SSL(Slave Select): SSL0
+      MOSI Idle State: MOSI Idle Value Fixing Disable
+      Parity Mode: Disabled
+      Byte Swapping: Disable
+      Bitrate: 20000000
+      Clock Delay: 1 Clock
+      SSL Negation Delay: 1 Clock
+      Next Access Delay: 1 Clock
+      
+    Instance "g_spi1 SPI (r_spi)"
+      Name: g_spi1
+      Channel: 1
+      Receive Interrupt Priority: Priority 11
+      Transmit Buffer Empty Interrupt Priority: Priority 11
+      Transfer Complete Interrupt Priority: Priority 12
+      Error Interrupt Priority: Priority 12
+      Operating Mode: Master
+      Clock Phase: Data sampling on odd edge, data variation on even edge
+      Clock Polarity: High when idle
+      Mode Fault Error: Disable
+      Bit Order: MSB First
+      Callback: spi1_callback
+      SPI Mode: Clock Synchronous Operation
+      SPI burst transfer without delay between frames: Disable
+      Full or Transmit Only Mode: Full Duplex
+      Slave Select Polarity: Active Low
+      Select SSL(Slave Select): SSL0
+      MOSI Idle State: MOSI Idle Value Fixing Disable
+      Parity Mode: Disabled
+      Byte Swapping: Disable
+      Bitrate: 16000000
+      Clock Delay: 1 Clock
+      SSL Negation Delay: 1 Clock
+      Next Access Delay: 1 Clock
+      
+    Instance "g_rai_data_shipper0 Data Shipper (rm_rai_data_shipper)"
+      Name: g_rai_data_shipper0
+      Frame Rate Divider: 0
+      Callback: rai_data_shipper0_callback
+      
+      Instance "g_comms_uart0 UART Communication Device (rm_comms_uart)"
+        Name: g_comms_uart0
+        RTOS: Recursive Write Mutex: Do Not Use
+        RTOS: Recursive Read Mutex: Do Not Use
+        RTOS: Mutex Timeout: 0xFFFFFFFF
+        RTOS: Write Semaphore: Do Not Use
+        RTOS: Read Semaphore: Do Not Use
+        RTOS: Semaphore Timeout: 0xFFFFFFFF
+        Callback: NULL
+        
+        Instance "g_uart7 UART (r_sci_uart)"
+          General: Name: g_uart7
+          General: Channel: 7
+          General: Data Bits: 8bits
+          General: Parity: None
+          General: Stop Bits: 1bit
+          Baud: Baud Rate: 115200
+          Baud: Baud Rate Modulation: Disabled
+          Baud: Max Error (%): 5
+          Flow Control: CTS/RTS Selection: Hardware RTS
+          Flow Control: Software RTS Port: Disabled
+          Flow Control: Software RTS Pin: Disabled
+          Extra: Clock Source: Internal Clock
+          Extra: Start bit detection: Falling Edge
+          Extra: Noise Filter: Disable
+          Extra: Receive FIFO Trigger Level: Max
+          Extra: IrDA: Enable: Disabled
+          Extra: IrDA: RXD Polarity Switching: Normal
+          Extra: IrDA: TXD Polarity Switching: Normal
+          Extra: RS-485: DE Pin: Disable
+          Extra: RS-485: DE Pin Polarity: Active High
+          Extra: RS-485: DE Port Number: Disabled
+          Extra: RS-485: DE Pin Number: Disabled
+          Interrupts: Callback: NULL
+          Interrupts: Receive Interrupt Priority: Priority 12
+          Interrupts: Transmit Data Empty Interrupt Priority: Priority 12
+          Interrupts: Transmit End Interrupt Priority: Priority 12
+          Interrupts: Error Interrupt Priority: Priority 12
+          
+      Instance "g_rai_data_collector0 Data Collector (rm_rai_data_collector)"
+        General: Name: g_rai_data_collector0
+        General: ID: 0
+        General: Frame Buffer Length: 512
+        General: Data Ready Callback: rai_data_collector0_callback
+        General: Error Callback: rai_data_collector0_error_callback
+        Data Feed Mode: Channels: 3
+        Data Feed Mode: Channel 0: Name: dc0_data_feed_ch0
+        Data Feed Mode: Channel 0: Data Type: Single Float
+        Data Feed Mode: Channel 1: Name: dc0_data_feed_ch1
+        Data Feed Mode: Channel 1: Data Type: Single Float
+        Data Feed Mode: Channel 2: Name: dc0_data_feed_ch2
+        Data Feed Mode: Channel 2: Data Type: Single Float
+        Data Feed Mode: Channel 3: Name: dc0_data_feed_ch3
+        Data Feed Mode: Channel 3: Data Type: Single Float
+        Data Feed Mode: Channel 4: Name: dc0_data_feed_ch4
+        Data Feed Mode: Channel 4: Data Type: Single Float
+        Data Feed Mode: Channel 5: Name: dc0_data_feed_ch5
+        Data Feed Mode: Channel 5: Data Type: Single Float
+        Data Feed Mode: Channel 6: Name: dc0_data_feed_ch6
+        Data Feed Mode: Channel 6: Data Type: Single Float
+        Data Feed Mode: Channel 7: Name: dc0_data_feed_ch7
+        Data Feed Mode: Channel 7: Data Type: Single Float
+        Snapshot Mode: Channels: 0
+        Snapshot Mode: DTC Transfer Count: 1
+        Snapshot Mode: Channel 0: Name: dc0_snapshot_ch0
+        Snapshot Mode: Channel 0: Data Type: 8-bit Unsigned
+        Snapshot Mode: Channel 1: Name: dc0_snapshot_ch1
+        Snapshot Mode: Channel 1: Data Type: 8-bit Unsigned
+        Snapshot Mode: Channel 2: Name: dc0_snapshot_ch2
+        Snapshot Mode: Channel 2: Data Type: 8-bit Unsigned
+        Snapshot Mode: Channel 3: Name: dc0_snapshot_ch3
+        Snapshot Mode: Channel 3: Data Type: 8-bit Unsigned
+        Snapshot Mode: Channel 4: Name: dc0_snapshot_ch4
+        Snapshot Mode: Channel 4: Data Type: 8-bit Unsigned
+        Snapshot Mode: Channel 5: Name: dc0_snapshot_ch5
+        Snapshot Mode: Channel 5: Data Type: 8-bit Unsigned
+        Snapshot Mode: Channel 6: Name: dc0_snapshot_ch6
+        Snapshot Mode: Channel 6: Data Type: 8-bit Unsigned
+        Snapshot Mode: Channel 7: Name: dc0_snapshot_ch7
+        Snapshot Mode: Channel 7: Data Type: 8-bit Unsigned
+        

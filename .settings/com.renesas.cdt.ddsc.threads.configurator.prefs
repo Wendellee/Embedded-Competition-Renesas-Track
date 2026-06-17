@@ -1,0 +1,8 @@
+collapse/module.driver.rm_comms_on_uart.210388659=false
+collapse/module.driver.spi_on_spi.1175825099=false
+collapse/module.driver.spi_on_spi.1499649603=false
+collapse/module.driver.uart_on_sci_uart.385810621=false
+collapse/module.driver.uart_on_sci_uart.753889860=false
+collapse/module.middleware.rai_data_collector_on_rai_data_collector.1325357386=false
+collapse/module.middleware.rai_data_shipper_on_rai_data_shipper.365761512=false
+eclipse.preferences.version=1

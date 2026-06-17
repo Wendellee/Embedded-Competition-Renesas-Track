@@ -133,28 +133,28 @@
       <configSetting altId="sci5.txd.p501" configurationId="sci5.txd" peripheral="SCI5"/>
       <configSetting altId="sci6.rxd.p304" configurationId="sci6.rxd" peripheral="SCI6"/>
       <configSetting altId="sci6.txd.p305" configurationId="sci6.txd" peripheral="SCI6"/>
-      <configSetting altId="sci7.rxd.p614" configurationId="sci7.rxd" peripheral="SCI7"/>
-      <configSetting altId="sci7.txd.p613" configurationId="sci7.txd" peripheral="SCI7"/>
-      <configSetting altId="sci9.rxd.p601" configurationId="sci9.rxd" peripheral="SCI9"/>
-      <configSetting altId="sci9.txd.p602" configurationId="sci9.txd" peripheral="SCI9"/>
+      <configSetting altId="sci7.rxd.p614" configurationId="sci7.rxd" isUsedByDriver="true" peripheral="SCI7"/>
+      <configSetting altId="sci7.txd.p613" configurationId="sci7.txd" isUsedByDriver="true" peripheral="SCI7"/>
+      <configSetting altId="sci9.rxd.p601" configurationId="sci9.rxd" isUsedByDriver="true" peripheral="SCI9"/>
+      <configSetting altId="sci9.txd.p602" configurationId="sci9.txd" isUsedByDriver="true" peripheral="SCI9"/>
       <configSetting altId="sdhi0.cd.p210" configurationId="sdhi0.cd" peripheral="SDHI0"/>
       <configSetting altId="sdhi0.clk.p413" configurationId="sdhi0.clk" peripheral="SDHI0"/>
       <configSetting altId="sdhi0.cmd.p412" configurationId="sdhi0.cmd" peripheral="SDHI0"/>
       <configSetting altId="sdhi0.dat0.p411" configurationId="sdhi0.dat0" peripheral="SDHI0"/>
-      <configSetting altId="spi0.miso.p202" configurationId="spi0.miso" peripheral="SPI0"/>
-      <configSetting altId="spi0.mosi.p203" configurationId="spi0.mosi" peripheral="SPI0"/>
-      <configSetting altId="spi0.rspck.p204" configurationId="spi0.rspck" peripheral="SPI0"/>
-      <configSetting altId="spi0.ssl0.p205" configurationId="spi0.ssl0" peripheral="SPI0"/>
-      <configSetting altId="spi0.ssl1.p206" configurationId="spi0.ssl1" peripheral="SPI0"/>
-      <configSetting altId="spi0.ssl2.p207" configurationId="spi0.ssl2" peripheral="SPI0"/>
-      <configSetting altId="spi0.ssl3.p406" configurationId="spi0.ssl3" peripheral="SPI0"/>
-      <configSetting altId="spi1.miso.p100" configurationId="spi1.miso" peripheral="SPI1"/>
-      <configSetting altId="spi1.mosi.p101" configurationId="spi1.mosi" peripheral="SPI1"/>
-      <configSetting altId="spi1.rspck.p102" configurationId="spi1.rspck" peripheral="SPI1"/>
-      <configSetting altId="spi1.ssl0.p103" configurationId="spi1.ssl0" peripheral="SPI1"/>
-      <configSetting altId="spi1.ssl1.p104" configurationId="spi1.ssl1" peripheral="SPI1"/>
-      <configSetting altId="spi1.ssl2.p105" configurationId="spi1.ssl2" peripheral="SPI1"/>
-      <configSetting altId="spi1.ssl3.p106" configurationId="spi1.ssl3" peripheral="SPI1"/>
+      <configSetting altId="spi0.miso.p202" configurationId="spi0.miso" isUsedByDriver="true" peripheral="SPI0"/>
+      <configSetting altId="spi0.mosi.p203" configurationId="spi0.mosi" isUsedByDriver="true" peripheral="SPI0"/>
+      <configSetting altId="spi0.rspck.p204" configurationId="spi0.rspck" isUsedByDriver="true" peripheral="SPI0"/>
+      <configSetting altId="spi0.ssl0.p205" configurationId="spi0.ssl0" isUsedByDriver="true" peripheral="SPI0"/>
+      <configSetting altId="spi0.ssl1.p206" configurationId="spi0.ssl1" isUsedByDriver="true" peripheral="SPI0"/>
+      <configSetting altId="spi0.ssl2.p207" configurationId="spi0.ssl2" isUsedByDriver="true" peripheral="SPI0"/>
+      <configSetting altId="spi0.ssl3.p406" configurationId="spi0.ssl3" isUsedByDriver="true" peripheral="SPI0"/>
+      <configSetting altId="spi1.miso.p100" configurationId="spi1.miso" isUsedByDriver="true" peripheral="SPI1"/>
+      <configSetting altId="spi1.mosi.p101" configurationId="spi1.mosi" isUsedByDriver="true" peripheral="SPI1"/>
+      <configSetting altId="spi1.rspck.p102" configurationId="spi1.rspck" isUsedByDriver="true" peripheral="SPI1"/>
+      <configSetting altId="spi1.ssl0.p103" configurationId="spi1.ssl0" isUsedByDriver="true" peripheral="SPI1"/>
+      <configSetting altId="spi1.ssl1.p104" configurationId="spi1.ssl1" isUsedByDriver="true" peripheral="SPI1"/>
+      <configSetting altId="spi1.ssl2.p105" configurationId="spi1.ssl2" isUsedByDriver="true" peripheral="SPI1"/>
+      <configSetting altId="spi1.ssl3.p106" configurationId="spi1.ssl3" isUsedByDriver="true" peripheral="SPI1"/>
       <configSetting altId="system0.md.p201" configurationId="system0.md" peripheral="SYSTEM0"/>
     </pincfg>
   </raPinConfiguration>

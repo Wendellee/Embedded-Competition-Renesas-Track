@@ -240,6 +240,26 @@
       <description>Custom Board Support Files</description>
       <originalPack>Renesas.RA_board_custom.6.5.0.pack</originalPack>
     </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_sci_uart" variant="" vendor="Renesas" version="6.5.0">
+      <description>SCI UART</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_spi" variant="" vendor="Renesas" version="6.5.0">
+      <description>Serial Peripheral Interface</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_rai_data_collector" variant="" vendor="Renesas" version="6.5.0">
+      <description>RAI Data Collector</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_rai_data_shipper" variant="" vendor="Renesas" version="6.5.0">
+      <description>RAI Data Shipper</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_comms_uart" variant="" vendor="Renesas" version="6.5.0">
+      <description>UART Communications Implementation</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
   </raComponentSelection>
   <raElcConfiguration/>
   <raIcuConfiguration/>
@@ -253,9 +273,209 @@
       <property id="module.driver.ioport.elc_trigger_ioport4" value="_disabled"/>
       <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
     </module>
+    <module id="module.driver.uart_on_sci_uart.385810621">
+      <property id="module.driver.uart.name" value="g_uart9"/>
+      <property id="module.driver.uart.channel" value="9"/>
+      <property id="module.driver.uart.data_bits" value="module.driver.uart.data_bits.data_bits_8"/>
+      <property id="module.driver.uart.parity" value="module.driver.uart.parity.parity_off"/>
+      <property id="module.driver.uart.stop_bits" value="module.driver.uart.stop_bits.stop_bits_1"/>
+      <property id="module.driver.uart.baud" value="921600"/>
+      <property id="module.driver.uart.baudrate_modulation" value="module.driver.uart.baudrate_modulation.disabled"/>
+      <property id="module.driver.uart.baudrate_max_err" value="5"/>
+      <property id="module.driver.uart.flow_control" value="module.driver.uart.flow_control.rts"/>
+      <property id="module.driver.uart.pin_control_port" value="module.driver.uart.pin_control_port.PORT_DISABLE"/>
+      <property id="module.driver.uart.pin_control_pin" value="module.driver.uart.pin_control_pin.PIN_DISABLE"/>
+      <property id="module.driver.uart.clk_src" value="module.driver.uart.clk_src.int_clk"/>
+      <property id="module.driver.uart.rx_edge_start" value="module.driver.uart.rx_edge_start.falling_edge"/>
+      <property id="module.driver.uart.noisecancel_en" value="module.driver.uart.noisecancel_en.disabled"/>
+      <property id="module.driver.uart.rx_fifo_trigger" value="module.driver.uart.rx_fifo_trigger.max"/>
+      <property id="module.driver.uart.irda.ire" value="module.driver.uart.irda.ire.disabled"/>
+      <property id="module.driver.uart.irda.irrxinv" value="module.driver.uart.irda.irrxinv.disabled"/>
+      <property id="module.driver.uart.irda.irtxinv" value="module.driver.uart.irda.irtxinv.disabled"/>
+      <property id="module.driver.uart.rs485.de_enable" value="module.driver.uart.rs485.de_enable.disabled"/>
+      <property id="module.driver.uart.rs485.de_polarity" value="module.driver.uart.rs485.de_polarity.high"/>
+      <property id="module.driver.uart.rs485.de_port_number" value="module.driver.uart.rs485.de_port_number.PORT_DISABLE"/>
+      <property id="module.driver.uart.rs485.de_pin_number" value="module.driver.uart.rs485.de_pin_number.PIN_DISABLE"/>
+      <property id="module.driver.uart.callback" value="hmi_uart9_callback"/>
+      <property id="module.driver.uart.rxi_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.uart.txi_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.uart.tei_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.uart.eri_ipl" value="board.icu.common.irq.priority12"/>
+    </module>
+    <module id="module.driver.spi_on_spi.1499649603">
+      <property id="module.driver.spi.name" value="g_spi0"/>
+      <property id="module.driver.spi.channel" value="0"/>
+      <property id="module.driver.spi.rxi_ipl" value="board.icu.common.irq.priority11"/>
+      <property id="module.driver.spi.txi_ipl" value="board.icu.common.irq.priority11"/>
+      <property id="module.driver.spi.tei_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.spi.eri_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.spi.operating_mode" value="module.driver.spi.operating_mode.mode_master"/>
+      <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_odd"/>
+      <property id="module.driver.spi.clk_polarity" value="module.driver.spi.clk_polarity.clk_polarity_high"/>
+      <property id="module.driver.spi.mode_fault" value="module.driver.spi.mode_fault.mode_fault_error_disable"/>
+      <property id="module.driver.spi.bit_order" value="module.driver.spi.bit_order.bit_order_msb_first"/>
+      <property id="module.driver.spi.p_callback" value="spi0_callback"/>
+      <property id="module.driver.spi.spi_clksyn" value="module.driver.spi.spi_clksyn.spi_clksyn"/>
+      <property id="module.driver.spi.spi_burst_transfer_without_delay" value="module.driver.spi.spi_burst_transfer_without_delay.disable"/>
+      <property id="module.driver.spi.spi_comm" value="module.driver.spi.spi_comm.full_duplex"/>
+      <property id="module.driver.spi.ssl_polarity" value="module.driver.spi.ssl_polarity.low"/>
+      <property id="module.driver.spi.ssl_select" value="module.driver.spi.ssl_select.zero"/>
+      <property id="module.driver.spi.mosi_idle_value_fixing" value="module.driver.spi.mosi_idle_value_fixing.disable"/>
+      <property id="module.driver.spi.parity" value="module.driver.spi.parity_mode.disable"/>
+      <property id="module.driver.spi.byte_swap" value="module.driver.spi.byte_swap.disable"/>
+      <property id="module.driver.spi.bitrate" value="20000000"/>
+      <property id="module.driver.spi.spck_delay" value="module.driver.spi.spck_delay.one"/>
+      <property id="module.driver.spi.ssl_negation_delay" value="module.driver.spi.ssl_negation_delay.one"/>
+      <property id="module.driver.spi.next_access_delay" value="module.driver.spi.next_access_delay.one"/>
+    </module>
+    <module id="module.driver.spi_on_spi.1175825099">
+      <property id="module.driver.spi.name" value="g_spi1"/>
+      <property id="module.driver.spi.channel" value="1"/>
+      <property id="module.driver.spi.rxi_ipl" value="board.icu.common.irq.priority11"/>
+      <property id="module.driver.spi.txi_ipl" value="board.icu.common.irq.priority11"/>
+      <property id="module.driver.spi.tei_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.spi.eri_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.spi.operating_mode" value="module.driver.spi.operating_mode.mode_master"/>
+      <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_odd"/>
+      <property id="module.driver.spi.clk_polarity" value="module.driver.spi.clk_polarity.clk_polarity_high"/>
+      <property id="module.driver.spi.mode_fault" value="module.driver.spi.mode_fault.mode_fault_error_disable"/>
+      <property id="module.driver.spi.bit_order" value="module.driver.spi.bit_order.bit_order_msb_first"/>
+      <property id="module.driver.spi.p_callback" value="spi1_callback"/>
+      <property id="module.driver.spi.spi_clksyn" value="module.driver.spi.spi_clksyn.spi_clksyn"/>
+      <property id="module.driver.spi.spi_burst_transfer_without_delay" value="module.driver.spi.spi_burst_transfer_without_delay.disable"/>
+      <property id="module.driver.spi.spi_comm" value="module.driver.spi.spi_comm.full_duplex"/>
+      <property id="module.driver.spi.ssl_polarity" value="module.driver.spi.ssl_polarity.low"/>
+      <property id="module.driver.spi.ssl_select" value="module.driver.spi.ssl_select.zero"/>
+      <property id="module.driver.spi.mosi_idle_value_fixing" value="module.driver.spi.mosi_idle_value_fixing.disable"/>
+      <property id="module.driver.spi.parity" value="module.driver.spi.parity_mode.disable"/>
+      <property id="module.driver.spi.byte_swap" value="module.driver.spi.byte_swap.disable"/>
+      <property id="module.driver.spi.bitrate" value="16000000"/>
+      <property id="module.driver.spi.spck_delay" value="module.driver.spi.spck_delay.one"/>
+      <property id="module.driver.spi.ssl_negation_delay" value="module.driver.spi.ssl_negation_delay.one"/>
+      <property id="module.driver.spi.next_access_delay" value="module.driver.spi.next_access_delay.one"/>
+    </module>
+    <module id="module.middleware.rai_data_shipper_on_rai_data_shipper.365761512">
+      <property id="module.middleware.rai_data_shipper.name" value="g_rai_data_shipper0"/>
+      <property id="module.middleware.rai_data_shipper.frame_rate_divider" value="0"/>
+      <property id="module.middleware.rai_data_shipper.p_callback" value="rai_data_shipper0_callback"/>
+    </module>
+    <module id="module.middleware.rai_data_collector_on_rai_data_collector.1325357386">
+      <property id="module.middleware.rai_data_collector.name" value="g_rai_data_collector0"/>
+      <property id="module.middleware.rai_data_collector.instance" value="0"/>
+      <property id="module.middleware.rai_data_collector.frame_buf_length" value="512"/>
+      <property id="module.middleware.rai_data_collector.p_callback" value="rai_data_collector0_callback"/>
+      <property id="module.middleware.rai_data_collector.p_error_callback" value="rai_data_collector0_error_callback"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channels" value="3"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel0.name" value="dc0_data_feed_ch0"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel0.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel1.name" value="dc0_data_feed_ch1"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel1.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel2.name" value="dc0_data_feed_ch2"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel2.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel3.name" value="dc0_data_feed_ch3"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel3.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel4.name" value="dc0_data_feed_ch4"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel4.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel5.name" value="dc0_data_feed_ch5"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel5.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel6.name" value="dc0_data_feed_ch6"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel6.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel7.name" value="dc0_data_feed_ch7"/>
+      <property id="module.middleware.rai_data_collector.data_feed_mode.channel7.type" value="enum.driver.fsp_common.data_type.float"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channels" value="0"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.count" value="1"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel0.name" value="dc0_snapshot_ch0"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel0.type" value="enum.driver.fsp_common.data_type.uint8"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel1.name" value="dc0_snapshot_ch1"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel1.type" value="enum.driver.fsp_common.data_type.uint8"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel2.name" value="dc0_snapshot_ch2"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel2.type" value="enum.driver.fsp_common.data_type.uint8"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel3.name" value="dc0_snapshot_ch3"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel3.type" value="enum.driver.fsp_common.data_type.uint8"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel4.name" value="dc0_snapshot_ch4"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel4.type" value="enum.driver.fsp_common.data_type.uint8"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel5.name" value="dc0_snapshot_ch5"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel5.type" value="enum.driver.fsp_common.data_type.uint8"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel6.name" value="dc0_snapshot_ch6"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel6.type" value="enum.driver.fsp_common.data_type.uint8"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel7.name" value="dc0_snapshot_ch7"/>
+      <property id="module.middleware.rai_data_collector.snapshot_mode.channel7.type" value="enum.driver.fsp_common.data_type.uint8"/>
+    </module>
+    <module id="module.driver.rm_comms_on_uart.210388659">
+      <property id="module.driver.rm_comms.name" value="g_comms_uart0"/>
+      <property id="module.driver.comms_uart.tx_mutex" value="module.driver.comms_uart.tx_mutex.use"/>
+      <property id="module.driver.comms_uart.rx_mutex" value="module.driver.comms_uart.rx_mutex.use"/>
+      <property id="module.driver.comms_uart.mutex_timeout" value="0xFFFFFFFF"/>
+      <property id="module.driver.comms_uart.tx_semaphore" value="module.driver.comms_uart.tx_semaphore.use"/>
+      <property id="module.driver.comms_uart.rx_semaphore" value="module.driver.comms_uart.rx_semaphore.use"/>
+      <property id="module.driver.comms_uart.semaphore_timeout" value="0xFFFFFFFF"/>
+      <property id="module.driver.comms_uart.p_callback" value="NULL"/>
+    </module>
+    <module id="module.driver.uart_on_sci_uart.753889860">
+      <property id="module.driver.uart.name" value="g_uart7"/>
+      <property id="module.driver.uart.channel" value="7"/>
+      <property id="module.driver.uart.data_bits" value="module.driver.uart.data_bits.data_bits_8"/>
+      <property id="module.driver.uart.parity" value="module.driver.uart.parity.parity_off"/>
+      <property id="module.driver.uart.stop_bits" value="module.driver.uart.stop_bits.stop_bits_1"/>
+      <property id="module.driver.uart.baud" value="115200"/>
+      <property id="module.driver.uart.baudrate_modulation" value="module.driver.uart.baudrate_modulation.disabled"/>
+      <property id="module.driver.uart.baudrate_max_err" value="5"/>
+      <property id="module.driver.uart.flow_control" value="module.driver.uart.flow_control.rts"/>
+      <property id="module.driver.uart.pin_control_port" value="module.driver.uart.pin_control_port.PORT_DISABLE"/>
+      <property id="module.driver.uart.pin_control_pin" value="module.driver.uart.pin_control_pin.PIN_DISABLE"/>
+      <property id="module.driver.uart.clk_src" value="module.driver.uart.clk_src.int_clk"/>
+      <property id="module.driver.uart.rx_edge_start" value="module.driver.uart.rx_edge_start.falling_edge"/>
+      <property id="module.driver.uart.noisecancel_en" value="module.driver.uart.noisecancel_en.disabled"/>
+      <property id="module.driver.uart.rx_fifo_trigger" value="module.driver.uart.rx_fifo_trigger.max"/>
+      <property id="module.driver.uart.irda.ire" value="module.driver.uart.irda.ire.disabled"/>
+      <property id="module.driver.uart.irda.irrxinv" value="module.driver.uart.irda.irrxinv.disabled"/>
+      <property id="module.driver.uart.irda.irtxinv" value="module.driver.uart.irda.irtxinv.disabled"/>
+      <property id="module.driver.uart.rs485.de_enable" value="module.driver.uart.rs485.de_enable.disabled"/>
+      <property id="module.driver.uart.rs485.de_polarity" value="module.driver.uart.rs485.de_polarity.high"/>
+      <property id="module.driver.uart.rs485.de_port_number" value="module.driver.uart.rs485.de_port_number.PORT_DISABLE"/>
+      <property id="module.driver.uart.rs485.de_pin_number" value="module.driver.uart.rs485.de_pin_number.PIN_DISABLE"/>
+      <property id="module.driver.uart.callback" value="NULL"/>
+      <property id="module.driver.uart.rxi_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.uart.txi_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.uart.tei_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.uart.eri_ipl" value="board.icu.common.irq.priority12"/>
+    </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.0"/>
+      <stack module="module.driver.uart_on_sci_uart.385810621"/>
+      <stack module="module.driver.spi_on_spi.1499649603"/>
+      <stack module="module.driver.spi_on_spi.1175825099"/>
+      <stack module="module.middleware.rai_data_shipper_on_rai_data_shipper.365761512">
+        <stack module="module.driver.rm_comms_on_uart.210388659" requires="module.middleware.rai_data_shipper.requires.rm_comms">
+          <stack module="module.driver.uart_on_sci_uart.753889860" requires="module.driver.comms_uart.requires.uart"/>
+        </stack>
+        <stack module="module.middleware.rai_data_collector_on_rai_data_collector.1325357386" requires="module.middleware.rai_data_shipper.requires.data_collector"/>
+      </stack>
     </context>
+    <config id="config.middleware.rai_data_collector">
+      <property id="config.middleware.rai_data_collector.param_checking_enable" value="config.middleware.rai_data_collector.param_checking_enable.bsp"/>
+      <property id="config.middleware.rai_data_collector.max_channels" value="16"/>
+    </config>
+    <config id="config.driver.comms_uart">
+      <property id="config.driver.comms_uart.param_checking_enable" value="config.driver.comms_uart.param_checking_enable.bsp"/>
+    </config>
+    <config id="config.middleware.rai_data_shipper">
+      <property id="config.middleware.rai_data_shipper.param_checking_enable" value="config.middleware.rai_data_shipper.param_checking_enable.bsp"/>
+      <property id="config.middleware.rai_data_shipper.max_dc_instances" value="8"/>
+    </config>
+    <config id="config.driver.sci_uart">
+      <property id="config.driver.sci_uart.param_checking_enable" value="config.driver.sci_uart.param_checking_enable.bsp"/>
+      <property id="config.driver.sci_uart.fifo_support" value="config.driver.sci_uart.fifo_support.disabled"/>
+      <property id="config.driver.sci_uart.dtc_support" value="config.driver.sci_uart.dtc_support.disabled"/>
+      <property id="config.driver.sci_uart.flow_control" value="config.driver.sci_uart.flow_control.disabled"/>
+      <property id="config.driver.sci_uart.rs485" value="config.driver.sci_uart.rs485.disabled"/>
+      <property id="config.driver.sci_uart.irda" value="config.driver.sci_uart.irda.disabled"/>
+    </config>
+    <config id="config.driver.spi">
+      <property id="config.driver.spi.param_checking_enable" value="config.driver.spi.param_checking_enable.bsp"/>
+      <property id="config.driver.spi.dtc_enable" value="config.driver.spi.dtc_enable.enabled"/>
+      <property id="config.driver.spi.rxi_transmit" value="config.driver.spi.rxi_transmit.disabled"/>
+    </config>
     <config id="config.driver.ioport">
       <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
       <property id="config.driver.ioport.ccd_support_enable" value="config.driver.ioport.ccd_support_enable.disabled"/>

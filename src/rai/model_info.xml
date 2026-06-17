@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<RealityAI>
+	<version>1.10</version>
+	<endianness>default</endianness>
+	<mathType>float 32</mathType>
+	<library>librai_edsp_f32_arm.a</library>
+	<targetDevice>
+		<family>RA6M5 (ARM Cortex-M33)</family>
+	</targetDevice>
+	<toolchain>
+		<name>GNU GCC</name>
+		<version>13.2.1</version>
+	</toolchain>
+	<size>
+		<parameters>216160</parameters>
+		<stack>5120</stack>
+		<pre-allocated>676</pre-allocated>
+		<code>2952</code>
+	</size>
+	<model name="Motor_monitor_1" type="classifier" network="neural">
+		<nchannels>3</nchannels>
+		<winlen>512</winlen>
+		<dtype>float32</dtype>
+		<classmap>
+			<Motor_monitor_1_no_results>0</Motor_monitor_1_no_results>
+			<Motor_monitor_1_base_loose_state>1</Motor_monitor_1_base_loose_state>
+			<Motor_monitor_1_idle_state>2</Motor_monitor_1_idle_state>
+			<Motor_monitor_1_load_worse_state>3</Motor_monitor_1_load_worse_state>
+			<Motor_monitor_1_run_state>4</Motor_monitor_1_run_state>
+		</classmap>
+	</model>
+</RealityAI>
