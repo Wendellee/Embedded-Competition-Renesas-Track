@@ -421,35 +421,35 @@ const uart_instance_t g_uart7 =
 { .p_ctrl = &g_uart7_ctrl, .p_cfg = &g_uart7_cfg, .p_api = &g_uart_on_sci };
 /* UART Communication Device */
 
-rm_comms_uart_instance_ctrl_t g_comms_uart0_ctrl;
+rm_comms_uart_instance_ctrl_t g_comms_uart7_ctrl;
 
 #if BSP_CFG_RTOS == 1 // ThreadX
 
  #if !defined(NULL)
  rm_comms_mutex_t NULL =
  {
-     .p_name = "g_comms_uart0 tx mutex",
+     .p_name = "g_comms_uart7 tx mutex",
  };
  #endif
 
  #if !defined(NULL)
  rm_comms_mutex_t NULL =
  {
-     .p_name = "g_comms_uart0 rx mutex",
+     .p_name = "g_comms_uart7 rx mutex",
  };
  #endif
 
  #if !defined(NULL)
  rm_comms_semaphore_t NULL =
  {
-     .p_name = "g_comms_uart0 tx semaphore",
+     .p_name = "g_comms_uart7 tx semaphore",
  };
  #endif
 
   #if !defined(NULL)
  rm_comms_semaphore_t NULL =
  {
-     .p_name = "g_comms_uart0 rx semaphore",
+     .p_name = "g_comms_uart7 rx semaphore",
  };
  #endif
 
@@ -474,7 +474,7 @@ rm_comms_semaphore_t NULL;
 
 #endif
 
-rm_comms_uart_extended_cfg_t g_comms_uart0_extended_cfg =
+rm_comms_uart_extended_cfg_t g_comms_uart7_extended_cfg =
 {
 #if BSP_CFG_RTOS
 
@@ -505,14 +505,14 @@ rm_comms_uart_extended_cfg_t g_comms_uart0_extended_cfg =
 #endif
   .p_uart = &g_uart7, };
 
-const rm_comms_cfg_t g_comms_uart0_cfg =
+const rm_comms_cfg_t g_comms_uart7_cfg =
 { .semaphore_timeout = 0xFFFFFFFF,
   .p_lower_level_cfg = NULL,
-  .p_extend = (void*) &g_comms_uart0_extended_cfg,
+  .p_extend = (void*) &g_comms_uart7_extended_cfg,
   .p_callback = NULL, };
 
-const rm_comms_instance_t g_comms_uart0 =
-{ .p_ctrl = &g_comms_uart0_ctrl, .p_cfg = &g_comms_uart0_cfg, .p_api = &g_comms_on_comms_uart, };
+const rm_comms_instance_t g_comms_uart7 =
+{ .p_ctrl = &g_comms_uart7_ctrl, .p_cfg = &g_comms_uart7_cfg, .p_api = &g_comms_on_comms_uart, };
 const rai_data_shipper_cfg_t g_rai_data_shipper0_cfg =
 {
 
@@ -524,7 +524,7 @@ const rai_data_shipper_cfg_t g_rai_data_shipper0_cfg =
 #endif
 #undef RA_NOT_DEFINED
 
-  .p_comms = &g_comms_uart0,
+  .p_comms = &g_comms_uart7,
   .divider = 0, .p_callback = rai_data_shipper0_callback,
   /* If NULL then do not add & */
 #if defined(NULL)

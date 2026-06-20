@@ -5,8 +5,8 @@
  *      Author: Little Prince
  */
 
-#ifndef INCLUDE_CONFIG_H_
-#define INCLUDE_CONFIG_H_
+#ifndef DEVICES_CONFIG_H_
+#define DEVICES_CONFIG_H_
 
 /* Peripheral Devices Enable/Disable */
 #define DEV_USE_GPIO        1
@@ -98,4 +98,4 @@
     #define DRV_USE_IWDT    1
 #endif /* DEV_USE_WDT */
 
-#endif /* INCLUDE_CONFIG_H_ */
+#endif /* DEVICES_CONFIG_H_ */

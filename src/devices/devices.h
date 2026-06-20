@@ -1,7 +1,7 @@
 #ifndef __DEVICES_H
 #define __DEVICES_H
-#include "hal_data.h"
-#include <config.h>
+
+#include "config.h"
 
 /* Peripheral Devices Include */
 #if DEV_USE_GPIO

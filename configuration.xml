@@ -402,7 +402,7 @@
       <property id="module.middleware.rai_data_collector.snapshot_mode.channel7.type" value="enum.driver.fsp_common.data_type.uint8"/>
     </module>
     <module id="module.driver.rm_comms_on_uart.210388659">
-      <property id="module.driver.rm_comms.name" value="g_comms_uart0"/>
+      <property id="module.driver.rm_comms.name" value="g_comms_uart7"/>
       <property id="module.driver.comms_uart.tx_mutex" value="module.driver.comms_uart.tx_mutex.use"/>
       <property id="module.driver.comms_uart.rx_mutex" value="module.driver.comms_uart.rx_mutex.use"/>
       <property id="module.driver.comms_uart.mutex_timeout" value="0xFFFFFFFF"/>

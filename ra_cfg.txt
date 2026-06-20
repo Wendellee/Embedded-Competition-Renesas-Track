@@ -423,8 +423,8 @@ FSP Configuration
       Frame Rate Divider: 0
       Callback: rai_data_shipper0_callback
       
-      Instance "g_comms_uart0 UART Communication Device (rm_comms_uart)"
-        Name: g_comms_uart0
+      Instance "g_comms_uart7 UART Communication Device (rm_comms_uart)"
+        Name: g_comms_uart7
         RTOS: Recursive Write Mutex: Do Not Use
         RTOS: Recursive Read Mutex: Do Not Use
         RTOS: Mutex Timeout: 0xFFFFFFFF

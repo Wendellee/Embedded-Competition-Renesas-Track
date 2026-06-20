@@ -43,9 +43,9 @@ extern const sci_uart_extended_cfg_t g_uart7_cfg_extend;
 void NULL(uart_callback_args_t *p_args);
 #endif
 /* UART Communication Device */
-extern const rm_comms_instance_t g_comms_uart0;
-extern rm_comms_uart_instance_ctrl_t g_comms_uart0_ctrl;
-extern const rm_comms_cfg_t g_comms_uart0_cfg;
+extern const rm_comms_instance_t g_comms_uart7;
+extern rm_comms_uart_instance_ctrl_t g_comms_uart7_ctrl;
+extern const rm_comms_cfg_t g_comms_uart7_cfg;
 
 #ifndef NULL
 void NULL(rm_comms_callback_args_t *p_args);
