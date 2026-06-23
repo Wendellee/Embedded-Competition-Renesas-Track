@@ -17,7 +17,6 @@
             <slot name="P202.CM33" secure="true"/>
             <slot name="P203.CM33" secure="true"/>
             <slot name="P204.CM33" secure="true"/>
-            <slot name="P205.CM33" secure="true"/>
             <slot name="P206.CM33" secure="true"/>
             <slot name="P207.CM33" secure="true"/>
             <slot name="P210.CM33" secure="true"/>

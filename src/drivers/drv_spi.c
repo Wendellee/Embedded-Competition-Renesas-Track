@@ -41,8 +41,17 @@ static int SPIDrvInit(struct SPIDev *ptdev)
     {
         case 0:
         {
+            /* ADXL345 CS may be controlled by hardware SSL0 on P2.05.
+               Keep GPIO CS optional so SSL0 can be used instead. */
             pCSIO = IODeviceFind("ADXL345 CS");
-            if(NULL == pCSIO)      return -ENXIO;
+            if(pCSIO)
+            {
+                xprintf("SPIDrvInit: found ADXL345 CS port=0x%04X\r\n", pCSIO->port);
+            }
+            else
+            {
+                xprintf("SPIDrvInit: ADXL345 CS not found, using hardware SSL0 only\r\n");
+            }
             /* 打开设备 */
             fsp_err_t err = g_spi0.p_api->open(g_spi0.p_ctrl, g_spi0.p_cfg);
             assert(FSP_SUCCESS == err);
@@ -67,7 +76,7 @@ static int SPIDrvWrite(struct SPIDev *ptdev, const unsigned char *buf, unsigned 
     {
         case 0:
         {
-            pCSIO->Write(pCSIO, 0);
+            if(pCSIO) pCSIO->Write(pCSIO, 0);
             fsp_err_t err = FSP_SUCCESS;
             if((length%4)==0)
             {
@@ -85,7 +94,7 @@ static int SPIDrvWrite(struct SPIDev *ptdev, const unsigned char *buf, unsigned 
             }
             assert(FSP_SUCCESS == err);
             SPI0DrvWaitTxCplt();
-            pCSIO->Write(pCSIO, 1);
+            if(pCSIO) pCSIO->Write(pCSIO, 1);
             break;
         }
         case 1:case 2:case 3:case 4:
@@ -108,7 +117,7 @@ static int SPIDrvRead(struct SPIDev *ptdev, unsigned char *buf, unsigned int len
     {
         case 0:
         {
-            pCSIO->Write(pCSIO, 0);
+            if(pCSIO) pCSIO->Write(pCSIO, 0);
             fsp_err_t err = FSP_SUCCESS;
             if((length%4)==0)
             {
@@ -126,7 +135,7 @@ static int SPIDrvRead(struct SPIDev *ptdev, unsigned char *buf, unsigned int len
             }
             assert(FSP_SUCCESS == err);
             SPI0DrvWaitTxCplt();
-            pCSIO->Write(pCSIO, 1);
+            if(pCSIO) pCSIO->Write(pCSIO, 1);
             break;
         }
         case 1:case 2:case 3:case 4:
@@ -150,11 +159,19 @@ static int SPIDrvWriteRead(struct SPIDev *ptdev, unsigned char * const wbuf, uns
     {
         case 0:
         {
-            pCSIO->Write(pCSIO, 0);
+            if(pCSIO)
+            {
+                xprintf("SPIDrvWriteRead: CS low\r\n");
+                pCSIO->Write(pCSIO, 0);
+            }
             fsp_err_t err = g_spi0.p_api->writeRead(g_spi0.p_ctrl, wbuf, rbuf, length, SPI_BIT_WIDTH_8_BITS);
             assert(FSP_SUCCESS == err);
             SPI0DrvWaitTxCplt();
-            pCSIO->Write(pCSIO, 1);
+            if(pCSIO)
+            {
+                pCSIO->Write(pCSIO, 1);
+                xprintf("SPIDrvWriteRead: CS high\r\n");
+            }
             break;
         }
         case 1:case 2:case 3:case 4:

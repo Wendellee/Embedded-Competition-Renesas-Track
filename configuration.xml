@@ -159,12 +159,12 @@
     <node id="board.clock.pll.div" option="board.clock.pll.div.3"/>
     <node id="board.clock.pll.mul" option="board.clock.pll.mul.250"/>
     <node id="board.clock.pll.display" option="board.clock.pll.display.value"/>
-    <node id="board.clock.pll2.source" option="board.clock.pll2.source.disabled"/>
+    <node id="board.clock.pll2.source" option="board.clock.pll2.source.xtal"/>
     <node id="board.clock.pll2.div" option="board.clock.pll2.div.2"/>
     <node id="board.clock.pll2.mul" option="board.clock.pll2.mul.200"/>
     <node id="board.clock.pll2.display" option="board.clock.pll2.display.value"/>
     <node id="board.clock.clock.source" option="board.clock.clock.source.pll"/>
-    <node id="board.clock.clkout.source" option="board.clock.clkout.source.disabled"/>
+    <node id="board.clock.clkout.source" option="board.clock.clkout.source.xtal"/>
     <node id="board.clock.uclk.source" option="board.clock.uclk.source.disabled"/>
     <node id="board.clock.u60ck.source" option="board.clock.u60ck.source.disabled"/>
     <node id="board.clock.octaspiclk.source" option="board.clock.octaspiclk.source.disabled"/>
@@ -310,7 +310,7 @@
       <property id="module.driver.spi.tei_ipl" value="board.icu.common.irq.priority12"/>
       <property id="module.driver.spi.eri_ipl" value="board.icu.common.irq.priority12"/>
       <property id="module.driver.spi.operating_mode" value="module.driver.spi.operating_mode.mode_master"/>
-      <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_odd"/>
+      <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_even"/>
       <property id="module.driver.spi.clk_polarity" value="module.driver.spi.clk_polarity.clk_polarity_high"/>
       <property id="module.driver.spi.mode_fault" value="module.driver.spi.mode_fault.mode_fault_error_disable"/>
       <property id="module.driver.spi.bit_order" value="module.driver.spi.bit_order.bit_order_msb_first"/>
@@ -527,8 +527,6 @@
       <configSetting altId="p203.gpio_mode.gpio_mode_peripheral" configurationId="p203.gpio_mode"/>
       <configSetting altId="p204.spi0.rspck" configurationId="p204"/>
       <configSetting altId="p204.gpio_mode.gpio_mode_peripheral" configurationId="p204.gpio_mode"/>
-      <configSetting altId="p205.spi0.ssl0" configurationId="p205"/>
-      <configSetting altId="p205.gpio_mode.gpio_mode_peripheral" configurationId="p205.gpio_mode"/>
       <configSetting altId="p206.spi0.ssl1" configurationId="p206"/>
       <configSetting altId="p206.gpio_mode.gpio_mode_peripheral" configurationId="p206.gpio_mode"/>
       <configSetting altId="p207.spi0.ssl2" configurationId="p207"/>
@@ -619,7 +617,6 @@
       <configSetting altId="spi0.mosi.p203" configurationId="spi0.mosi"/>
       <configSetting altId="spi0.pairing.free" configurationId="spi0.pairing"/>
       <configSetting altId="spi0.rspck.p204" configurationId="spi0.rspck"/>
-      <configSetting altId="spi0.ssl0.p205" configurationId="spi0.ssl0"/>
       <configSetting altId="spi0.ssl1.p206" configurationId="spi0.ssl1"/>
       <configSetting altId="spi0.ssl2.p207" configurationId="spi0.ssl2"/>
       <configSetting altId="spi0.ssl3.p406" configurationId="spi0.ssl3"/>
@@ -661,7 +658,6 @@
       <lockSetting id="spi0.miso" lock="true"/>
       <lockSetting id="spi0.mosi" lock="true"/>
       <lockSetting id="spi0.rspck" lock="true"/>
-      <lockSetting id="spi0.ssl0" lock="true"/>
       <lockSetting id="spi0.ssl1" lock="true"/>
       <lockSetting id="spi0.ssl2" lock="true"/>
       <lockSetting id="spi0.ssl3" lock="true"/>

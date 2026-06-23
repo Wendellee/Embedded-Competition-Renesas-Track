@@ -27,6 +27,7 @@ static struct IODev gADXINT1Dev = {
 
 void IODevicesCreate(void)
 {
+    /* ADXL345 CS: software-controlled via P4.01 (NOT P2.05 which is claimed by SPI peripheral). */
     IODeviceInsert(&gADXLCSDev);
     IODeviceInsert(&gADXINT1Dev);
 }

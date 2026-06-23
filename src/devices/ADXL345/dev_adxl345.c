@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 /*! Reads the value of a register. */
-static uint8_t adxl345_get_register_value(uint8_t register_address);
+uint8_t adxl345_get_register_value(uint8_t register_address);
 /*! Writes data into a register. */
 static void adxl345_set_register_value(uint8_t register_address, uint8_t register_value);
 /*! Burst reads from a ADXL345 Internal Register. */
@@ -144,7 +144,14 @@ static int ADXLDevStop(struct ADXL345Dev *ptdev)
  *
  * @return register_value  - Value of the register.
 *******************************************************************************/
-static uint8_t adxl345_get_register_value(uint8_t register_address)
+/***************************************************************************//**
+ * @brief Reads the value of a register. (公开函数，供外部调用)
+ *
+ * @param register_address - Address of the register.
+ *
+ * @return register_value  - Value of the register.
+ *******************************************************************************/
+uint8_t adxl345_get_register_value(uint8_t register_address)
 {
     if(NULL == pADXLSPI)    return 0;
 
@@ -153,7 +160,13 @@ static uint8_t adxl345_get_register_value(uint8_t register_address)
     uint8_t register_value = 0;
     data_buffer[0] = ADXL345_SPI_READ | register_address;
     data_buffer[1] = 0;
-    if(ESUCCESS != pADXLSPI->WriteRead(pADXLSPI, data_buffer, rxbuffer, 2))  return 0;
+    if(ESUCCESS != pADXLSPI->WriteRead(pADXLSPI, data_buffer, rxbuffer, 2))
+    {
+        xprintf("adxl345_get_register_value: WriteRead failed addr=0x%02X\r\n", register_address);
+        return 0;
+    }
+    xprintf("ADXL345 reg read 0x%02X -> TX:[0x%02X,0x%02X] RX:[0x%02X,0x%02X]\r\n",
+            register_address, data_buffer[0], data_buffer[1], rxbuffer[0], rxbuffer[1]);
     register_value = rxbuffer[1];
     return register_value;
 }
@@ -194,8 +207,15 @@ static int adxl345_get_burst_register_value(unsigned char addr)
 	txBuffer[0] = (1 << 7) | (1 << 6) | (addr & 0x3F);
 	txBuffer[1] = 0x00;
 
-    pADXLSPI->WriteRead(pADXLSPI, txBuffer, rxBuffer, 3);
-	rxData = ((rxBuffer[2] & 0xFF) << 8) | (rxBuffer[1] & 0xFF);
+    if(ESUCCESS != pADXLSPI->WriteRead(pADXLSPI, txBuffer, rxBuffer, 3))
+    {
+        xprintf("adxl345_get_burst_register_value: WriteRead failed addr=0x%02X\r\n", addr);
+        return -EIO;
+    }
+    xprintf("ADXL345 burst read 0x%02X -> TX:[0x%02X,0x%02X,0x%02X] RX:[0x%02X,0x%02X,0x%02X]\r\n",
+            addr, txBuffer[0], txBuffer[1], txBuffer[2], rxBuffer[0], rxBuffer[1], rxBuffer[2]);
+
+    rxData = ((rxBuffer[2] & 0xFF) << 8) | (rxBuffer[1] & 0xFF);
 
 	return(rxData);
 }
@@ -248,16 +268,42 @@ static void adxl345_get_xyz(int16_t *x, int16_t *y, int16_t *z)
     if(NULL == pADXLSPI)    return;
 
     uint8_t first_reg_address = ADXL345_DATAX0;
-    uint8_t read_buffer[7]    = {0, 0, 0, 0, 0, 0, 0};
     
-    read_buffer[0] = ADXL345_SPI_READ | ADXL345_SPI_MB | first_reg_address;
-    pADXLSPI->WriteRead(pADXLSPI, read_buffer, read_buffer, 7);
+    /***************************************************************************
+     * 修复说明：
+     * 原代码问题：发送和接收使用同一个缓冲区(read_buffer)，导致读取的数据被发送数据覆盖
+     * 修复方案：使用独立的发送缓冲区(tx_buffer)和接收缓冲区(rx_buffer)
+     * 修复效果：传感器数据能够正确读取，不再始终为0
+     * 
+     * 如何改回原代码：
+     * 1. 删除下方新代码
+     * 2. 取消注释下方被注释的原代码
+     ***************************************************************************/
+    
+    /* ========== 原代码（已注释）========== */
+    // uint8_t read_buffer[7]    = {0, 0, 0, 0, 0, 0, 0};
+    // 
+    // read_buffer[0] = ADXL345_SPI_READ | ADXL345_SPI_MB | first_reg_address;
+    // pADXLSPI->WriteRead(pADXLSPI, read_buffer, read_buffer, 7);
+    // /* x = ((ADXL345_DATAX1) << 8) + ADXL345_DATAX0 */
+    // *x = (int16_t)((read_buffer[2] << 8) + read_buffer[1]);
+    // /* y = ((ADXL345_DATAY1) << 8) + ADXL345_DATAY0 */  
+    // *y = (int16_t)((read_buffer[4] << 8) + read_buffer[3]);
+    // /* z = ((ADXL345_DATAZ1) << 8) + ADXL345_DATAZ0 */  
+    // *z = (int16_t)((read_buffer[6] << 8) + read_buffer[5]);
+    
+    /* ========== 修复后的新代码 ========== */
+    uint8_t tx_buffer[7]     = {0, 0, 0, 0, 0, 0, 0};  // 发送缓冲区
+    uint8_t rx_buffer[7]     = {0, 0, 0, 0, 0, 0, 0};  // 接收缓冲区
+    
+    tx_buffer[0] = ADXL345_SPI_READ | ADXL345_SPI_MB | first_reg_address;
+    pADXLSPI->WriteRead(pADXLSPI, tx_buffer, rx_buffer, 7);  // 使用独立缓冲区
     /* x = ((ADXL345_DATAX1) << 8) + ADXL345_DATAX0 */
-    *x = (int16_t)((read_buffer[2] << 8) + read_buffer[1]);
+    *x = (int16_t)((rx_buffer[2] << 8) + rx_buffer[1]);
     /* y = ((ADXL345_DATAY1) << 8) + ADXL345_DATAY0 */  
-    *y = (int16_t)((read_buffer[4] << 8) + read_buffer[3]);
+    *y = (int16_t)((rx_buffer[4] << 8) + rx_buffer[3]);
     /* z = ((ADXL345_DATAZ1) << 8) + ADXL345_DATAZ0 */  
-    *z = (int16_t)((read_buffer[6] << 8) + read_buffer[5]);
+    *z = (int16_t)((rx_buffer[6] << 8) + rx_buffer[5]);
 }
 
 /***************************************************************************//**

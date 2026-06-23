@@ -8,7 +8,9 @@
 
 uint8_t Serial_TxPacket1[6];                //定义发送数据包数组，数据包格式：FF AA [Page] [Function] [01] [02] [03] [04] FE 55
 uint8_t Serial_RxPacket1[6];                //定义接收数据包数组
-uint8_t Serial_RxFlag1;                 //定义接收数据包标志位
+uint8_t Serial_RxFlag1 = 0;                 //定义接收数据包标志位
+uint8_t USART_RX_BUF[USART_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符
+uint16_t USART_RX_STA = 0;          //接收状态标记
 
 volatile bool uart_send_complete_flag = false;
 void debug_uart7_init(void)
@@ -24,6 +26,11 @@ void hmi_uart9_callback(uart_callback_args_t *p_args)
     switch(p_args->event)
     {
         case UART_EVENT_RX_CHAR:
+            if (USART_RX_STA < USART_REC_LEN)
+            {
+                USART_RX_BUF[USART_RX_STA++] = (uint8_t) p_args->data;
+            }
+            Serial_RxFlag1 = 1;
             break;
         case UART_EVENT_TX_COMPLETE:
             uart_send_complete_flag = true;
@@ -51,7 +58,7 @@ FILE __stdout;
   */
 void Serial_SendByte(uart_ctrl_t * const p_api_ctrl,uint8_t Byte)
 {
-    g_uart9.p_api->write(g_uart9.p_ctrl,(uint8_t *)&Byte,1);        //将字节数据写入数据寄存器，写入后USART自动生成时序波形
+    g_uart9.p_api->write(p_api_ctrl,(uint8_t *)&Byte,1);        //将字节数据写入数据寄存器，写入后USART自动生成时序波形
     while (uart_send_complete_flag == false);    //等待发送完成
     uart_send_complete_flag = false;
     /*下次写入数据寄存器会自动清除发送完成标志位，故此循环后，无需清除标志位*/

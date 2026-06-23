@@ -23,7 +23,7 @@ FSP_CPP_FOOTER
 
 #define DATA_COLLECTION_EN       (1)         //收集数据时打开
 
-#define ADLX345_SELF_TEST_EN   (1)         //ADXL345自检程序
+#define ADXL345_SELF_TEST_EN   (1)         //ADXL345自检程序
 #define MAINTENAION_TEST_EN    (0)         //主控板自检程序
 
 #define  NUM_BUFFS 2
@@ -94,7 +94,7 @@ void hal_entry(void)
 
     debug_uart7_init();
     hmi_uart9_init();
-    Serial_Printf(g_uart7.p_ctrl,"This is RA6M5's here!\r\n");
+    Serial_Printf(g_uart9.p_ctrl,"This is RA6M5's here!\r\n");
 
     TimerDevicesRegister();
     SPIDevicesRegister();
@@ -107,6 +107,14 @@ void hal_entry(void)
         return;
     }
     pADXL345->Init(pADXL345);
+    
+    /* ========== 调试：检查传感器通信 ========== */
+    // 读取设备ID，确认SPI通信是否正常
+    // ADXL345_DEVID 是宏定义(0x00)，直接使用即可，无需extern声明
+    extern uint8_t adxl345_get_register_value(uint8_t register_address);
+    #define ADXL345_DEVID 0x00  // 设备ID寄存器地址
+    uint8_t dev_id = adxl345_get_register_value(ADXL345_DEVID);
+    xprintf("ADXL345 Device ID: 0x%X\r\n", dev_id);  // 正常应输出 0xE5
 
  #if DATA_COLLECTION_EN
     RM_RAI_DATA_COLLECTOR_Open(&g_rai_data_collector0_ctrl, &g_rai_data_collector0_cfg);
@@ -121,15 +129,20 @@ void hal_entry(void)
 
 
 
-#if ADLX345_SELF_TEST_EN
+#if ADXL345_SELF_TEST_EN
     while(1)
     {   //获取数据
         if(pADXL345->Read(pADXL345) == ESUCCESS)
         {
-//            xprintf("x:%.4fg\ty:%.4fg\tz:%.4fg\r\n", pADXL345->value.x, pADXL345->value.y, pADXL345->value.z);
-            xprintf("add s0.id,0,%d\xff\xff\xff",(uint16_t)((pADXL345->value.x *50 / 8)+ 50));
-            xprintf("add s2.id,0,%d\xff\xff\xff",(uint16_t)((pADXL345->value.y *50 / 8)+ 50));
-            xprintf("add s1.id,0,%d\xff\xff\xff",(uint16_t)((pADXL345->value.z *50 / 8)+ 50));
+            xprintf("读到了\r\n");
+            //xprintf("x:%.4fg\ty:%.4fg\tz:%.4fg\r\n", pADXL345->value.x, pADXL345->value.y, pADXL345->value.z);
+             xprintf("x:%d\ty:%d\tz:%d\r\n", pADXL345->value.x, pADXL345->value.y, pADXL345->value.z);
+            //xprintf("add s0.id,0,%d\xff\xff\xff",(uint16_t)((pADXL345->value.x *50 / 8)+ 50));
+           // xprintf("add s2.id,0,%d\xff\xff\xff",(uint16_t)((pADXL345->value.y *50 / 8)+ 50));
+           // xprintf("add s1.id,0,%d\xff\xff\xff",(uint16_t)((pADXL345->value.z *50 / 8)+ 50));
+            //xprintf("add s0.id,0,%d\r\n",(uint16_t)((pADXL345->value.x *50 / 8)+ 50));
+           // xprintf("add s2.id,0,%d\r\n",(uint16_t)((pADXL345->value.y *50 / 8)+ 50));
+            //xprintf("add s1.id,0,%d\r\n",(uint16_t)((pADXL345->value.z *50 / 8)+ 50));
             if(count < BUFF_LEN){
             //收集数据
             data_x[count] = pADXL345->value.x;
