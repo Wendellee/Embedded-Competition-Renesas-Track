@@ -303,6 +303,9 @@ fsp_err_t R_DMAC_SoftwareStart (transfer_ctrl_t * const p_api_ctrl, transfer_sta
     FSP_ERROR_RETURN(ELC_EVENT_NONE == p_extend->activation_source, FSP_ERR_UNSUPPORTED);
 #endif
 
+    /* All previous loads and stores must be ordered and complete before DMAC channel software start. */
+    FSP_DSB();
+
     /* Set auto clear bit and software start bit. */
     p_ctrl->p_reg->DMREQ = (uint8_t) (((uint32_t) mode << DMAC_PRV_DMREQ_CLRS_OFFSET) | DMAC_PRV_DMREQ_SWREQ_MASK);
 
@@ -469,6 +472,7 @@ fsp_err_t R_DMAC_Close (transfer_ctrl_t * const p_api_ctrl)
 #else
     R_DMA->DELSR[p_extend->channel] = ELC_EVENT_NONE;
 #endif
+
     p_ctrl->p_reg->DMCNT = 0;
 
     if (NULL != p_extend->p_callback)
@@ -505,6 +509,9 @@ static fsp_err_t r_dmac_prv_enable (dmac_instance_ctrl_t * p_ctrl)
     fsp_err_t err = r_dmac_enable_parameter_checking(p_ctrl);
     FSP_ERROR_RETURN(FSP_SUCCESS == err, err);
 #endif
+
+    /* All previous loads and stores must be ordered and complete before DMAC channel enable. */
+    FSP_DSB();
 
     /** Enable transfer. */
     p_ctrl->p_reg->DMCNT = 1;
@@ -800,6 +807,9 @@ void dmac_int_isr (void)
      * Size End Interrupt" in the DMAC section of the relevant hardware manual. */
     if (p_ctrl->p_reg->DMCRB > 0U)
     {
+        /* All previous loads and stores must be ordered and complete before DMAC channel enable. */
+        FSP_DSB();
+
         p_ctrl->p_reg->DMCNT = 1;
     }
 

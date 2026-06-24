@@ -4,16 +4,16 @@
     <option key="#Board#" value="board.custom"/>
     <option key="CPU" value="RA6M5"/>
     <option key="Core" value="CM33"/>
-    <option key="#TargetName#" value="R7FA6M5BF2CBG"/>
+    <option key="#TargetName#" value="R7FA6M5BH3CFB"/>
     <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
-    <option key="#DeviceCommand#" value="R7FA6M5BF"/>
+    <option key="#DeviceCommand#" value="R7FA6M5BH"/>
     <option key="#RTOS#" value="_none"/>
     <option key="#pinconfiguration#" value="R7FA6M5BF2CBG.pincfg"/>
-    <option key="#FSPVersion#" value="6.4.0"/>
+    <option key="#FSPVersion#" value="6.5.0"/>
     <option key="#SELECTED_TOOLCHAIN#" value="com.arm.toolchain"/>
   </generalSettings>
   <raBspConfiguration>
-    <config id="config.bsp.ra6m5.R7FA6M5BF2CBG">
+    <config id="config.bsp.ra6m5.R7FA6M5BH3CFB">
       <property id="config.bsp.part_number" value="config.bsp.part_number.value"/>
       <property id="config.bsp.rom_size_bytes" value="config.bsp.rom_size_bytes.value"/>
       <property id="config.bsp.rom_size_bytes_hidden" value="config.bsp.rom_size_bytes_hidden.value"/>
@@ -199,81 +199,81 @@
     <node id="board.clock.cecclk.display" option="board.clock.cecclk.display.value"/>
   </raClockConfiguration>
   <raComponentSelection>
-    <component apiversion="" class="CMSIS" condition="" group="Main" subgroup="DSP" variant="" vendor="Arm" version="1.16.2+fsp.6.4.0">
+    <component apiversion="" class="CMSIS" condition="" group="Main" subgroup="DSP" variant="" vendor="Arm" version="1.16.2+fsp.6.5.0">
       <description>Arm DSP Library Source</description>
-      <originalPack>Arm.CMSIS-DSP.1.16.2+fsp.6.4.0.pack</originalPack>
+      <originalPack>Arm.CMSIS-DSP.1.16.2+fsp.6.5.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="Board" subgroup="custom" variant="" vendor="Renesas" version="6.4.0">
-      <description>Custom Board Support Files</description>
-      <originalPack>Renesas.RA_board_custom.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="CMSIS" condition="" group="Main" subgroup="CoreM" variant="" vendor="Arm" version="6.1.0+fsp.6.4.0">
+    <component apiversion="" class="CMSIS" condition="" group="Main" subgroup="CoreM" variant="" vendor="Arm" version="6.1.0+fsp.6.5.0">
       <description>Arm CMSIS Version 6 - Core (M)</description>
-      <originalPack>Arm.CMSIS6.6.1.0+fsp.6.4.0.pack</originalPack>
+      <originalPack>Arm.CMSIS6.6.1.0+fsp.6.5.0.pack</originalPack>
     </component>
-    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="6.4.0">
-      <description>Board Support Package Common Files</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
+    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="device" variant="R7FA6M5BH3CFB" vendor="Renesas" version="6.5.0">
+      <description>Board support package for R7FA6M5BH3CFB</description>
+      <originalPack>Renesas.RA_mcu_ra6m5.6.5.0.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_dmac" variant="" vendor="Renesas" version="6.4.0">
-      <description>Direct Memory Access Controller</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_gpt" variant="" vendor="Renesas" version="6.4.0">
-      <description>General PWM Timer</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_ioport" variant="" vendor="Renesas" version="6.4.0">
-      <description>I/O Port</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_rtc" variant="" vendor="Renesas" version="6.4.0">
-      <description>Real Time Clock</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_sci_uart" variant="" vendor="Renesas" version="6.4.0">
-      <description>SCI UART</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_sdhi" variant="" vendor="Renesas" version="6.4.0">
-      <description>SD/MMC Host Interface</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_spi" variant="" vendor="Renesas" version="6.4.0">
-      <description>Serial Peripheral Interface</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_rai_data_collector" variant="" vendor="Renesas" version="6.4.0">
-      <description>RAI Data Collector</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_rai_data_shipper" variant="" vendor="Renesas" version="6.4.0">
-      <description>RAI Data Shipper</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_comms_uart" variant="" vendor="Renesas" version="6.4.0">
-      <description>UART Communications Implementation</description>
-      <originalPack>Renesas.RA.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="device" variant="R7FA6M5BF2CBG" vendor="Renesas" version="6.4.0">
-      <description>Board support package for R7FA6M5BF2CBG</description>
-      <originalPack>Renesas.RA_mcu_ra6m5.6.4.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="device" variant="" vendor="Renesas" version="6.4.0">
+    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="device" variant="" vendor="Renesas" version="6.5.0">
       <description>Board support package for RA6M5</description>
-      <originalPack>Renesas.RA_mcu_ra6m5.6.4.0.pack</originalPack>
+      <originalPack>Renesas.RA_mcu_ra6m5.6.5.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="fsp" variant="" vendor="Renesas" version="6.4.0">
+    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="fsp" variant="" vendor="Renesas" version="6.5.0">
       <description>Board support package for RA6M5 - FSP Data</description>
-      <originalPack>Renesas.RA_mcu_ra6m5.6.4.0.pack</originalPack>
+      <originalPack>Renesas.RA_mcu_ra6m5.6.5.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="events" variant="" vendor="Renesas" version="6.4.0">
+    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="events" variant="" vendor="Renesas" version="6.5.0">
       <description>Board support package for RA6M5 - Events</description>
-      <originalPack>Renesas.RA_mcu_ra6m5.6.4.0.pack</originalPack>
+      <originalPack>Renesas.RA_mcu_ra6m5.6.5.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="linker" variant="" vendor="Renesas" version="6.4.0">
+    <component apiversion="" class="BSP" condition="" group="ra6m5" subgroup="linker" variant="" vendor="Renesas" version="6.5.0">
       <description>Board support package for RA6M5 - Linker</description>
-      <originalPack>Renesas.RA_mcu_ra6m5.6.4.0.pack</originalPack>
+      <originalPack>Renesas.RA_mcu_ra6m5.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="Board" subgroup="custom" variant="" vendor="Renesas" version="6.5.0">
+      <description>Custom Board Support Files</description>
+      <originalPack>Renesas.RA_board_custom.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="6.5.0">
+      <description>Board Support Package Common Files</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_dmac" variant="" vendor="Renesas" version="6.5.0">
+      <description>Direct Memory Access Controller</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_gpt" variant="" vendor="Renesas" version="6.5.0">
+      <description>General PWM Timer</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_ioport" variant="" vendor="Renesas" version="6.5.0">
+      <description>I/O Port</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_rtc" variant="" vendor="Renesas" version="6.5.0">
+      <description>Real Time Clock</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_sci_uart" variant="" vendor="Renesas" version="6.5.0">
+      <description>SCI UART</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_sdhi" variant="" vendor="Renesas" version="6.5.0">
+      <description>SD/MMC Host Interface</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_spi" variant="" vendor="Renesas" version="6.5.0">
+      <description>Serial Peripheral Interface</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_rai_data_collector" variant="" vendor="Renesas" version="6.5.0">
+      <description>RAI Data Collector</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_rai_data_shipper" variant="" vendor="Renesas" version="6.5.0">
+      <description>RAI Data Shipper</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_comms_uart" variant="" vendor="Renesas" version="6.5.0">
+      <description>UART Communications Implementation</description>
+      <originalPack>Renesas.RA.6.5.0.pack</originalPack>
     </component>
   </raComponentSelection>
   <raElcConfiguration/>
@@ -760,8 +760,6 @@
       <configSetting altId="p312.output.low" configurationId="p312"/>
       <configSetting altId="p312.gpio_speed.gpio_speed_medium" configurationId="p312.gpio_drivecapacity"/>
       <configSetting altId="p312.gpio_mode.gpio_mode_out.low" configurationId="p312.gpio_mode"/>
-      <configSetting altId="p315.sci4.rxd" configurationId="p315"/>
-      <configSetting altId="p315.gpio_mode.gpio_mode_peripheral" configurationId="p315.gpio_mode"/>
       <configSetting altId="p405.output.high" configurationId="p405"/>
       <configSetting altId="p405.gpio_speed.gpio_speed_high" configurationId="p405.gpio_drivecapacity"/>
       <configSetting altId="p405.gpio_mode.gpio_mode_out.high" configurationId="p405.gpio_mode"/>
@@ -780,8 +778,6 @@
       <configSetting altId="p505.gpio_mode.gpio_mode_peripheral" configurationId="p505.gpio_mode"/>
       <configSetting altId="p506.sci6.txd" configurationId="p506"/>
       <configSetting altId="p506.gpio_mode.gpio_mode_peripheral" configurationId="p506.gpio_mode"/>
-      <configSetting altId="p512.sci4.txd" configurationId="p512"/>
-      <configSetting altId="p512.gpio_mode.gpio_mode_peripheral" configurationId="p512.gpio_mode"/>
       <configSetting altId="p601.sci9.rxd" configurationId="p601"/>
       <configSetting altId="p601.gpio_mode.gpio_mode_peripheral" configurationId="p601.gpio_mode"/>
       <configSetting altId="p602.sci9.txd" configurationId="p602"/>
@@ -791,9 +787,6 @@
       <configSetting altId="p614.sci7.rxd" configurationId="p614"/>
       <configSetting altId="p614.gpio_mode.gpio_mode_peripheral" configurationId="p614.gpio_mode"/>
       <configSetting altId="rtc0.mode.enabled" configurationId="rtc0.mode"/>
-      <configSetting altId="sci4.mode.asynchronous.free" configurationId="sci4.mode"/>
-      <configSetting altId="sci4.rxd.p315" configurationId="sci4.rxd"/>
-      <configSetting altId="sci4.txd.p512" configurationId="sci4.txd"/>
       <configSetting altId="sci6.mode.asynchronous.free" configurationId="sci6.mode"/>
       <configSetting altId="sci6.rxd.p505" configurationId="sci6.rxd"/>
       <configSetting altId="sci6.txd.p506" configurationId="sci6.txd"/>
@@ -817,6 +810,15 @@
       <configSetting altId="spi1.mode.enabled.a" configurationId="spi1.mode"/>
       <configSetting altId="spi1.mosi.p101" configurationId="spi1.mosi"/>
       <configSetting altId="spi1.rspck.p102" configurationId="spi1.rspck"/>
+    </pincfg>
+    <pincfg active="false" name="R7FA6M5BH3CFB.pincfg" selected="false" symbol="">
+      <configSetting altId="debug0.mode.swd" configurationId="debug0.mode"/>
+      <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk"/>
+      <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio"/>
+      <configSetting altId="p108.debug0.swdio" configurationId="p108"/>
+      <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
+      <configSetting altId="p300.debug0.swclk" configurationId="p300"/>
+      <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
     </pincfg>
   </raPinConfiguration>
 </raConfiguration>
