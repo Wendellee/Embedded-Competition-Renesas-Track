@@ -1,0 +1,26 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'main' of git@github.com\:Wendellee/Embedded-Competition-Renesas-Track.git
+collapse/module.arm.cmsis.dsp.1434674810=false
+collapse/module.arm.cmsis5.dsp.1434674810=false
+collapse/module.driver.rm_comms_on_uart.1956310049=false
+collapse/module.driver.rm_comms_on_uart.210388659=false
+collapse/module.driver.sdmmc_on_sdmmc.1934175253=false
+collapse/module.driver.spi_on_spi.1155241702=false
+collapse/module.driver.spi_on_spi.1175825099=false
+collapse/module.driver.spi_on_spi.1376060223=false
+collapse/module.driver.spi_on_spi.1499649603=false
+collapse/module.driver.uart_on_sci_uart.1299546847=false
+collapse/module.driver.uart_on_sci_uart.1347809668=false
+collapse/module.driver.uart_on_sci_uart.385810621=false
+collapse/module.driver.uart_on_sci_uart.389933631=false
+collapse/module.driver.uart_on_sci_uart.521437750=false
+collapse/module.driver.uart_on_sci_uart.672961943=false
+collapse/module.driver.uart_on_sci_uart.731214136=false
+collapse/module.driver.uart_on_sci_uart.753889860=false
+collapse/module.driver.uart_on_sci_uart.894968343=false
+collapse/module.middleware.rai_data_collector_on_rai_data_collector.1325357386=false
+collapse/module.middleware.rai_data_collector_on_rai_data_collector.369576165=false
+collapse/module.middleware.rai_data_shipper_on_rai_data_shipper.1711977942=false
+collapse/module.middleware.rai_data_shipper_on_rai_data_shipper.365761512=false
+eclipse.preferences.version=1
