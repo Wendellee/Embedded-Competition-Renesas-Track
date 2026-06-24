@@ -14,7 +14,7 @@ bsp_ipc_semaphore_handle_t g_core_start_semaphore =
 void hal_entry(void)
 {
     /* TODO: add your own code here */
-
+123
     /* Wake up 2nd core if this is first core and we are inside a multicore project. */
 #if (0 == _RA_CORE) && (1 == BSP_MULTICORE_PROJECT) && !BSP_TZ_NONSECURE_BUILD
 
