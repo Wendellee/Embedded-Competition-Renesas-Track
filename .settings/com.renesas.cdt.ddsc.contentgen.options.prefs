@@ -1,9 +1,6 @@
-<<<<<<< HEAD
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'main' of git@github.com\:Wendellee/Embedded-Competition-Renesas-Track.git
 eclipse.preferences.version=1
 options/suppresswarningspaths=ra/arm
 options/toolchainversion=13.2.1.arm-13-7
-=======
-eclipse.preferences.version=1
-options/suppresswarningspaths=ra/arm
-options/toolchainversion=13.2.1.arm-13-7
->>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git

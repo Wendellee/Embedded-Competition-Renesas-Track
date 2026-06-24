@@ -7,7 +7,6 @@
             <slot name="P101.CM33" secure="true"/>
             <slot name="P102.CM33" secure="true"/>
             <slot name="P103.CM33" secure="true"/>
-<<<<<<< HEAD
             <slot name="P105.CM33" secure="true"/>
             <slot name="P108.CM33" secure="true"/>
             <slot name="P112.CM33" secure="true"/>
@@ -87,76 +86,6 @@
             <slot name="IRQ31.CM33" secure="true"/>
             <slot name="IRQ32.CM33" secure="true"/>
             <slot name="IRQ33.CM33" secure="true"/>
-=======
-            <slot name="P104.CM33" secure="true"/>
-            <slot name="P105.CM33" secure="true"/>
-            <slot name="P106.CM33" secure="true"/>
-            <slot name="P108.CM33" secure="true"/>
-        </peripheral>
-        <peripheral name="PORT2.CM33" group="PORT">
-            <slot name="P201.CM33" secure="true"/>
-            <slot name="P202.CM33" secure="true"/>
-            <slot name="P203.CM33" secure="true"/>
-            <slot name="P204.CM33" secure="true"/>
-            <slot name="P206.CM33" secure="true"/>
-            <slot name="P207.CM33" secure="true"/>
-            <slot name="P210.CM33" secure="true"/>
-            <slot name="P212.CM33" secure="true"/>
-            <slot name="P213.CM33" secure="true"/>
-        </peripheral>
-        <peripheral name="PORT3.CM33" group="PORT">
-            <slot name="P300.CM33" secure="true"/>
-            <slot name="P304.CM33" secure="true"/>
-            <slot name="P305.CM33" secure="true"/>
-            <slot name="P309.CM33" secure="true"/>
-            <slot name="P310.CM33" secure="true"/>
-        </peripheral>
-        <peripheral name="PORT4.CM33" group="PORT">
-            <slot name="P401.CM33" secure="true"/>
-            <slot name="P402.CM33" secure="true"/>
-            <slot name="P406.CM33" secure="true"/>
-            <slot name="P407.CM33" secure="true"/>
-            <slot name="P408.CM33" secure="true"/>
-            <slot name="P409.CM33" secure="true"/>
-            <slot name="P410.CM33" secure="true"/>
-            <slot name="P411.CM33" secure="true"/>
-            <slot name="P412.CM33" secure="true"/>
-            <slot name="P413.CM33" secure="true"/>
-        </peripheral>
-        <peripheral name="PORT5.CM33" group="PORT">
-            <slot name="P501.CM33" secure="true"/>
-            <slot name="P502.CM33" secure="true"/>
-            <slot name="P511.CM33" secure="true"/>
-            <slot name="P512.CM33" secure="true"/>
-        </peripheral>
-        <peripheral name="PORT6.CM33" group="PORT">
-            <slot name="P601.CM33" secure="true"/>
-            <slot name="P602.CM33" secure="true"/>
-            <slot name="P613.CM33" secure="true"/>
-            <slot name="P614.CM33" secure="true"/>
-        </peripheral>
-        <peripheral name="SCI9.CM33" group="SCI" security="s"/>
-        <peripheral name="SPI0.CM33" group="SPI" security="s"/>
-        <peripheral name="SPI1.CM33" group="SPI" security="s"/>
-        <peripheral name="SCI7.CM33" group="SCI" security="s"/>
-        <peripheral name="ICU.CM33">
-            <slot name="IRQ0.CM33" secure="true"/>
-            <slot name="IRQ1.CM33" secure="true"/>
-            <slot name="IRQ2.CM33" secure="true"/>
-            <slot name="IRQ3.CM33" secure="true"/>
-            <slot name="IRQ4.CM33" secure="true"/>
-            <slot name="IRQ5.CM33" secure="true"/>
-            <slot name="IRQ6.CM33" secure="true"/>
-            <slot name="IRQ7.CM33" secure="true"/>
-            <slot name="IRQ8.CM33" secure="true"/>
-            <slot name="IRQ9.CM33" secure="true"/>
-            <slot name="IRQ10.CM33" secure="true"/>
-            <slot name="IRQ11.CM33" secure="true"/>
-            <slot name="IRQ12.CM33" secure="true"/>
-            <slot name="IRQ13.CM33" secure="true"/>
-            <slot name="IRQ14.CM33" secure="true"/>
-            <slot name="IRQ15.CM33" secure="true"/>
->>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
         </peripheral>
     </partition>
 </azone>
