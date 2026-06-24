@@ -66,6 +66,7 @@ int    RealityAI_segmentor(const rai_data_t* in, rai_data_t* out, struct rai_mod
 float  RealityAI_smooth(float prediction, struct rai_model_struct* model);
 
 /** \brief Reality AI configuration function based on a command/value pair.
+<<<<<<< HEAD
  *  Commands are prefixed with RAI_CMD, and values can be 32-bit integer or floating-point types
  *  as determined by the command type. The following commands are supported:
  *
@@ -102,6 +103,36 @@ int    RealityAI_get_user_dtype_size(struct rai_model_struct* model);
  * \param[in]      len           Length of the class scores input buffer, e.g. <MODELNAME>_NUM_CLASSES
  * \param[in]      softMaxFlag   Flag for enabling softmax or normalized exponential conversion to obtain as
  *                               confidence or probability.
+=======
+ *  As defined in RealityAI_Types.h, commands are prefixed using RAI_CMD and values are prefixed RAI_VAL.
+ *  The following command are supported:
+ *         RealityAI_config(RAI_CMD_SMO_CTRL, RAI_VAL_SMO_DISABLE, model)    Enable Smoothing
+ *         RealityAI_config(RAI_CMD_SMO_LEN,  10, model)                     Modify smoothing buffer length
+ *         RealityAI_config(RAI_CMD_SMO_GRP, RAI_VAL_SMO_GRP_START, model)   Start Group Smoothing
+ *
+ * \param[in]   cmd    Configuration command e.g. RAI_CMD_SMO_CTRL
+ * \param[in]   val    Configuration value as supported by the specified command e.g. RAI_VAL_SMO_DISABLE
+ *  \param[in]  model  Pointer to the model struct
+ * \return  Returns 0 on success otherwise -1 on failure
+ */
+int    RealityAI_config(uint32_t cmd, uint32_t val, struct rai_model_struct* model);
+
+/** \brief Reality AI helper function to get user data type size in bytes.
+ *
+ * \param[in]    model   Pointer to the model struct to be used with the RealityAI inference engine.
+ * \return       Size of the user data type in bytes
+ */
+int    RealityAI_get_user_dtype_size(struct rai_model_struct* model);
+
+/** \brief Reality AI helper function to get class scores for classification models only.
+ *
+ * \param[in, out] scores        Pointer for storing the class scores, model class scores are written
+ *                               directly to this buffer.
+ * \param[in]      len           Length of the class scores buffer, e.g. <MODELNAME>_NUM_CLASSES
+ * \param[in]      softMaxFlag   Flag for enabling softmax or normalized exponential conversion to obtain as
+ *                               confidence or probability. Enabling softmax is only required for SVM model types.
+ *                               is written to the buffer.
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
  * \param[in]      model         Pointer to the model struct
  * \return  Returns 0 on success otherwise -1 on failure
  */

@@ -1,6 +1,7 @@
 /* generated common source file - do not edit */
 #include "common_data.h"
 #define G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH   (512 * RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE)
+<<<<<<< HEAD
 #define G_RAI_DATA_COLLECTOR0_CHANNELS  (0 + 6)
 #define G_RAI_DATA_COLLECTOR0_VIRT_CHANNELS (6 + 1)
 
@@ -320,6 +321,336 @@ const rai_data_collector_data_feed_cfg_t g_rai_data_collector0_df_cfg =
 
 const rai_data_collector_cfg_t g_rai_data_collector0_cfg =
 { .instance_id = 0, .channels = G_RAI_DATA_COLLECTOR0_CHANNELS, .channel_ready_mask = 63, .virt_channels =
+=======
+#define G_RAI_DATA_COLLECTOR0_CHANNELS  (0 + 3)
+#define G_RAI_DATA_COLLECTOR0_VIRT_CHANNELS (3 + 1)
+
+#if 0 > 0
+uint8_t g_rai_data_collector0_snapshot_channel0_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 0 > 1
+uint8_t g_rai_data_collector0_snapshot_channel1_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 0 > 2
+uint8_t g_rai_data_collector0_snapshot_channel2_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 0 > 3
+uint8_t g_rai_data_collector0_snapshot_channel3_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 0 > 4
+uint8_t g_rai_data_collector0_snapshot_channel4_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 0 > 5
+uint8_t g_rai_data_collector0_snapshot_channel5_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 0 > 6
+uint8_t g_rai_data_collector0_snapshot_channel6_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 0 > 7
+uint8_t g_rai_data_collector0_snapshot_channel7_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 0
+float g_rai_data_collector0_data_feed_channel0_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 1
+float g_rai_data_collector0_data_feed_channel1_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 2
+float g_rai_data_collector0_data_feed_channel2_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 3
+float g_rai_data_collector0_data_feed_channel3_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 4
+float g_rai_data_collector0_data_feed_channel4_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 5
+float g_rai_data_collector0_data_feed_channel5_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 6
+float g_rai_data_collector0_data_feed_channel6_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+#if 3 > 7
+float g_rai_data_collector0_data_feed_channel7_frame_buffer[G_RAI_DATA_COLLECTOR0_PING_PONG_BUFFER_LENGTH] BSP_ALIGN_VARIABLE(RAI_DATA_COLLECTOR_PING_PONG_BUFFER_SIZE * ((RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 2 : 4));
+#endif
+
+rai_data_collector_frame_buffer_t g_rai_data_collector0_frame_buf[G_RAI_DATA_COLLECTOR0_CHANNELS] =
+{
+
+#if 3 > 0
+  { .p_buf = g_rai_data_collector0_data_feed_channel0_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
+#endif
+#if 3 > 1
+  { .p_buf = g_rai_data_collector0_data_feed_channel1_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
+#endif
+#if 3 > 2
+  { .p_buf = g_rai_data_collector0_data_feed_channel2_frame_buffer, .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT, },
+#endif
+#if 3 > 3
+    {
+        .p_buf = g_rai_data_collector0_data_feed_channel3_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
+    },
+#endif
+#if 3 > 4
+    {
+        .p_buf = g_rai_data_collector0_data_feed_channel4_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
+    },
+#endif
+#if 3 > 5
+    {
+        .p_buf = g_rai_data_collector0_data_feed_channel5_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
+    },
+#endif
+#if 3 > 6
+    {
+        .p_buf = g_rai_data_collector0_data_feed_channel6_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
+    },
+#endif
+#if 3 > 7
+    {
+        .p_buf = g_rai_data_collector0_data_feed_channel7_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_FLOAT,
+    },
+#endif
+
+#if 0 > 0
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel0_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+#if 0 > 1
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel1_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+#if 0 > 2
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel2_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+#if 0 > 3
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel3_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+#if 0 > 4
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel4_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+#if 0 > 5
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel5_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+#if 0 > 6
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel6_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+#if 0 > 7
+    {
+        .p_buf = g_rai_data_collector0_snapshot_channel7_frame_buffer,
+        .data_type = RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T,
+    },
+#endif
+        };
+
+#if 0 > 0
+transfer_info_t g_rai_data_collector0_info[0] DTC_TRANSFER_INFO_ALIGNMENT =
+{
+
+#if 0 > 0
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode = (0 == 1) ? TRANSFER_CHAIN_MODE_DISABLED : TRANSFER_CHAIN_MODE_EACH,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel0_frame_buffer,
+    },
+#endif
+
+#if 0 > 1
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode = (0 == 2) ? TRANSFER_CHAIN_MODE_DISABLED : TRANSFER_CHAIN_MODE_EACH,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel1_frame_buffer,
+    },
+#endif
+
+#if 0 > 2
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode = (0 == 3) ? TRANSFER_CHAIN_MODE_DISABLED : TRANSFER_CHAIN_MODE_EACH,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel2_frame_buffer,
+    },
+#endif
+
+#if 0 > 3
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode = (0 == 4) ? TRANSFER_CHAIN_MODE_DISABLED : TRANSFER_CHAIN_MODE_EACH,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel3_frame_buffer,
+    },
+#endif
+
+#if 0 > 4
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode = (0 == 5) ? TRANSFER_CHAIN_MODE_DISABLED : TRANSFER_CHAIN_MODE_EACH,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel4_frame_buffer,
+    },
+#endif
+
+#if 0 > 5
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode = (0 == 6) ? TRANSFER_CHAIN_MODE_DISABLED : TRANSFER_CHAIN_MODE_EACH,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel5_frame_buffer,
+    },
+#endif
+
+#if 0 > 6
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode = (0 == 7) ? TRANSFER_CHAIN_MODE_DISABLED : TRANSFER_CHAIN_MODE_EACH,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel6_frame_buffer,
+    },
+#endif
+
+#if 0 > 7
+    {
+        .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.src_addr_mode  = TRANSFER_ADDR_MODE_INCREMENTED,
+        .transfer_settings_word_b.repeat_area    = TRANSFER_REPEAT_AREA_SOURCE,
+        .transfer_settings_word_b.irq            = TRANSFER_IRQ_END,
+        .transfer_settings_word_b.chain_mode =  TRANSFER_CHAIN_MODE_DISABLED,
+        .transfer_settings_word_b.mode       = TRANSFER_MODE_BLOCK,
+        .p_src      = (void const *) NULL,
+        .num_blocks = 1,
+        .transfer_settings_word_b.size = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? (transfer_size_t)  ((RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T & RAI_DATA_COLLECTOR_DATA_TYPE_SIZE_MASK) >> 1) : TRANSFER_SIZE_4_BYTE,
+        .length     = (RAI_DATA_COLLECTOR_DATA_TYPE_UINT8_T != RAI_DATA_COLLECTOR_DATA_TYPE_DOUBLE) ? 1 : (1 * 2),
+        .p_dest     = g_rai_data_collector0_snapshot_channel7_frame_buffer,
+    },
+#endif
+};
+#endif
+
+rai_data_collector_frame_buffer_handle_t g_rai_data_collector0_frame_buf_hnd[G_RAI_DATA_COLLECTOR0_VIRT_CHANNELS];
+
+rai_data_collector_extended_cfg_t g_rai_data_collector0_extended_cfg =
+{ .p_ping_pong_buf = g_rai_data_collector0_frame_buf, .p_ping_pong_buf_hnd = g_rai_data_collector0_frame_buf_hnd,
+#if 0 > 0
+    .p_transfer_info = g_rai_data_collector0_info,
+#else
+  .p_transfer_info = NULL,
+#endif
+        };
+
+rai_data_collector_instance_ctrl_t g_rai_data_collector0_ctrl;
+
+const rai_data_collector_snapshot_cfg_t g_rai_data_collector0_ss_cfg =
+{ .channels = 0, .transfer_len = 1,
+#define RA_NOT_DEFINED (1)
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+  .p_timer = NULL,
+#else
+    .p_timer = &RA_NOT_DEFINED,
+    #endif
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+  .p_transfer = NULL,
+#else
+    .p_transfer = &RA_NOT_DEFINED,
+    #endif
+#undef RA_NOT_DEFINED
+        };
+
+const rai_data_collector_data_feed_cfg_t g_rai_data_collector0_df_cfg =
+{ .channels = 3, };
+
+const rai_data_collector_cfg_t g_rai_data_collector0_cfg =
+{ .instance_id = 0, .channels = G_RAI_DATA_COLLECTOR0_CHANNELS, .channel_ready_mask = 7, .virt_channels =
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
           G_RAI_DATA_COLLECTOR0_VIRT_CHANNELS,
   .required_frame_len = 512, .p_snapshot_cfg = &g_rai_data_collector0_ss_cfg, .p_data_feed_cfg =
           &g_rai_data_collector0_df_cfg,

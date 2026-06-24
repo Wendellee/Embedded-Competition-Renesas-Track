@@ -73,6 +73,7 @@ struct smoothing_struct {
     uint32_t state;
     int32_t len;
     int32_t threshold;
+<<<<<<< HEAD
     float  decision_threshold;
     int32_t num_scores;
     const int32_t buffer_size;
@@ -175,6 +176,96 @@ typedef union {
 #define RAI_VAL_SMO_GRP_END         RAI_VAL_I32(0)
 
 /* Model Options */
+=======
+    const int32_t buffer_size;
+    void *const buffer;
+    float (*const smoother)(const void*, int32_t, struct smoothing_struct*);
+};
+
+typedef struct {
+    uint8_t  sh, exp;
+}std_params_t;
+
+typedef struct {
+    int32_t  a,b,c,d,e;
+}svm_cal_params_t;
+
+typedef struct {
+    float    sf;
+    int32_t  sh;
+    int32_t  si, z;
+}cal_data_t;
+
+typedef struct {
+    std_params_t     s;
+    svm_cal_params_t p;
+    cal_data_t       x, y;
+}int8_cal_t;
+
+typedef enum {
+    RAI_STATUS_CRITICAL_ERROR = -1,
+    RAI_STATUS_VALID = 0,
+    RAI_STATUS_NO_RESULTS = 1
+}rai_status_t;
+
+struct rai_model_struct {
+    struct conversion_struct* Conv;
+    struct energy_segmentation_struct* Eseg;
+    struct feature_extraction_struct* Fe;
+    struct smoothing_struct* Smo;
+    const int8_cal_t* Cal;
+    const uint32_t* Excl;
+    const void* Dev;
+    const int32_t class_index;
+    const uint32_t flags;
+    float* Class_scores;
+    int32_t num_classes;
+    int32_t num_learners;
+    int32_t subset_feature_length;
+    float (*const predict)(rai_data_t*, struct rai_model_struct*, int*);
+    void* network;
+    float results[2];
+    struct ai_monitor mon;
+    rai_status_t status;
+};
+
+struct svm_network_struct {
+    const void* Beta;
+    const void* Bias;
+    const void* Mu;
+    const void* Sigma;
+    const int8_t* coding_matrix;
+    float* learner_scores;
+};
+
+struct neural_network_struct {
+    const void* Mu;
+    const void* Sigma;
+    int32_t (*const compute)(void*, void** out, struct rai_model_struct*);
+};
+
+struct anomaly_network_struct {
+    const void* Mu;
+    const void* Sigma;
+    const void* Centroid;
+    float threshold;
+    int32_t num_clusters;
+    int32_t (*const compute)(void*, void** out, struct rai_model_struct*);
+};
+
+
+#define RAI_CLZ_NO_RESULTS          0
+
+#define RAI_CMD_SMO_CTRL            0x0U
+#define RAI_CMD_SMO_LEN             0x1U
+#define RAI_CMD_SMO_GRP             0x2U
+
+#define RAI_VAL_SMO_DISABLE         0x0U
+#define RAI_VAL_SMO_ENABLE          0x1U
+#define RAI_VAL_SMO_GRP_START       0x1U
+#define RAI_VAL_SMO_GRP_END         0x0U
+
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
 #define RAI_FLAGS_TYPE_MASK         0x01U
 #define RAI_FLAGS_TYPE_SHIFT        0U
 #define RAI_FLAGS_TYPE_CLASSIFY     (0U << RAI_FLAGS_TYPE_SHIFT)

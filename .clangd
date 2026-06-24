@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 CompileFlags: {CompilationDatabase: Debug, BuiltinHeaders: QueryDriver}
+=======
+CompileFlags: {BuiltinHeaders: QueryDriver, CompilationDatabase: Debug}
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git

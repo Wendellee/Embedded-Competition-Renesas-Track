@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1452731348/CPATH/delimiter=;
 environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1452731348/CPATH/operation=remove
 environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1452731348/C_INCLUDE_PATH/delimiter=;
@@ -9,3 +10,15 @@ environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.e
 environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1452731348/LIBRARY_PATH/operation=remove
 environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1452731348/append=true
 environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1452731348/appendContributed=true
+=======
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/CPATH/delimiter=;
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/CPATH/operation=remove
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/append=true
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/appendContributed=true
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/append=true
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1088494924/appendContributed=true
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git

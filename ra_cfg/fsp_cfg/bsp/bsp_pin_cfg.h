@@ -6,7 +6,14 @@
 /* Common macro for FSP header files. There is also a corresponding FSP_FOOTER macro at the end of this file. */
 FSP_HEADER
 
+<<<<<<< HEAD
 extern const ioport_cfg_t g_bsp_pin_cfg; /* R7FA6M5BF2CBG.pincfg */
+=======
+#define USER_LED1 (BSP_IO_PORT_04_PIN_01)
+#define USER_LED2 (BSP_IO_PORT_04_PIN_02)
+
+extern const ioport_cfg_t g_bsp_pin_cfg; /* R7FA6M5BH3CFB.pincfg */
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
 
 void BSP_PinConfigSecurityInit();
 

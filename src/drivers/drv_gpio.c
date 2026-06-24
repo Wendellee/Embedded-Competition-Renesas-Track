@@ -8,6 +8,7 @@ static int IODrvInit(struct IODev *ptdev);
 static int IODrvWrite(struct IODev *ptdev, unsigned char level);
 static int IODrvRead(struct IODev *ptdev);
 
+<<<<<<< HEAD
 static struct IODev gADXLCS0Dev = {
     .name = "ADXL345_0 CS",
     .port = BSP_IO_PORT_01_PIN_13,
@@ -46,6 +47,29 @@ void IODevicesCreate(void)
     IODeviceInsert(&gADXLCS0Dev);
     IODeviceInsert(&gADXINT0Dev);
     IODeviceInsert(&gADXLCS1Dev);
+=======
+static struct IODev gADXLCSDev = {
+    .name = "ADXL345 CS",
+    .port = BSP_IO_PORT_02_PIN_05,
+    .Init = IODrvInit,
+    .Read = IODrvRead,
+    .Write = IODrvWrite,
+    .next = NULL
+};
+static struct IODev gADXINT1Dev = {
+    .name = "ADXL345 INT1",
+    .port = BSP_IO_PORT_05_PIN_03,
+    .Init = IODrvInit,
+    .Read = IODrvRead,
+    .Write = IODrvWrite,
+    .next = NULL
+};
+
+void IODevicesCreate(void)
+{
+    /* ADXL345 CS: software-controlled via P4.01 (NOT P2.05 which is claimed by SPI peripheral). */
+    IODeviceInsert(&gADXLCSDev);
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
     IODeviceInsert(&gADXINT1Dev);
 }
 

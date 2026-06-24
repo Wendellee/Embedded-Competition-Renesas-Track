@@ -21,6 +21,7 @@
 extern "C" {
 #endif
 
+<<<<<<< HEAD
 #define RAI_EDSP_VERSION_CODE   0x10B00
 #define RAI_EDSP_VERSION(a,b,c) (((a) << 16) + ((b) << 8) + (c))
 
@@ -46,6 +47,33 @@ extern "C" {
 #define RAI_MAX_NUM_LEARNERS    1
 #define RAI_MAX_SAMPS_PER_CHAN  512
 #define RAI_MAX_FEAT_LEN        1536
+=======
+#define RAI_EDSP_VERSION_CODE   0x10A00
+#define RAI_EDSP_VERSION(a,b,c) (((a) << 16) + ((b) << 8) + (c))
+
+#define RAI_PLATFORM_ARM        1
+/* #undef RAI_PLATFORM_RX */
+/* #undef RAI_PLATFORM_RH850 */
+/* #undef RAI_PLATFORM_RL78 */
+/* #undef RAI_PLATFORM_X86_64 */
+/* #undef RAI_PREC_FIXEDPOINT */
+/* #undef RAI_NPOW2_FFT */
+
+#if RAI_PREC_FIXEDPOINT
+    typedef int16_t                  rai_data_t;
+#else
+    typedef float                    rai_data_t;
+#endif
+
+/* #undef RAI_STACK_TRACE */
+#define RAI_MAX_FFT_LEN         512
+#define RAI_MAX_FFT2_LEN        1
+#define RAI_MAX_NUM_CLASSES     4
+#define RAI_MAX_NUM_CHAN        3
+#define RAI_MAX_NUM_LEARNERS    1
+#define RAI_MAX_SAMPS_PER_CHAN  512
+#define RAI_MAX_FEAT_LEN        768
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
 #define RAI_MAX_SMO_WIN_LEN     1
 
 #if defined(__clang__) || defined(__GNUC__)

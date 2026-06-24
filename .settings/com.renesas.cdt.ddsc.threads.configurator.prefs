@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 collapse/module.arm.cmsis.dsp.1434674810=false
 collapse/module.arm.cmsis5.dsp.1434674810=false
 collapse/module.driver.rm_comms_on_uart.1956310049=false
@@ -14,3 +15,13 @@ collapse/module.driver.uart_on_sci_uart.894968343=false
 collapse/module.middleware.rai_data_collector_on_rai_data_collector.369576165=false
 collapse/module.middleware.rai_data_shipper_on_rai_data_shipper.1711977942=false
 eclipse.preferences.version=1
+=======
+collapse/module.driver.rm_comms_on_uart.210388659=false
+collapse/module.driver.spi_on_spi.1175825099=false
+collapse/module.driver.spi_on_spi.1499649603=false
+collapse/module.driver.uart_on_sci_uart.385810621=false
+collapse/module.driver.uart_on_sci_uart.753889860=false
+collapse/module.middleware.rai_data_collector_on_rai_data_collector.1325357386=false
+collapse/module.middleware.rai_data_shipper_on_rai_data_shipper.365761512=false
+eclipse.preferences.version=1
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git

@@ -12,6 +12,7 @@
             [5] = spi_txi_isr, /* SPI0 TXI (Transmit buffer empty) */
             [6] = spi_tei_isr, /* SPI0 TEI (Transmission complete event) */
             [7] = spi_eri_isr, /* SPI0 ERI (Error) */
+<<<<<<< HEAD
             [8] = sci_uart_rxi_isr, /* SCI7 RXI (Receive data full) */
             [9] = sci_uart_txi_isr, /* SCI7 TXI (Transmit data empty) */
             [10] = sci_uart_tei_isr, /* SCI7 TEI (Transmit end) */
@@ -76,6 +77,36 @@
             [31] = BSP_PRV_VECT_ENUM(EVENT_DMAC0_INT,GROUP7), /* DMAC0 INT (DMAC0 transfer end) */
             [32] = BSP_PRV_VECT_ENUM(EVENT_RTC_PERIOD,FIXED), /* RTC PERIOD (Periodic interrupt) */
             [33] = BSP_PRV_VECT_ENUM(EVENT_RTC_CARRY,FIXED), /* RTC CARRY (Carry interrupt) */
+=======
+            [8] = spi_rxi_isr, /* SPI1 RXI (Receive buffer full) */
+            [9] = spi_txi_isr, /* SPI1 TXI (Transmit buffer empty) */
+            [10] = spi_tei_isr, /* SPI1 TEI (Transmission complete event) */
+            [11] = spi_eri_isr, /* SPI1 ERI (Error) */
+            [12] = sci_uart_rxi_isr, /* SCI7 RXI (Receive data full) */
+            [13] = sci_uart_txi_isr, /* SCI7 TXI (Transmit data empty) */
+            [14] = sci_uart_tei_isr, /* SCI7 TEI (Transmit end) */
+            [15] = sci_uart_eri_isr, /* SCI7 ERI (Receive error) */
+        };
+        #if BSP_FEATURE_ICU_HAS_IELSR
+        const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_NUM_ENTRIES] =
+        {
+            [0] = BSP_PRV_VECT_ENUM(EVENT_SCI9_RXI,GROUP0), /* SCI9 RXI (Receive data full) */
+            [1] = BSP_PRV_VECT_ENUM(EVENT_SCI9_TXI,GROUP1), /* SCI9 TXI (Transmit data empty) */
+            [2] = BSP_PRV_VECT_ENUM(EVENT_SCI9_TEI,GROUP2), /* SCI9 TEI (Transmit end) */
+            [3] = BSP_PRV_VECT_ENUM(EVENT_SCI9_ERI,GROUP3), /* SCI9 ERI (Receive error) */
+            [4] = BSP_PRV_VECT_ENUM(EVENT_SPI0_RXI,GROUP4), /* SPI0 RXI (Receive buffer full) */
+            [5] = BSP_PRV_VECT_ENUM(EVENT_SPI0_TXI,GROUP5), /* SPI0 TXI (Transmit buffer empty) */
+            [6] = BSP_PRV_VECT_ENUM(EVENT_SPI0_TEI,GROUP6), /* SPI0 TEI (Transmission complete event) */
+            [7] = BSP_PRV_VECT_ENUM(EVENT_SPI0_ERI,GROUP7), /* SPI0 ERI (Error) */
+            [8] = BSP_PRV_VECT_ENUM(EVENT_SPI1_RXI,GROUP0), /* SPI1 RXI (Receive buffer full) */
+            [9] = BSP_PRV_VECT_ENUM(EVENT_SPI1_TXI,GROUP1), /* SPI1 TXI (Transmit buffer empty) */
+            [10] = BSP_PRV_VECT_ENUM(EVENT_SPI1_TEI,GROUP2), /* SPI1 TEI (Transmission complete event) */
+            [11] = BSP_PRV_VECT_ENUM(EVENT_SPI1_ERI,GROUP3), /* SPI1 ERI (Error) */
+            [12] = BSP_PRV_VECT_ENUM(EVENT_SCI7_RXI,GROUP4), /* SCI7 RXI (Receive data full) */
+            [13] = BSP_PRV_VECT_ENUM(EVENT_SCI7_TXI,GROUP5), /* SCI7 TXI (Transmit data empty) */
+            [14] = BSP_PRV_VECT_ENUM(EVENT_SCI7_TEI,GROUP6), /* SCI7 TEI (Transmit end) */
+            [15] = BSP_PRV_VECT_ENUM(EVENT_SCI7_ERI,GROUP7), /* SCI7 ERI (Receive error) */
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
         };
         #endif
         #endif

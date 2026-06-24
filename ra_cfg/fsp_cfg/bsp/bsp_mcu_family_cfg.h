@@ -86,6 +86,7 @@ extern "C" {
             (((1 > 0) ? 0U : 1U) << 22) /* SCI9 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 23) /* SCI8 */ | \
             (((1 > 0) ? 0U : 1U) << 24) /* SCI7 */ | \
+<<<<<<< HEAD
             (((1 > 0) ? 0U : 1U) << 25) /* SCI6 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 26) /* SCI5 */ | \
             (((1 > 0) ? 0U : 1U) << 27) /* SCI4 */ | \
@@ -226,6 +227,148 @@ extern "C" {
 #ifndef BSP_TZ_CFG_ICUSARC
 #define BSP_TZ_CFG_ICUSARC (\
             (((1 > 0) ? 0U : 1U) << 0U) /* DMAC Channel 0 */ | \
+=======
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 25) /* SCI6 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 26) /* SCI5 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 27) /* SCI4 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 28) /* SCI3 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 29) /* SCI2 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 30) /* SCI1 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* SCI0 */ | \
+            0x33f4f9) /* Unused */
+#endif
+#ifndef BSP_TZ_CFG_PSARC
+#define BSP_TZ_CFG_PSARC (\
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0) /* CAC */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* CRC */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 3) /* CTSU */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 8) /* SSIE0 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 12) /* SDHI0 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 13) /* DOC */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* SCE9 */ | \
+            0x7fffcef4) /* Unused */
+#endif
+#ifndef BSP_TZ_CFG_PSARD
+#define BSP_TZ_CFG_PSARD (\
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0) /* AGT3 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* AGT2 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 2) /* AGT1 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 3) /* AGT0 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 11) /* POEG3 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 12) /* POEG2 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 13) /* POEG1 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 14) /* POEG0 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* ADC1 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 16) /* ADC0 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 20) /* DAC */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 22) /* TSN */ | \
+            0xffae07f0) /* Unused */
+#endif
+#ifndef BSP_TZ_CFG_PSARE
+#define BSP_TZ_CFG_PSARE (\
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0) /* WDT */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* IWDT */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 2) /* RTC */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 14) /* AGT5 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* AGT4 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 22) /* GPT9 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 23) /* GPT8 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 24) /* GPT7 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 25) /* GPT6 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 26) /* GPT5 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 27) /* GPT4 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 28) /* GPT3 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 29) /* GPT2 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 30) /* GPT1 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* GPT0 */ | \
+            0x3f3ff8) /* Unused */
+#endif
+#ifndef BSP_TZ_CFG_MSSAR
+#define BSP_TZ_CFG_MSSAR (\
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0) /* ELC */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* DTC_DMAC */ | \
+            0xfffffffc) /* Unused */
+#endif
+
+/* Type 2 Peripheral Security Attribution */
+
+/* Security attribution for Cache registers. */
+#ifndef BSP_TZ_CFG_CSAR
+#define BSP_TZ_CFG_CSAR (0xFFFFFFFFU)
+#endif
+
+/* Security attribution for RSTSRn registers. */
+#ifndef BSP_TZ_CFG_RSTSAR
+#define BSP_TZ_CFG_RSTSAR (0xFFFFFFFFU)
+#endif
+
+/* Security attribution for registers of LVD channels. */
+#ifndef BSP_TZ_CFG_LVDSAR
+/* The LVD driver needs to access both channels. This means that the security attribution for both channels must be the same. */
+#if (RA_NOT_DEFINED > 0) || (RA_NOT_DEFINED > 0)
+#define BSP_TZ_CFG_LVDSAR (0U)
+#else
+#define BSP_TZ_CFG_LVDSAR (3U)
+#endif
+#endif
+
+/* Security attribution for LPM registers. */
+#ifndef BSP_TZ_CFG_LPMSAR
+#define BSP_TZ_CFG_LPMSAR ((RA_NOT_DEFINED > 0) ? 0xFFFFFCEAU : 0xFFFFFFFFU)
+#endif
+/* Deep Standby Interrupt Factor Security Attribution Register. */
+#ifndef BSP_TZ_CFG_DPFSAR
+#define BSP_TZ_CFG_DPFSAR ((RA_NOT_DEFINED > 0) ? 0xF2E00000U : 0xFFFFFFFFU)
+#endif
+
+/* Security attribution for CGC registers. */
+#ifndef BSP_TZ_CFG_CGFSAR
+#if BSP_CFG_CLOCKS_SECURE
+/* Protect all CGC registers from Non-secure write access. */
+#define BSP_TZ_CFG_CGFSAR (0xFFE0E402U)
+#else
+/* Allow Secure and Non-secure write access. */
+#define BSP_TZ_CFG_CGFSAR (0xFFFFFFFFU)
+#endif
+#endif
+
+/* Security attribution for Battery Backup registers. */
+#ifndef BSP_TZ_CFG_BBFSAR
+#define BSP_TZ_CFG_BBFSAR (0x00FFFFFF)
+#endif
+
+/* Security attribution for registers for IRQ channels. */
+#ifndef BSP_TZ_CFG_ICUSARA
+#define BSP_TZ_CFG_ICUSARA (\
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0U) /* External IRQ0 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1U) /* External IRQ1 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 2U) /* External IRQ2 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 3U) /* External IRQ3 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 4U) /* External IRQ4 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 5U) /* External IRQ5 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 6U) /* External IRQ6 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 7U) /* External IRQ7 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 8U) /* External IRQ8 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 9U) /* External IRQ9 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 10U) /* External IRQ10 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 11U) /* External IRQ11 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 12U) /* External IRQ12 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 13U) /* External IRQ13 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 14U) /* External IRQ14 */ | \
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15U) /* External IRQ15 */ | \
+            0xFFFF0000U)
+#endif
+
+/* Security attribution for NMI registers. */
+#ifndef BSP_TZ_CFG_ICUSARB
+#define BSP_TZ_CFG_ICUSARB (0 | 0xFFFFFFFEU) /* Should match AIRCR.BFHFNMINS. */
+#endif
+
+/* Security attribution for registers for DMAC channels */
+#ifndef BSP_TZ_CFG_ICUSARC
+#define BSP_TZ_CFG_ICUSARC (\
+            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0U) /* DMAC Channel 0 */ | \
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1U) /* DMAC Channel 1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 2U) /* DMAC Channel 2 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 3U) /* DMAC Channel 3 */ | \

@@ -1,7 +1,11 @@
 #ifndef __DEVICES_H
 #define __DEVICES_H
 
+<<<<<<< HEAD
 #include <config.h>
+=======
+#include "config.h"
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
 
 /* Peripheral Devices Include */
 #if DEV_USE_GPIO

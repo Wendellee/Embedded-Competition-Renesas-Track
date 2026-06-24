@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "bsp_api.h"
 #include "common_data.h"
+<<<<<<< HEAD
 #include "r_rtc.h"
 #include "r_rtc_api.h"
 #include "r_dmac.h"
@@ -113,6 +114,36 @@ extern const timer_cfg_t g_timer0_cfg;
 #ifndef timer0_callback
 void timer0_callback(timer_callback_args_t *p_args);
 #endif
+=======
+#include "r_spi.h"
+#include "r_sci_uart.h"
+#include "r_uart_api.h"
+FSP_HEADER
+/** SPI on SPI Instance. */
+extern const spi_instance_t g_spi1;
+
+/** Access the SPI instance using these structures when calling API functions directly (::p_api is not used). */
+extern spi_instance_ctrl_t g_spi1_ctrl;
+extern const spi_cfg_t g_spi1_cfg;
+
+/** Callback used by SPI Instance. */
+#ifndef spi1_callback
+void spi1_callback(spi_callback_args_t *p_args);
+#endif
+
+#define RA_NOT_DEFINED (1)
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+#define g_spi1_P_TRANSFER_TX (NULL)
+#else
+    #define g_spi1_P_TRANSFER_TX (&RA_NOT_DEFINED)
+#endif
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+#define g_spi1_P_TRANSFER_RX (NULL)
+#else
+    #define g_spi1_P_TRANSFER_RX (&RA_NOT_DEFINED)
+#endif
+#undef RA_NOT_DEFINED
+>>>>>>> branch 'main' of git@github.com:Wendellee/Embedded-Competition-Renesas-Track.git
 /** SPI on SPI Instance. */
 extern const spi_instance_t g_spi0;
 
