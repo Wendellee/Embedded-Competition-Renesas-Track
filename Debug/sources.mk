@@ -58,5 +58,24 @@ ra/fsp/src/bsp/mcu/all \
 ra/fsp/src/bsp/mcu/ra6m5 \
 ra/fsp/src/r_ioport \
 ra_gen \
+src/FatFs/ff15 \
+src/Net/MQTT \
+src/Net/cJSON \
+src/Net/device \
+src/Net/onenet \
+src/RTC \
+src/SD \
+src/SEGGER_RTT \
+src/applications \
 src \
+src/debug_uart \
+src/devices/ADXL345 \
+src/devices/DHT11 \
+src/devices \
+src/drivers \
+src/key \
+src/led \
+src/libs/delay \
+src/libs/ring_buffer \
+src/rai \
 

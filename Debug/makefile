@@ -10,6 +10,25 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/rai/subdir.mk
+-include src/libs/ring_buffer/subdir.mk
+-include src/libs/delay/subdir.mk
+-include src/led/subdir.mk
+-include src/key/subdir.mk
+-include src/drivers/subdir.mk
+-include src/devices/DHT11/subdir.mk
+-include src/devices/ADXL345/subdir.mk
+-include src/devices/subdir.mk
+-include src/debug_uart/subdir.mk
+-include src/applications/subdir.mk
+-include src/SEGGER_RTT/subdir.mk
+-include src/SD/subdir.mk
+-include src/RTC/subdir.mk
+-include src/Net/onenet/subdir.mk
+-include src/Net/device/subdir.mk
+-include src/Net/cJSON/subdir.mk
+-include src/Net/MQTT/subdir.mk
+-include src/FatFs/ff15/subdir.mk
 -include src/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk

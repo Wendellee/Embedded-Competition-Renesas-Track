@@ -4,14 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/buding.c \
 ../src/hal_entry.c \
 ../src/hal_warmstart.c 
 
 C_DEPS += \
+./src/buding.d \
 ./src/hal_entry.d \
 ./src/hal_warmstart.d 
 
 OBJS += \
+./src/buding.o \
 ./src/hal_entry.o \
 ./src/hal_warmstart.o 
 
